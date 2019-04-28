@@ -26,6 +26,11 @@ body {
   text-align: right;
 }
 
+#submitForm {
+  background-color: #26C4EC;
+  border : none;
+}
+
 
 
 
