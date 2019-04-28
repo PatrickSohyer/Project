@@ -31,6 +31,10 @@ body {
   border : none;
 }
 
+#btnModalsAcceuil {
+  background-color: #25C4EC;
+}
+
 
 
 
@@ -38,4 +42,4 @@ body {
 noir : #01161E
 beige : #D6A184
 praline : #EFF6E0
-bleu clair : #598392 */
+bleu clair : #25C4EC */
