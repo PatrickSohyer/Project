@@ -1,11 +1,11 @@
 body {
-  background-color: #D6A184;
+  background-color: #d5f5ff;
 }
 
 .bannerDiv {
   width: 100%;
   height: auto;
-  background-color: #D6A184;
+  background-color: #d5f5ff;
   margin-bottom: -5px;
 }
 
@@ -19,7 +19,8 @@ body {
   height: auto;
   display: block;
   margin-left: auto;
-  margin-right: auto }
+  margin-right: auto
+}
 }
 
 #navbarSecond {
@@ -28,18 +29,30 @@ body {
 
 #submitForm {
   background-color: #26C4EC;
-  border : none;
+  border: none;
 }
 
 #btnModalsAcceuil {
   background-color: #25C4EC;
 }
 
+.welcomeMessage {
+  border: #01161E 1px solid;
+  font-family: 'Acme', sans-serif;
+  line-height: 1rem;
+  background-color: #EFF6E0;
+}
 
-
+#serieMoment {
+  border: #01161E 1px solid;
+  font-family: 'Acme', sans-serif;
+  text-shadow: 1px 1px 1px black;
+  line-height: 1rem;
+  background-color: #EFF6E0;
+}
 
 /* Bleu foncé : #124559
 noir : #01161E
-beige : #D6A184
+fond bleu clair : #d5f5ff
 praline : #EFF6E0
 bleu clair : #25C4EC */
