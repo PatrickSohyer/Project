@@ -50,6 +50,30 @@ body {
   border-bottom: #01161E 1px solid;
 }
 
+.carouselIconMoment {
+  color: #124559;
+}
+
+.titleSerieMoment {
+  color: #01161E;
+}
+
+.modalSerieMoment {
+  background-color: #01161E;
+}
+
+.descritpionSerieMoment {
+  font-size: 15px;
+}
+
+.hrFooter {
+  width: 60px;
+}
+
+.footerLink {
+  color: #d5f5ff;
+}
+
 /* Bleu foncé : #124559
 noir : #01161E
 fond bleu clair : #d5f5ff
