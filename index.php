@@ -39,33 +39,39 @@
             </div>
         </div>
 
-<?php include_once('views/include/carouselSerieMoment.php'); ?>
+        <?php include_once('views/include/carouselSerieMoment.php'); ?>
 
 
-        <div class="container container-fluid">
+        <div class="container-fluid container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
                     <img src="images/imgSeries/13ReasonsWhy/reasonsWhyPage.jpg" />
+                    <p class="text-light mt-2">Système de notation série</p>
+                    <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
                 </div>
-                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mx-left mt-3">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                     <p class="textSeriePage h1 text-center p-1">13 Reasons Why</p>
-                    <p class="textSeriePage text-center mb-2">Description :<br />Un garçon nommé Clay reçoit une boîte à chaussures remplies de
+                    <p class="textSeriePage text-center p-1 mb-2">Description :<br />Un garçon nommé Clay reçoit une boîte à chaussures remplies de
                         cassettes de la part d'une
                         de ses amies, Hannah Baker, récemment suicidée. Sur les cassettes qui doivent être passées de mains en mains, Hannah explique que chacun a joué un rôle dans sa mort, et donne les 13 raisons expliquant son passage à
                         l'acte.</p>
-                    <ol class="textSeriePage text-center">
+                    <ol class="textSeriePage text-center p-1">
                         <li>Nombre de Saisons : 2</li>
                         <li>Nombre d'épisodes : 26</li>
                         <li>Durée d'un épisode : 55</li>
                         <li>Diffusion : Netflix</li>
                         <li></li>
                     </ol>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LVVMvRpmu0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
 
                 </div>
             </div>
         </div>
+        
 
-<?php include_once('views/include/footer.php') ?>
+        <?php include_once('views/include/footer.php') ?>
 
 
 
