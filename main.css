@@ -1,98 +1,285 @@
+/*Background Body Color*/
+
 body {
-  background-color: #06222C;
+    background-color: #06222C;
 }
 
-.avatar {
-  width: 100%;
-  height: auto;
+#slideImage1 {
+   background: url(images/imgAccueil/meilleure-serie.png) center 0 no-repeat fixed;
 }
+
+.avatarBanner {
+    width: 100%;
+}
+
+/*Paramètres de la Navbar et Message bienvenu*/
 
 .navbar {
-  background-color: #0272BC;
-  font-family: 'Acme', sans-serif;
+    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    font-family: 'Acme', sans-serif;
 }
 
 #navbarSecond {
-  text-align: right;
-}
-
-#submitForm {
-  background-color: #26C4EC;
-  border: none;
-}
-
-.btnModalsAcceuil {
-  background-color: #0272BC;
+    text-align: right;
 }
 
 .welcomeMessage {
-  border: #01161E 1px solid;
-  font-family: 'Acme', sans-serif;
-  line-height: 1rem;
-  background-color: #EFF6E0;
+    border: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    line-height: 1rem;
+    background-color: #EFF6E0;
 }
 
-#serieMoment {
-  border: #01161E 1px solid;
-  font-family: 'Acme', sans-serif;
-  text-shadow: 1px 1px 1px black;
-  line-height: 1rem;
-  background-color: #EFF6E0;
+/*Paramètres des bouttons*/
+
+.btnModalsAcceuil, .buttonLastArticle, #signUpButton  {
+    background-image: linear-gradient(0deg, #4b6cb7 0%, #182848 51%, #4b6cb7 100%);
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
 }
 
-#footer {
-  border-top: #01161E 1px solid;
-  font-family: 'Acme', sans-serif;
-  background-color: #0272BC;
+/*Paramètres des cartes*/
+
+.cardArticle {
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
+    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    color: #EFF6E0;
 }
 
-#socialMedia {
-  border-bottom: #01161E 1px solid;
+#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie {
+    border: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    text-shadow: 1px 1px 1px black;
+    line-height: 1rem;
+    background-color: #EFF6E0;
+}
+
+#favoriteMoment {
+    border: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    text-shadow: 1px 1px 1px black;
+    line-height: 1rem;
+    background-color: #EFF6E0;
+    border-radius: 3%;
+}
+
+/*Paramètres du carousel*/
+
+.imgMomentAccueil {
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
+    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    cursor: pointer;
+    color: #EFF6E0;
 }
 
 .carouselIconMoment {
-  color: #124559;
+    color: #124559;
 }
 
 .titleSerieMoment {
-  color: #01161E;
+    color: #01161E;
 }
 
 .modalSerieMoment {
-  background-color: #01161E;
+    background-color: #01161E;
 }
 
 .descritpionSerieMoment {
-  font-size: 15px;
+    font-size: 15px;
+}
+
+/*Paramètres du footer*/
+
+#footer {
+    border-top: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    text-shadow: 1px 1px 1px black;
+    background-color: #0272BC;
+    color: #EFF6E0;
+}
+
+#socialMedia {
+    border-bottom: #01161E 1px solid;
 }
 
 .hrFooter {
-  width: 60px;
+    width: 60px;
 }
 
 .footerLink {
-  color: #d5f5ff;
+    color: #d5f5ff;
 }
 
-.textSeriePage {
-  border: #01161E 1px solid;
-  font-family: 'Acme', sans-serif;
-  background-color: #EFF6E0;
-}
 
 ol {
-list-style: none;
+    list-style: none;
 }
+
+/*Paramètres des mentions légals*/
 
 .mentionsLegals {
     font-family: 'Acme', sans-serif;
     color: #EFF6E0;
 }
 
-.formSignUp {
+.formSignUp, #cardmyAccount {
     font-family: 'Acme', sans-serif;
     color: #EFF6E0;
 }
+
+/*Paramètres naviguation card page*/
+
+.rating {
+    width: 226px;
+    margin: 0 auto 1em;
+    font-size: 45px;
+    overflow:hidden;
+}
+.rating a {
+    float:right;
+    color: #aaa;
+    text-decoration: none;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+.rating a:hover,
+.rating a:hover ~ a,
+.rating a:focus,
+.rating a:focus ~ a		{
+    color: orange;
+    cursor: pointer;
+}
+.rating2 {
+    direction: rtl;
+}
+.rating2 a {
+    float:none
+}
+
+.clear{
+    clear: both;
+}
+
+
+.slide-toggle{
+    display: none;
+}
+
+.slidemenu{
+    font-family: arial, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.slidemenu label{
+    width: 25%;
+    text-align: center;
+    display: block;
+    float: left;
+    color: #EFF6E0;
+    opacity: 0.2;
+
+}
+
+.slidemenu label:hover{
+    cursor: pointer;
+    color: #EFF6E0;
+}
+
+.slidemenu label span{
+    display: block;
+    padding: 10px;    
+}
+
+.slidemenu label .icon{
+    font-size: 20px;
+    border: solid 2px #EFF6E0;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+    line-height: 50px;
+    border-radius: 50%;
+}
+
+/*Bar Style*/
+
+.slider{
+    width: 100%;
+    height: 5px;
+    display: block;
+    background: #ccc;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.slider .bar{
+    width: 25%;
+    height: 5px;
+    background: #333;
+    border-radius: 5px;
+}
+
+/*Animations*/
+.slidemenu label, .slider .bar {
+    transition: all 500ms ease-in-out;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+}
+
+/*Toggle*/
+
+.slidemenu .slide-toggle:checked + label{
+    opacity: 1;
+}
+
+.slidemenu #slideItemPresentation:checked ~ .slider .bar{ margin-left: 0; }
+.slidemenu #slideItemSeasons:checked ~ .slider .bar{ margin-left: 25%; }
+.slidemenu #slideItemComment:checked ~ .slider .bar{ margin-left: 50%; }
+.slidemenu #slideItemArticle:checked ~ .slider .bar{ margin-left: 75%; }
+
+
+
+.informationSeriesCard, .seasonsSeriesCard {
+    border: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    background-color: #EFF6E0;
+}
+
+#season1Episode, #season2Episode {
+    word-spacing: 10px;
+}
+
+.seasonsClick {
+    cursor: pointer;
+}
+
+#cardSignUp, .signUpText, #cardmyAccount {
+    background-color: #EFF6E0;  
+    color: #06222C;
+}
+
+.flashImgAllSeries img {
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.flashImgAllSeries:hover img {
+    opacity: .5;
+    cursor: pointer;
+}
+
+
+.textSeriePage {
+    border: #01161E 1px solid;
+    font-family: 'Acme', sans-serif;
+    background-color: #EFF6E0;
+}
+
 
 /* Bleu foncé : #124559
 noir : #01161E

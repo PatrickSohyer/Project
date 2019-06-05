@@ -1,5 +1,5 @@
 <div class="container-fluid" id="serieMoment">
-  <p class="h2 text-center m-3"><b><i>Voilà les séries du moment</i></b></p>
+  <p class="h2 text-center m-3"><b><i>Séries du moment</i></b></p>
   <div class="row blog">
     <div class="col">
       <div id="carouselSerieMoment" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -17,7 +17,7 @@
             <div class="row">
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#reasonsWhyModals"><img src="images/imgSeries/13ReasonsWhy/13ReasonsWhy.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#reasonsWhyModals"><img src="images/imgSeries/13ReasonsWhy/13ReasonsWhy.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>13 Reasons Why</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#reasonsWhyModals"><b>Résumé</b></button>
                 </div>
@@ -63,7 +63,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#supernaturalModals"><img src="images/imgSeries/supernatural/supernatural.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#supernaturalModals"><img src="images/imgSeries/supernatural/supernatural.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>Supernatural</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#supernaturalModals"><b>Résumé</b></button>
                 </div>
@@ -109,7 +109,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theFlashModals"><img src="images/imgSeries/theFlash/theFlash.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theFlashModals"><img src="images/imgSeries/theFlash/theFlash.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>The Flash</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#theFlashModals"><b>Résumé</b></button>
                 </div>
@@ -157,7 +157,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#breakingBadModals"><img src="images/imgSeries/breakingBad/breakingBad.jpg" alt="Image" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#breakingBadModals"><img src="images/imgSeries/breakingBad/breakingBad.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>Breaking Bad</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#breakingBadModals"><b>Résumé</b></button>
                 </div>
@@ -209,7 +209,7 @@
             <div class="row">
               <div class="col-md-6 col-lg-3 col-xl-3 col-sm-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#gameOfThronesModals"><img src="images/imgSeries/gameOfThrones/gameOfThrones.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#gameOfThronesModals"><img src="images/imgSeries/gameOfThrones/gameOfThrones.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>Game Of Thrones</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#gameOfThronesModals"><b>Résumé</b></button>
                 </div>
@@ -257,7 +257,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#luciferModals"><img src="images/imgSeries/lucifer/lucifer.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#luciferModals"><img src="images/imgSeries/lucifer/lucifer.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>Lucifer</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#luciferModals"><b>Résumé</b></button>
                 </div>
@@ -303,7 +303,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theWalkingDeadModals"><img src="images/imgSeries/theWalkingDead/theWalkingDead.jpg" /></a>
+                    <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theWalkingDeadModals"><img src="images/imgSeries/theWalkingDead/theWalkingDead.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>The Walking Dead</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#theWalkingDeadModals"><b>Résumé</b></button>
                 </div>
@@ -348,7 +348,7 @@
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                 <div class="Modals mx-auto text-center">
-                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theBigBangTheoryModals"><img src="images/imgSeries/theBigBangTheory/theBigBangTheory.jpg" /></a>
+                  <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theBigBangTheoryModals"><img src="images/imgSeries/theBigBangTheory/theBigBangTheory.jpg" class="imgMomentAccueil" /></a>
                   <p class="h3 mt-2 titleSerieMoment"><b>The Big Bang theory</b></p>
                   <button type="button" class="btnModals btn btnModalsAcceuil text-white" data-toggle="modal" data-target="#theBigBangTheoryModals"><b>Résumé</b></button>
                 </div>
@@ -400,5 +400,4 @@
       <!--.Carousel-->
     </div>
   </div>
-</div>
 </div>
