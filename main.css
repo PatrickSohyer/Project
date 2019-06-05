@@ -5,7 +5,7 @@ body {
 }
 
 #slideImage1 {
-   background: url(images/imgAccueil/meilleure-serie.png) center 0 no-repeat fixed;
+   background: url(images/imgAccueil/meilleure-serie.png) center fixed;
 }
 
 .avatarBanner {
