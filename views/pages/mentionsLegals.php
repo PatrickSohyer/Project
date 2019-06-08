@@ -22,13 +22,14 @@
 
         <?php
         $sourceTest = '../../images/imgAccueil/BannerPhil.jpg';
-        $myAccountPage = 'myAccountPage.php';
-        $articlePage = 'articlePage.php';
-        $seriesCardPage = 'seriesCard.php';
-        $allArticlesPage = 'allArticlesPage.php';
-        $mentionsLegalsPage = 'mentionsLegals.php';
         $signUpPage = 'signUp.php';
+        $articlePage = 'articlePage.php';
+        $allSeriesPage = 'allSeriesPage.php';
+        $allArticlesPage = 'allArticlesPage.php';
+        $myAccountPage = 'myAccountPage.php';
+        $mentionsLegalsPage = 'mentionsLegals.php';
         include_once ('../include/headerNav.php');
+        include "../include/country.php";
         ?>
 
         <div class="container container-fluid">
