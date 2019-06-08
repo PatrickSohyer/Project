@@ -21,7 +21,7 @@
     <body>
 
         <?php
-        $sourceTest = '../../images/imgAccueil/test.jpg';
+        $sourceTest = '../../images/imgAccueil/BannerPhil.jpg';
         $signUpPage = 'signUp.php';
         $articlePage = 'articlePage.php';
         $allSeriesPage = 'allSeriesPage.php';

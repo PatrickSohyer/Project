@@ -25,7 +25,7 @@
             <div class="slide_inside">
 
                 <?php
-                $sourceTest = 'images/imgAccueil/test.jpg';
+                $sourceTest = 'images/imgAccueil/BannerPhil.jpg';
                 $myAccountPage = 'views/pages/myAccountPage.php';
                 $articlePage = 'views/pages/articlePage.php';
                 $allSeriesPage = 'views/pages/allSeriesPage.php';
