@@ -1,0 +1,7 @@
+SELECT `sp_series_pages`.`sp_series_pages_title`, `sp_actor`.`sp_actor_firstname`, `sp_actor`.`sp_actor_lastname` FROM `sp_series_pages` INNER JOIN `relation_series_pages_actor` ON `sp_series_pages`.`id` = `relation_series_pages_actor`.`id` INNER JOIN `sp_actor` ON `sp_actor`.`id` = `relation_series_pages_actor`.`id_sp_actor`;
+
+SELECT `sp_series_pages`.`sp_series_pages_title`, `sp_creator`.`sp_creator_productor` FROM `sp_series_pages` INNER JOIN `relation_series_pages_creator` ON `sp_series_pages`.`id` = `relation_series_pages_creator`.`id_sp_series_pages` INNER JOIN `sp_creator` ON `sp_creator`.`id` = `relation_series_pages_creator`.`id`;
+
+SELECT `sp_series_pages`.`sp_series_pages_title`, `sp_categories`.`sp_categories_gender` FROM `sp_series_pages` INNER JOIN `relation_series_pages_categories` ON `sp_series_pages`.`id` = `relation_series_pages_categories`.`id` INNER JOIN `sp_categories` ON `sp_categories`.`id` = `relation_series_pages_categories`.`id_sp_categories`;
+
+SELECT `sp_series_pages`.`sp_series_pages_title`, `sp_episodes_infos`.`sp_episodes_infos_name`, `sp_episodes_infos_number` FROM `sp_series_pages` INNER JOIN `sp_episodes_infos` ON `sp_episodes_infos`.`id_sp_series_pages` = `sp_series_pages`.`id`;

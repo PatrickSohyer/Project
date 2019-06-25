@@ -1,3 +1,15 @@
+<?php
+$sourceTest = 'images/imgAccueil/BannerPhil.jpg';
+$myAccountPage = 'views/pages/my_account_page.php';
+$articlePage = 'views/pages/article_page.php';
+$allSeriesPage = 'views/pages/all_series_page.php';
+$allArticlesPage = 'views/pages/all_articles_page.php';
+$mentionsLegalsPage = 'views/pages/mentions_legals.php';
+$seriesCard = 'views/pages/series_card.php';
+$signUpPage = 'views/pages/sign_up.php';
+$signInPage = 'views/pages/sign_in.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,19 +32,11 @@
 
     <body>
 
-        <!--Je définis les variables avec l'emplacement de mes pages, et j'intègre mon header-->
         <div id="slideImage1">
             <div class="slide_inside">
 
                 <?php
-                $sourceTest = 'images/imgAccueil/BannerPhil.jpg';
-                $myAccountPage = 'views/pages/myAccountPage.php';
-                $articlePage = 'views/pages/articlePage.php';
-                $allSeriesPage = 'views/pages/allSeriesPage.php';
-                $allArticlesPage = 'views/pages/allArticlesPage.php';
-                $mentionsLegalsPage = 'views/pages/mentionsLegals.php';
-                $signUpPage = 'views/pages/signUp.php';
-                require_once('views/include/headerNav.php');
+                require_once('views/include/header_navbar.php');
                 ?>
 
 
@@ -52,19 +56,19 @@
 
                 <!--        J'intègre mon carousel avec les séries du moment-->
 
-                <?php require_once('views/include/carouselSerieMoment.php'); ?>
+<?php require_once('views/include/carousel_series_moment.php'); ?>
 
                 <!--J'intègre la série coup de coeur du mois-->
 
-                <?php require_once ('views/include/favoriteMoment.php'); ?>
+<?php require_once ('views/include/favorite_moment.php'); ?>
 
                 <!--        J'intègre les 4 derniers articles qui ont été écris -->
 
-                <?php require_once ('views/include/lastArticles.php'); ?>
+<?php require_once ('views/include/last_articles.php'); ?>
 
                 <!--J'intègre le footer-->
 
-                <?php require_once('views/include/footer.php') ?>
+<?php require_once('views/include/footer.php') ?>
 
             </div>
         </div>

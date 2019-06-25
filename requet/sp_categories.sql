@@ -1,0 +1,12 @@
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Action');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Aventure');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Comédie');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Dessin Animés');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Drame');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Enfants');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Fantastique');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Horreur');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Manga');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Mini-séries');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Science fiction');
+INSERT INTO `sp_categories` (`sp_categories_gender`) VALUES ('Thriller');

@@ -2,21 +2,23 @@
 
 body {
     background-color: #06222C;
-}
-
-#slideImage1 {
-   background: url(images/imgAccueil/meilleure-serie.png) center fixed;
+    font-family: 'Acme', sans-serif;
 }
 
 .avatarBanner {
     width: 100%;
 }
 
+/* Paralaxe */
+
+#slideImage1 {
+    background: url(images/imgAccueil/meilleure-serie.png) center repeat fixed;
+}
+
 /*Paramètres de la Navbar et Message bienvenu*/
 
 .navbar {
     background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
-    font-family: 'Acme', sans-serif;
 }
 
 #navbarSecond {
@@ -25,14 +27,19 @@ body {
 
 .welcomeMessage {
     border: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     line-height: 1rem;
     background-color: #EFF6E0;
 }
 
+/* Taille card text responsive */
+
+.card-text {
+    height: 5rem;
+}
+
 /*Paramètres des bouttons*/
 
-.btnModalsAcceuil, .buttonLastArticle, #signUpButton  {
+.spStyleButton {
     background-image: linear-gradient(0deg, #4b6cb7 0%, #182848 51%, #4b6cb7 100%);
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
 }
@@ -47,15 +54,17 @@ body {
 
 #serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie {
     border: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     text-shadow: 1px 1px 1px black;
     line-height: 1rem;
     background-color: #EFF6E0;
 }
 
+.modalSignIn {
+    line-height: 1rem; 
+}
+
 #favoriteMoment {
     border: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     text-shadow: 1px 1px 1px black;
     line-height: 1rem;
     background-color: #EFF6E0;
@@ -65,8 +74,10 @@ body {
 /*Paramètres du carousel*/
 
 .imgMomentAccueil {
+    width : 12rem;
+    height: 18rem;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
-    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    border-radius: 5%;
     cursor: pointer;
     color: #EFF6E0;
 }
@@ -91,7 +102,6 @@ body {
 
 #footer {
     border-top: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     text-shadow: 1px 1px 1px black;
     background-color: #0272BC;
     color: #EFF6E0;
@@ -117,12 +127,10 @@ ol {
 /*Paramètres des mentions légals*/
 
 .mentionsLegals {
-    font-family: 'Acme', sans-serif;
     color: #EFF6E0;
 }
 
-.formSignUp, #cardmyAccount {
-    font-family: 'Acme', sans-serif;
+.formSignUp, #cardmyAccount, .formSignIn {
     color: #EFF6E0;
 }
 
@@ -245,7 +253,6 @@ ol {
 
 .informationSeriesCard, .seasonsSeriesCard {
     border: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     background-color: #EFF6E0;
 }
 
@@ -257,7 +264,7 @@ ol {
     cursor: pointer;
 }
 
-#cardSignUp, .signUpText, #cardmyAccount {
+#cardSignUp, #cardSignIn, .signUpText, .signInText , #cardmyAccount, .labelTextFormSignUp, .labelTextFormSignIn, .formAddSeriesText, #cardAddSeries {
     background-color: #EFF6E0;  
     color: #06222C;
 }
@@ -273,11 +280,20 @@ ol {
     cursor: pointer;
 }
 
+.imgAllSeriesPage {
+    box-shadow: 8px 8px 12px #aaa;
+    border-radius: 10px;
+}
+
 
 .textSeriePage {
     border: #01161E 1px solid;
-    font-family: 'Acme', sans-serif;
     background-color: #EFF6E0;
+}
+
+#seriesImagesInformation {
+    height: 30rem;
+    width: 20rem;
 }
 
 

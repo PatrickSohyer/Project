@@ -29,7 +29,7 @@
                 <h6 class="text-uppercase font-weight-bold">Espace Personnel</h6>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto hrFooter">
                 <p>
-                    <a class="footerLink" href="#!">Mon compte</a>
+                    <a class="footerLink" href="<?= $myAccountPage; ?>">Mon compte</a>
                 </p>
                 <p>
                     <a class="footerLink" href="#!">Nous contacter</a>
