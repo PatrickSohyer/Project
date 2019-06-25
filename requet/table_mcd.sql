@@ -71,7 +71,7 @@ CREATE TABLE sp_actor(
 CREATE TABLE sp_episodes_infos(
         id                       Int  Auto_increment  NOT NULL ,
         sp_episodes_infos_name   Varchar (150) NOT NULL ,
-        sp_episodes_infos_number Int NOT NULL ,
+        sp_episodes_infos_number Varchar (15) NOT NULL ,
         id_sp_series_pages       Int NOT NULL
 	,CONSTRAINT sp_episodes_infos_PK PRIMARY KEY (id)
 
