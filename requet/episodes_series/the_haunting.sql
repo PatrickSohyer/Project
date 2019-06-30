@@ -1,0 +1,10 @@
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Le Fantôme', '1.1', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Le Cercueil ouvert', '1.2', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Le Don', '1.3', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Les Jumeaux', '1.4', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('La Dame au cou tordu', '1.5', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Les Deux Tempêtes', '1.6', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('L''Éloge funèbre', '1.7', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Les Marques témoins', '1.8', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Les Mauvais Rêves', '1.9', '60');
+INSERT INTO `sp_episodes_infos` (`sp_episodes_infos_name`, `sp_episodes_infos_number`, `id_sp_series_pages`) VALUES ('Le Silence pesait lourdement', '1.10', '60');
