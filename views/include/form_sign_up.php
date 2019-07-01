@@ -8,6 +8,7 @@ $mentionsLegalsPage = 'mentions_legals.php';
 $seriesCard = 'series_card.php';
 $signUpPage = 'sign_up.php';
 $signInPage = 'sign_in.php';
+$formAddSeries = 'add_series_form.php';
 require_once ('../include/country.php');
 ?> 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ require_once ('../include/country.php');
                     <div class="card" id="cardSignUp">
                         <div class="card-body">
 
-                            <form class="formSignUp text-center p-5" name="formSignUp" method="POST" action='sign_up.php' novalidate>
+                            <form class="formSignUp text-center p-5" name="formSignUp" method="POST" action='sign_up.php'>
 
                                 <p class="h2 mb-4 signUpText">S'inscrire</p>
 

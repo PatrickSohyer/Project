@@ -8,6 +8,7 @@ $mentionsLegalsPage = 'mentions_legals.php';
 $seriesCard = 'series_card.php';
 $signUpPage = 'sign_up.php';
 $signInPage = 'sign_in.php';
+$formAddSeries = 'add_series_form.php';
 ?> 
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ $signInPage = 'sign_in.php';
                     <div class="card" id="cardSignIn">
                         <div class="card-body">
 
-                            <form class="formSignIn text-center p-5" name="formSignIn" method="POST" action='sign_in.php' novalidate>
+                            <form class="formSignIn text-center p-5" name="formSignIn" method="POST" action='sign_in.php'>
 
                                 <p class="h2 mb-4 signInText">Se Connecter</p>
 

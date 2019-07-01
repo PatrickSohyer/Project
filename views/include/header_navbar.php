@@ -16,6 +16,9 @@
             <li class="nav-item">
                 <a class="nav-link text-light mr-4" href="<?= $allArticlesPage; ?>" id="navArticles"><b>Articles</b></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Add Series</b></a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégorie</b></a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">

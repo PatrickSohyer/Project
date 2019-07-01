@@ -8,6 +8,7 @@ $mentionsLegalsPage = 'views/pages/mentions_legals.php';
 $seriesCard = 'views/pages/series_card.php';
 $signUpPage = 'views/pages/sign_up.php';
 $signInPage = 'views/pages/sign_in.php';
+$formAddSeries = 'views/pages/add_series_form.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +32,7 @@ $signInPage = 'views/pages/sign_in.php';
 
 
     <body>
+
 
         <div id="slideImage1">
             <div class="slide_inside">
@@ -56,19 +58,19 @@ $signInPage = 'views/pages/sign_in.php';
 
                 <!--        J'intègre mon carousel avec les séries du moment-->
 
-<?php require_once('views/include/carousel_series_moment.php'); ?>
+                <?php require_once('views/include/carousel_series_moment.php'); ?>
 
                 <!--J'intègre la série coup de coeur du mois-->
 
-<?php require_once ('views/include/favorite_moment.php'); ?>
+                <?php require_once ('views/include/favorite_moment.php'); ?>
 
                 <!--        J'intègre les 4 derniers articles qui ont été écris -->
 
-<?php require_once ('views/include/last_articles.php'); ?>
+                <?php require_once ('views/include/last_articles.php'); ?>
 
                 <!--J'intègre le footer-->
 
-<?php require_once('views/include/footer.php') ?>
+                <?php require_once('views/include/footer.php') ?>
 
             </div>
         </div>

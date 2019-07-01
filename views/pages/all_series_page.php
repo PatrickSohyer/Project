@@ -8,6 +8,7 @@ $mentionsLegalsPage = 'mentions_legals.php';
 $seriesCard = 'series_card.php';
 $signUpPage = 'sign_up.php';
 $signInPage = 'sign_in.php';
+$formAddSeries = 'add_series_form.php';
 ?> 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
