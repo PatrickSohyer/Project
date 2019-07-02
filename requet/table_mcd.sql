@@ -9,11 +9,11 @@
 
 CREATE TABLE sp_users(
         id                Int  Auto_increment  NOT NULL ,
-        sp_users_login    Varchar (30) NOT NULL ,
+        sp_users_login    Varchar (50) NOT NULL ,
         sp_users_email    Varchar (50) NOT NULL ,
-        sp_users_password Varchar (25) NOT NULL ,
+        sp_users_password Varchar (500) NOT NULL ,
         sp_users_country  Varchar (100) NOT NULL ,
-        sp_users_avatar   Varchar (260) ,
+        sp_users_avatar   Varchar (360) ,
         sp_users_role     Varchar (50) NOT NULL
 	,CONSTRAINT sp_users_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
