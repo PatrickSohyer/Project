@@ -1,14 +1,5 @@
 <?php
-$sourceTest = 'images/imgAccueil/BannerPhil.jpg';
-$myAccountPage = 'views/pages/my_account_page.php';
-$articlePage = 'views/pages/article_page.php';
-$allSeriesPage = 'views/pages/all_series_page.php';
-$allArticlesPage = 'views/pages/all_articles_page.php';
-$mentionsLegalsPage = 'views/pages/mentions_legals.php';
-$seriesCard = 'views/pages/series_card.php';
-$signUpPage = 'views/pages/sign_up.php';
-$signInPage = 'views/pages/sign_in.php';
-$formAddSeries = 'views/pages/add_series_form.php';
+require 'controller/controller_index.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +11,10 @@ $formAddSeries = 'views/pages/add_series_form.php';
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <link rel="stylesheet" href="assets/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="main.css" />
-        <link href="font/Acme-Regular.ttf" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+        <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon.ico" />
 
         <title>SériesPhil!</title>
 
@@ -38,7 +29,7 @@ $formAddSeries = 'views/pages/add_series_form.php';
             <div class="slide_inside">
 
                 <?php
-                require_once('views/include/header_navbar.php');
+                require_once('view/include/include_header.php');
                 ?>
 
 
@@ -56,21 +47,21 @@ $formAddSeries = 'views/pages/add_series_form.php';
                     </div>
                 </div>
 
-                <!--        J'intègre mon carousel avec les séries du moment-->
+                <!--        J'intègre mon carousel avec les séries du moment        -->
 
-                <?php require_once('views/include/carousel_series_moment.php'); ?>
+                <?php require_once('view/include/include_carousel_series_moment.php'); ?>
 
-                <!--J'intègre la série coup de coeur du mois-->
+                <!--        J'intègre la série coup de coeur du mois        -->
 
-                <?php require_once ('views/include/favorite_moment.php'); ?>
+                <?php require_once ('view/include/include_favorite_moment.php'); ?>
 
-                <!--        J'intègre les 4 derniers articles qui ont été écris -->
+                <!--        J'intègre les 4 derniers articles qui ont été écris         -->
 
-                <?php require_once ('views/include/last_articles.php'); ?>
+                <?php require_once ('view/include/include_last_articles.php'); ?>
 
-                <!--J'intègre le footer-->
+                <!--        J'intègre le footer     -->
 
-                <?php require_once('views/include/footer.php') ?>
+                <?php require_once('view/include/include_footer.php') ?>
 
             </div>
         </div>
@@ -85,7 +76,7 @@ $formAddSeries = 'views/pages/add_series_form.php';
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-        <script src="index.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 
 </html>

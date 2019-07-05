@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Project/requet/sp_episodes_infos.sql</file>
+            <file>file:/C:/wamp64/www/Project/view/pages/page_account_user.php</file>
+            <file>file:/C:/wamp64/www/Project/assets/js/main.js</file>
+            <file>file:/C:/wamp64/www/Project/view/include/include_form_sign_in.php</file>
+            <file>file:/C:/wamp64/www/Project/index.php</file>
+            <file>file:/C:/wamp64/www/Project/view/pages/page_form_sign_in.php</file>
+            <file>file:/C:/wamp64/www/Project/assets/js/swal.js</file>
+            <file>file:/C:/wamp64/www/Project/controller/controller_sign_in.php</file>
         </group>
     </open-files>
 </project-private>
