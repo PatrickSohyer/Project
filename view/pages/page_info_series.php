@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../controller/controller_info_series.php';
 ?>
 <!DOCTYPE html>

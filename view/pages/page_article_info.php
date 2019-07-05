@@ -1,14 +1,6 @@
 <?php
-$sourceTest = '../../assets/images/imgAccueil/BannerPhil.jpg';
-$myAccountPage = 'my_account_page.php';
-$articlePage = 'article_page.php';
-$allSeriesPage = 'all_series_page.php';
-$allArticlesPage = 'all_articles_page.php';
-$mentionsLegalsPage = 'mentions_legals.php';
-$seriesCard = 'series_card.php';
-$signUpPage = 'sign_up.php';
-$signInPage = 'sign_in.php';
-$formAddSeries = 'add_series_form.php';
+session_start();
+require '../../controller/controller_article_info.php';
 ?> 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

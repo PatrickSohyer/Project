@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../controller/controller_sign_in.php';
 ?> 
 

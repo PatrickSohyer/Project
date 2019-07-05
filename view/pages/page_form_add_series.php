@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../controller/controller_add_series.php';
 ?> 
 <!DOCTYPE html>

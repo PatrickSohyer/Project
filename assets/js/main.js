@@ -5,7 +5,8 @@ $('#contentSeasons').hide();
 $('#contentComment').hide();
 $('#contentArticle').hide();
 $('.modifyInfoUsers').hide();
-$('.buttonSendModify').hide();
+$('.buttonValidateLogin').hide();
+$('.modifyInfoUsersLogin').hide();
 
 $('#slideItemSeasons').click(function () {
     $('#contentPresentationSerie').hide();
@@ -95,9 +96,9 @@ $(function () {
   $('[data-toggle="popover"]').popover();
 });
 
-$('.buttonModify').click(function () {
-    $('.infoUsers').hide();
-    $('.modifyInfoUsers').show();
-    $('.buttonModify').hide();
-    $('.buttonSendModify').show();
+$('.buttonModifyLogin').click(function () {
+    $('.infoUsersLogin').hide();
+    $('.modifyInfoUsersLogin').show();
+    $('.buttonModifyLogin').hide();
+    $('.buttonValidateLogin').show();
 });

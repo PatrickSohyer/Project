@@ -1,5 +1,7 @@
 <?php
 
+require '../../model/SP_database.php';
+require '../../model/SP_users.php';
 $regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/';
 $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 
@@ -13,6 +15,9 @@ $infoSeries = '../pages/page_info_series.php';
 $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
+$logout = '../../index.php';
+
+$users = new Users();
 
 
 $errorMessageSignIn = array();
@@ -21,6 +26,7 @@ if (COUNT($_POST) > 0) {
     if (!empty($_POST['loginSignIn'])) {
         if (preg_match($regexLogin, $_POST['loginSignIn'])) {
             $loginSignIn = strip_tags(htmlspecialchars($_POST['loginSignIn']));
+            $users->sp_users_login = $loginSignIn;
         } else {
             $errorMessageSignIn['loginSignIn'] = 'Le pseudo n\'est pas bon.';
         }
@@ -30,10 +36,24 @@ if (COUNT($_POST) > 0) {
     if (!empty($_POST['passwordSignIn'])) {
         if (preg_match($regexPassword, $_POST['passwordSignIn'])) {
             $passwordSignIn = strip_tags(htmlspecialchars($_POST['passwordSignIn']));
+            $users->sp_users_password = $passwordSignIn;
         } else {
             $errorMessageSignIn['passwordSignIn'] = 'Mot de passe invalide.';
         }
     } else {
         $errorMessageSignIn['passwordSignIn'] = 'Merci de renseigner votre mot de passe.';
     }
+    $usersFilter = $users->filterLogin();
+    if (count($usersFilter) > 0) {
+        if (password_verify($passwordSignIn, $usersFilter[0]->sp_users_password)) {
+            $_SESSION['login'] = $loginSignIn;
+            $_SESSION['id'] = $usersFilter[0]->id;
+        } else {
+            $errorMessageSignIn['passwordConnect'] = 'Mot de passe incorrect';
+        }
+    }
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: index.php');
 }

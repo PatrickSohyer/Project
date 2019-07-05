@@ -19,10 +19,12 @@ $infoSeries = '../pages/page_info_series.php';
 $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
+$logout = '../../index.php';
 
 $users = new Users();
 
 $errorMessage = array();
+
 
 if (COUNT($_POST) > 0) {
     require_once ('../../assets/country/country.php');
@@ -81,21 +83,35 @@ if (COUNT($_POST) > 0) {
     } else if ($_POST['newPassword'] == $_POST['newConfirmPassword']) {
         $resultFilterMail = $users->filterMail();
         $resultFilterLogin = $users->filterLogin();
-        if (count($resultFilterMail) > 0) {
-            $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé';
-        } else {
-            if ($users->addUsers() == TRUE) {
-                $succes = TRUE;
+        if (count($resultFilterMail) === 0) {
+            if (count($resultFilterLogin) > 0 && $resultFilterLogin['id'] != $_SESSION['id']) {
+                $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
+            } else if (count($resultFilterLogin) === 0) {
+                if (count($resultFilterMail) > 0 && $resultFilterMail['id'] != $_SESSION['id']) {
+                    $errorMessage['resultFilterMail'] = 'Ce mail est déjà utilisé';
+                } else {
+                    if ($users->updateUsers() == TRUE) {
+                        $succes = TRUE;
+                    }
+                }
+            } else {
+                $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé';
             }
-        }
-        if (count($resultFilterLogin) > 0) {
-            $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
         } else {
-            if ($users->addUsers() == TRUE) {
-                $succes = TRUE;
-            }
+            $errorMessage['errorInconnu'] = 'Une erreur est survenue';
         }
-    } else {
-        $errorMessage['errorInconnu'] = 'Une erreur est survenue';
     }
-} 
+}
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header('Location: ../index.php');
+    }
+
+    if (isset($_GET['deleteID'])) {
+        $users->deleteUsers();
+    }
+
+    $users->id = $_SESSION['id'];
+    $usersResult = $users->selectUsers();
+    

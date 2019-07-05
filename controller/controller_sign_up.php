@@ -19,6 +19,7 @@ $infoSeries = '../pages/page_info_series.php';
 $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
+$logout = '../../index.php';
 
 $users = new Users();
 
@@ -82,22 +83,24 @@ if (COUNT($_POST) > 0) {
     } else if ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp']) {
         $resultFilterMail = $users->filterMail();
         $resultFilterLogin = $users->filterLogin();
-        if (count($resultFilterMail) > 0) {
+        if (count($resultFilterMail) === 0) {
+            if (count($resultFilterLogin) > 0) {
+                $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
+            } else {
+                if ($users->addUsers() == TRUE) {
+                    $succes = TRUE;
+                }
+            }
+        } else {
             $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé';
-        } else {
-            if ($users->addUsers() == TRUE) {
-                $succes = TRUE;
-            }
-        }
-        if (count($resultFilterLogin) > 0) {
-            $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
-        } else {
-            if ($users->addUsers() == TRUE) {
-                $succes = TRUE;
-            }
         }
     } else {
         $errorMessage['errorInconnu'] = 'Une erreur est survenue';
     }
-} 
+}
 
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+}
+    
