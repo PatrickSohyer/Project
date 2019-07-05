@@ -36,11 +36,16 @@ require '../../controller/controller_account_user.php';
                             <p class="h2 mb-3 text-center">Mon Compte</p>
                             <ul class="list-group list-group-flush">
                                 <?php foreach ($usersResult as $value) { ?>
-                                    <form method="POST" action="page_account_user.php">
+                                
+                                <form method="POST" action="page_account_user.php">
                                         <li class="list-group-item infoUsersLogin" name="accountLogin">Login : <?= $value['sp_users_login'] ?><a class="buttonModifyLogin"><i class="fas fa-pencil-alt ml-5"></i></a></li>
-                                        <label class="modifyInfoUsersLogin list-group-item" for="newlogin">Nouveau Login : <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newLogin']) ? $errorMessage['newLogin'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterLogin']) ? $errorMessage['resultFilterLogin'] : ''; ?></span><input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $value['sp_users_login'] ?>" />                                            <button type="submit" class="btn btn-success buttonValidateLogin ml-4"><i class="fas fa-check-circle"></i></button></label>
+                                        <label class="modifyInfoUsersLogin list-group-item" for="newlogin">Nouveau Login : <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newLogin']) ? $errorMessage['newLogin'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterLogin']) ? $errorMessage['resultFilterLogin'] : ''; ?></span><input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $value['sp_users_login'] ?>" />                                            <button type="submit" name="modifyLoginValidate" class="spStyleButton text-white btn buttonValidateLogin ml-4"><i class="fas fa-check-circle"></i></button></label></form>
+                                        
+                                        <form method="POST" action="page_account_user.php">
                                         <li class="list-group-item infoUsers" name="accountEmail">Email : <?= $value['sp_users_email'] ?> </li>
-                                        <label class="modifyInfoUsers list-group-item" for="newEmail">Nouveau Email : </label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newEmail']) ? $errorMessage['newEmail'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterMail']) ? $errorMessage['resultFilterMail'] : ''; ?></span><input class="modifyInfoUsers" type="text" name="newEmail" value="<?= $value['sp_users_email'] ?>" />
+                                        <label class="modifyInfoUsers list-group-item" for="newEmail">Nouveau Email : </label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newEmail']) ? $errorMessage['newEmail'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterMail']) ? $errorMessage['resultFilterMail'] : ''; ?></span><input class="modifyInfoUsers" type="text" name="newEmail" value="<?= $value['sp_users_email'] ?>" /></form>
+                                        
+                                        <form method="POST" action="page_account_user.php">
                                         <li class="list-group-item infoUsers" name="accountCountry">Pays : <?= $value['sp_users_country'] ?></li>
                                         <label class="modifyInfoUsers list-group-item">Nouveau Pays : </label>
                                         <select id="country" class="form-control mb-4 modifyInfoUsers" name="newCountry" required>                                              
@@ -59,17 +64,17 @@ require '../../controller/controller_account_user.php';
                                                 <?php
                                             }
                                             ?></select>
+                                        </form>
+                                
+                                <form method="POST" action="page_account_user.php">
                                         <label class="modifyInfoUsers list-group-item" for="newPassword">Nouveau mot de passe :</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPassword'] : ''; ?></span><input class="modifyInfoUsers" type="password" name="newPassword" />
+                                </form>
+                                
+                                <form method="POST" action="page_account_user.php">
                                         <label class="modifyInfoUsers list-group-item" for="newConfirmPassword">Confirmer mot de passe : </label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newConfirmPassword']) ? $errorMessage['newConfirmPassword'] : ''; ?></span><input class="modifyInfoUsers" type="password" name="newConfirmPassword" /> 
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-success buttonSendModify">Envoyer Modifications</button>
-                                        </div>
                                     </form>
                                 <?php } ?>
                             </ul>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-danger mt-2 buttonModify">Modifier</button>
-                            </div>
                             <p class="text-right"><i><a href="page_account_user.php?deleteID=<?= $_SESSION['id'] ?>">Supprimer le compte!</a></i></p>
                         </div>
                     </div>
