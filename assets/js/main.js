@@ -7,6 +7,16 @@ $('#contentArticle').hide();
 $('.modifyInfoUsers').hide();
 $('.buttonValidateLogin').hide();
 $('.modifyInfoUsersLogin').hide();
+$('.buttonValidateEmail').hide();
+$('.modifyInfoUsersEmail').hide();
+$('.buttonValidateCountry').hide();
+$('.modifyInfoUsersCountry').hide();
+$('.buttonValidatePassword').hide();
+$('.modifyInfoUsersPassword').hide();
+$('.modifyInfoUsersPasswordConfirm').hide();
+$('.modifyInfoUsersDelete').hide();
+$('.buttonmodifyDeleteNo').hide();
+$('.buttonmodifyDeleteYes').hide();
 
 $('#slideItemSeasons').click(function () {
     $('#contentPresentationSerie').hide();
@@ -93,7 +103,7 @@ $('#seasons2Click').click(function () {
 
 
 $(function () {
-  $('[data-toggle="popover"]').popover();
+    $('[data-toggle="popover"]').popover();
 });
 
 $('.buttonModifyLogin').click(function () {
@@ -101,4 +111,41 @@ $('.buttonModifyLogin').click(function () {
     $('.modifyInfoUsersLogin').show();
     $('.buttonModifyLogin').hide();
     $('.buttonValidateLogin').show();
+});
+
+$('.buttonModifyEmail').click(function () {
+    $('.infoUsersEmail').hide();
+    $('.modifyInfoUsersEmail').show();
+    $('.buttonModifyEmail').hide();
+    $('.buttonValidateEmail').show();
+});
+
+$('.buttonModifyCountry').click(function () {
+    $('.infoUsersCountry').hide();
+    $('.modifyInfoUsersCountry').show();
+    $('.buttonModifyCountry').hide();
+    $('.buttonValidateCountry').show();
+});
+
+$('.buttonModifyPassword').click(function () {
+    $('.infoUsersLogin').hide();
+    $('.infoUsersEmail').hide();
+    $('.infoUsersCountry').hide();
+    $('.infoUsersPassword').hide();
+    $('.modifyInfoUsersPassword').show();
+    $('.buttonModifyPassword').hide();
+    $('.buttonValidatePassword').show();
+    $('.modifyInfoUsersPasswordConfirm').show();
+});
+
+$('.buttonModifyDelete').click(function () {
+    $('.infoUsersLogin').hide();
+    $('.infoUsersEmail').hide();
+    $('.infoUsersCountry').hide();
+    $('.infoUsersPassword').hide();
+    $('.buttonModifyPassword').hide();
+    $('.infoUsersDelete').hide();
+    $('.modifyInfoUsersDelete').show();
+    $('.buttonmodifyDeleteNo').show();
+    $('.buttonmodifyDeleteYes').show();
 });

@@ -51,6 +51,79 @@ if (isset($_POST['modifyLoginValidate'])) {
     }
 }
 
+if (isset($_POST['modifyEmailValidate'])) {
+    if (!empty($_POST['newEmail'])) {
+        if (filter_var($_POST['newEmail'], FILTER_VALIDATE_EMAIL)) {
+            $newEmail = strip_tags(htmlspecialchars($_POST['newEmail']));
+            $users->sp_users_email = $newEmail;
+            $users->id = $_SESSION['id'];
+            $resultFilterEmail = $users->filterMail();
+        } else {
+            $errorMessage['newEmail'] = 'Ceci n\'est pas une adresse mail valide.';
+        }
+    } else {
+        $errorMessage['newEmail'] = 'Merci de renseigner votre Email.';
+    } if (count($resultFilterEmail) > 0) {
+        if ($resultFilterEmail['id'] != $_SESSION['id']) {
+            $errorMessage['resultFilterEmail'] = 'Ce mail est déjà utilisé';
+        }
+    } else {
+        if ($users->updateEmailUsers() == TRUE) {
+            $succes = TRUE;
+            header('Location: page_account_user.php');
+        }
+    }
+}
+
+if (isset($_POST['modifyCountryValidate'])) {
+    if (!empty($_POST['newCountry'])) {
+        if (preg_match($regexCountry, $_POST['newCountry'])) {
+            $newCountry = strip_tags(htmlspecialchars($_POST['newCountry']));
+            $users->sp_users_country = $newCountry;
+            $users->id = $_SESSION['id'];
+        } else {
+            $errorMessage['newCountry'] = 'Merci de rentrer un pays valide.';
+        }
+    } else {
+        $errorMessage['newCountry'] = 'Merci de renseigner un pays.';
+    } if ($users->updateCountryUsers() == TRUE) {
+        $succes = TRUE;
+        header('Location: page_account_user.php');
+    }
+}
+
+if (isset($_POST['modifyPasswordValidate'])) {
+    if (!empty($_POST['newPassword'])) {
+        if (preg_match($regexPassword, $_POST['newPassword'])) {
+            $newPassword = strip_tags(htmlspecialchars($_POST['newPassword']));
+            $passwordCryptSignUp = password_hash($newPassword, PASSWORD_BCRYPT);
+            $users->sp_users_password = $passwordCryptSignUp;
+        } else {
+            $errorMessage['newPassword'] = 'Mot de passe invalide.';
+        }
+    } else {
+        $errorMessage['newPassword'] = 'Merci de renseigner votre mot de passe.';
+    }
+    if (!empty($_POST['newPasswordConfirm'])) {
+        if (preg_match($regexPassword, $_POST['newPasswordConfirm'])) {
+            $newConfirmPassword = strip_tags(htmlspecialchars($_POST['newPasswordConfirm']));
+        } else {
+            $errorMessage['newPasswordConfirm'] = 'Mot de passe invalide.';
+        }
+    } else {
+        $errorMessage['newPasswordConfirm'] = 'Merci de renseigner votre mot de passe.';
+    }
+    if ($_POST['newPassword'] != $_POST['newPasswordConfirm']) {
+        $errorMessage['newPasswordDiff'] = 'Mot de passe différent';
+    } else if ($_POST['newPassword'] == $_POST['newPasswordConfirm']) {
+        $users->updatePasswordUsers() == TRUE;
+            $succes = TRUE;
+            header('Location: page_account_user.php');
+    }
+}
+
+
+
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: ../index.php');
@@ -58,7 +131,10 @@ if (isset($_GET['logout'])) {
 
 if (isset($_GET['deleteID'])) {
     $users->deleteUsers();
+    session_destroy();
+    header('Location: ../../index.php');
 }
+
 
 $users->id = $_SESSION['id'];
 $usersResult = $users->selectUsers();

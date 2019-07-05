@@ -36,46 +36,80 @@ require '../../controller/controller_account_user.php';
                             <p class="h2 mb-3 text-center">Mon Compte</p>
                             <ul class="list-group list-group-flush">
                                 <?php foreach ($usersResult as $value) { ?>
-                                
-                                <form method="POST" action="page_account_user.php">
+
+                                    <form method="POST" action="page_account_user.php" class="text-center">
+
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newLogin']) ? $errorMessage['newLogin'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterLogin']) ? $errorMessage['resultFilterLogin'] : ''; ?></span>
                                         <li class="list-group-item infoUsersLogin" name="accountLogin">Login : <?= $value['sp_users_login'] ?><a class="buttonModifyLogin"><i class="fas fa-pencil-alt ml-5"></i></a></li>
-                                        <label class="modifyInfoUsersLogin list-group-item" for="newlogin">Nouveau Login : <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newLogin']) ? $errorMessage['newLogin'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterLogin']) ? $errorMessage['resultFilterLogin'] : ''; ?></span><input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $value['sp_users_login'] ?>" />                                            <button type="submit" name="modifyLoginValidate" class="spStyleButton text-white btn buttonValidateLogin ml-4"><i class="fas fa-check-circle"></i></button></label></form>
-                                        
-                                        <form method="POST" action="page_account_user.php">
-                                        <li class="list-group-item infoUsers" name="accountEmail">Email : <?= $value['sp_users_email'] ?> </li>
-                                        <label class="modifyInfoUsers list-group-item" for="newEmail">Nouveau Email : </label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newEmail']) ? $errorMessage['newEmail'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterMail']) ? $errorMessage['resultFilterMail'] : ''; ?></span><input class="modifyInfoUsers" type="text" name="newEmail" value="<?= $value['sp_users_email'] ?>" /></form>
-                                        
-                                        <form method="POST" action="page_account_user.php">
-                                        <li class="list-group-item infoUsers" name="accountCountry">Pays : <?= $value['sp_users_country'] ?></li>
-                                        <label class="modifyInfoUsers list-group-item">Nouveau Pays : </label>
-                                        <select id="country" class="form-control mb-4 modifyInfoUsers" name="newCountry" required>                                              
-                                            <?php
-                                            foreach ($countryCode as $valueCountry) {
-                                                ?>
+                                        <label class="modifyInfoUsersLogin list-group-item" for="newlogin">Nouveau Login :
+                                            <input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $value['sp_users_login'] ?>" />                                          <button type="submit" name="modifyLoginValidate" class="spStyleButton text-white btn buttonValidateLogin ml-4 mb-2"><i class="fas fa-check-circle"></i></button> </label>  
 
-                                                <option <?php
-                                                if (empty($_POST['newCountry'])) {
-                                                    echo '';
-                                                } elseif ($_POST['newCountry'] == $valueCountry) {
-                                                    echo 'selected';
-                                                };
-                                                ?>  value="<?= $valueCountry; ?>"><?= $valueCountry; ?></option>
-
-                                                <?php
-                                            }
-                                            ?></select>
-                                        </form>
-                                
-                                <form method="POST" action="page_account_user.php">
-                                        <label class="modifyInfoUsers list-group-item" for="newPassword">Nouveau mot de passe :</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPassword'] : ''; ?></span><input class="modifyInfoUsers" type="password" name="newPassword" />
-                                </form>
-                                
-                                <form method="POST" action="page_account_user.php">
-                                        <label class="modifyInfoUsers list-group-item" for="newConfirmPassword">Confirmer mot de passe : </label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['newConfirmPassword']) ? $errorMessage['newConfirmPassword'] : ''; ?></span><input class="modifyInfoUsers" type="password" name="newConfirmPassword" /> 
                                     </form>
+
+                                    <form method="POST" action="page_account_user.php" class="text-center">
+
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newEmail']) ? $errorMessage['newEmail'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterEmail']) ? $errorMessage['resultFilterEmail'] : ''; ?></span>
+                                        <li class="list-group-item infoUsersEmail" name="accountEmail">Email : <?= $value['sp_users_email'] ?><a class="buttonModifyEmail"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+                                        <label class="modifyInfoUsersEmail list-group-item" for="newEmail">Nouveau Email : 
+                                            <input class="modifyInfoUsersEmail" type="text" name="newEmail" value="<?= $value['sp_users_email'] ?>" />                                            <button type="submit" name="modifyEmailValidate" class="spStyleButton text-white btn buttonValidateEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label>
+
+                                    </form>
+
+                                    <form method="POST" action="page_account_user.php" class="text-center">
+
+                                        <li class="list-group-item infoUsersCountry" name="accountCountry">Pays : <?= $value['sp_users_country'] ?><a class="buttonModifyCountry"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+
+                                        <label class="modifyInfoUsersCountry list-group-item">Nouveau Pays : 
+                                            <select id="countrySelect" style="width:6rem" class="form-control d-inline mb-4 modifyInfoUsersCountry" name="newCountry" required>                                              
+                                                <?php
+                                                foreach ($countryCode as $valueCountry) {
+                                                    ?>
+
+                                                    <option <?php
+                                                    if (empty($_POST['newCountry'])) {
+                                                        echo '';
+                                                    } elseif ($_POST['newCountry'] == $valueCountry) {
+                                                        echo 'selected';
+                                                    };
+                                                    ?>  value="<?= $valueCountry; ?>"><?= $valueCountry; ?></option>
+
+                                                    <?php
+                                                }
+                                                ?></select>
+                                            <button type="submit" name="modifyCountryValidate" class="spStyleButton text-white btn buttonCountryEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label></label>
+
+                                    </form>
+
+                                    <form method="POST" action="page_account_user.php" class="text-center">
+
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPassword'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPasswordConfirm'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPasswordDiff'] : ''; ?></span>
+                                        <li class="list-group-item infoUsersPassword" name="accountPassword">Changer de mot de passe<a class="buttonModifyPassword"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+                                        <label class="modifyInfoUsersPassword list-group-item" for="newPassword">Nouveau mot de passe : 
+                                            <input class="modifyInfoUsersPassword" type="password" name="newPassword" required /></label>
+                                        <label class="modifyInfoUsersPasswordConfirm list-group-item" for="newPasswordConfirm">Confirmer mot de passe : 
+                                            <input class="modifyInfoUsersPasswordConfirm" type="password" name="newPasswordConfirm" required /></label>
+                                        <button type="submit" name="modifyPasswordValidate" class="mx-auto spStyleButton text-white btn buttonValidatePassword ml-4 mt-4">Confirmer le changement de mot de passe</button>
+
+                                    </form>
+
+                                    <form method="POST" action="page_account_user.php" class="text-center">
+
+                                        <li class="list-group-item infoUsersDelete" name="accountDelete">Supprimer le compte<a class="buttonModifyDelete"><i class="far fa-trash-alt ml-5"></i></a></li>
+                                        <label class="modifyInfoUsersDelete list-group-item" for="newDelete">Êtes vous sur de vouloir quitter ce merveilleux site?</label>
+                                        <a href="page_account_user.php?deleteID=<?= $value['id'] ?>"><button name="modifyDeleteYes" class="bg-success text-white btn buttonmodifyDeleteYes mt-4">Supprimer son compte <i class="fas fa-sad-tear"></i></button></a>
+                                        <a href="page_account_user.php"><button name="modifyDeleteNo" class="bg-danger text-white btn buttonmodifyDeleteNo mt-4">Rester sur le site <i class="fas fa-laugh-beam"></i></button></a>
+
+                                    </form>
+
+
+
                                 <?php } ?>
                             </ul>
-                            <p class="text-right"><i><a href="page_account_user.php?deleteID=<?= $_SESSION['id'] ?>">Supprimer le compte!</a></i></p>
+
                         </div>
                     </div>
                 </div>

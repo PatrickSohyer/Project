@@ -35,6 +35,8 @@ require 'controller/controller_index.php';
 
 
                 <!--Message sur la page d'acceuil pour souhaiter la bienvenu-->   
+                
+                <?php if (count($_SESSION) === 0) { ?>
 
                 <div class="container-fluid mb-3">
                     <div class="row">
@@ -47,6 +49,22 @@ require 'controller/controller_index.php';
                         </div>
                     </div>
                 </div>
+                
+                <?php } else { ?>
+                
+                                <div class="container-fluid mb-3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto text-center">
+                            <div class="welcomeMessage">
+                <p class="h4 m-0" id="welcomeMessage">Bienvenu sur SériesPhil <?= $_SESSION['login']; ?>!</p>
+                                <p class="h6 m-0"><i>Ici tu pourras retrouver et suivre tes séries préférées et tchater avec d'autres fans!</i></p>
+                                <p class="h6"><i>Si jamais tu veux participer au forum et pouvoir t'abonner aux séries que tu suis, inscrit toi dès maintenant.</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <?php } ?>
 
                 <!--        J'intègre mon carousel avec les séries du moment        -->
 

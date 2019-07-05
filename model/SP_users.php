@@ -68,12 +68,21 @@ class Users extends Database {
             return TRUE;
         }
     }
-    
-        public function updateCountryUsers() {
+
+    public function updateCountryUsers() {
         $updateCountryUsers = $this->db->prepare('UPDATE sp_users SET sp_users_country = :new_sp_users_country WHERE id = :id');
         $updateCountryUsers->bindValue(':new_sp_users_country', $this->sp_users_country);
         $updateCountryUsers->bindValue(':id', $this->id);
         if ($updateCountryUsers->execute()) {
+            return TRUE;
+        }
+    }
+
+    public function updatePasswordUsers() {
+        $updatePasswordUsers = $this->db->prepare('UPDATE sp_users SET sp_users_password = :new_sp_users_password WHERE id = :id');
+        $updatePasswordUsers->bindValue(':new_sp_users_password', $this->sp_users_password);
+        $updatePasswordUsers->bindValue(':id', $this->id);
+        if ($updatePasswordUsers->execute()) {
             return TRUE;
         }
     }

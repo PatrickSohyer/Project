@@ -64,11 +64,8 @@
                 <li class="nav-item">
                     <a class="nav-link text-light mr-4" href="<?= $allArticlesPage; ?>" id="navArticles"><b>Articles</b></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Add Series</b></a>
-                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégorie</b></a>
+                    <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégories</b></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">
                         <a class="dropdown-item" href="#"><b>Action</b></a>
                         <a class="dropdown-item" href="#"><b>Aventure</b></a>
@@ -84,13 +81,17 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light mr-4" href="<?= $accountUser; ?>" id="navMyAccount"><b>Mon compte</b></a>
+                    <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Ajouter une série</b></a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link text-light" href="<?= $accountUser; ?>" id="navMyAccount"><b>Mon compte</b></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-light" id="showSignIn" href="<?= $logout ?>?logout=logout"><b>Déconnexion</b></a>
                 </li>
+
             </ul>
 
         </div>
