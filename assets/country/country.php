@@ -253,4 +253,3 @@ $countryCode = array(
     'Zambie',
     'Zimbabwe'
 );
-?>

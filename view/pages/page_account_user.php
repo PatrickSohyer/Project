@@ -32,13 +32,26 @@ require '../../controller/controller_account_user.php';
                 <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
                     <div class="card" id="cardmyAccount">
                         <div class="card-body">
-
-                            <p class="h4 mb-3 text-center">Mon Compte</p>
-                            <p>Prénom :</p>
-                            <p>Nom :</p>
-                            <p>Pays :</p>
-                            <p>Email : </p>
-                            <label for="avatarAccount">Avatar : <input type="file" id="avatarAccount" name="avatarAccount" /></label>
+                            <p class="h2 mb-3 text-center">Mon Compte</p>
+                            <ul class="list-group list-group-flush">
+                                <form method="POST" action="page_account_user.php">
+                                    <li class="list-group-item infoUsers" name="accountLogin">Login : </li>
+                                    <label class="modifyInfoUsers list-group-item" for="newlogin">Nouveau Login : </label><input class="modifyInfoUsers" type="text" name="newLogin" />
+                                    <li class="list-group-item infoUsers" name="accountEmail">Email : </li>
+                                    <label class="modifyInfoUsers list-group-item" for="newEmail">Nouveau Email : </label><input class="modifyInfoUsers" type="text" name="newEmail" />
+                                    <li class="list-group-item infoUsers" name="accountCountry">Pays : </li>
+                                    <label class="modifyInfoUsers list-group-item" for="newCountry">Nouveau Pays : </label><input class="modifyInfoUsers" type="text" name="newCountry" />
+                                    <li class="list-group-item infoUsers" name="accountPassword">Mot de passe : </li>
+                                    <label class="modifyInfoUsers list-group-item" for="newPassword">Nouveau mot de passe : </label><input class="modifyInfoUsers" type="password" name="newPassword" />
+                                                                        <label class="modifyInfoUsers list-group-item" for="newConfirmPassword">Confirmer mot de passe : </label><input class="modifyInfoUsers" type="password" name="newConfirmPassword" /> 
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success buttonSendModify">Envoyer Modifications</button>
+                                    </div>
+                                </form>
+                            </ul>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-danger mt-2 buttonModify">Modifier</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +71,7 @@ require '../../controller/controller_account_user.php';
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-        <script src="../../assets/js/index.js"></script>
+        <script src="../../assets/js/main.js"></script>
     </body>
 
 </html>

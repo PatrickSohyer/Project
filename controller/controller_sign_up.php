@@ -80,8 +80,24 @@ if (COUNT($_POST) > 0) {
     if ($_POST['passwordSignUp'] != $_POST['passwordConfirmationSignUp']) {
         $errorMessage['passwordConfirmation'] = 'Mot de passe différent';
     } else if ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp']) {
-        if ($users->addUsers() == TRUE) {
-            $succes = TRUE;
+        $resultFilterMail = $users->filterMail();
+        $resultFilterLogin = $users->filterLogin();
+        if (count($resultFilterMail) > 0) {
+            $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé';
+        } else {
+            if ($users->addUsers() == TRUE) {
+                $succes = TRUE;
+            }
         }
+        if (count($resultFilterLogin) > 0) {
+            $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
+        } else {
+            if ($users->addUsers() == TRUE) {
+                $succes = TRUE;
+            }
+        }
+    } else {
+        $errorMessage['errorInconnu'] = 'Une erreur est survenue';
     }
 } 
+
