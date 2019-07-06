@@ -130,6 +130,7 @@ if (isset($_GET['logout'])) {
 }
 
 if (isset($_GET['deleteID'])) {
+    $users->id = $_SESSION['id'];
     $users->deleteUsers();
     session_destroy();
     header('Location: ../../index.php');
