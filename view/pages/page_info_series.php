@@ -28,12 +28,11 @@ require '../../controller/controller_info_series.php';
         require_once ('../include/include_header.php');
         ?>
         
-        <?php foreach($seriesInfo as $value) { ?>
 
         <div class="container-fluid container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
-                    <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $value[7] ?>" />
+                    <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $seriesInfo['sp_series_pages_image'] ?>" />
                     <div class="rating rating2 mt-3"><!--
                         --><a href="#5" title="Give 5 stars">★</a><!--
                         --><a href="#4" title="Give 4 stars">★</a><!--
@@ -44,27 +43,22 @@ require '../../controller/controller_info_series.php';
                     <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-        <p class="textSeriePage h1 text-center p-1"><?= $value['sp_series_pages_title'] ?></p>
-                    <p class="textSeriePage text-center p-1 mb-2">Description :<br />Un garçon nommé Clay reçoit une boîte à chaussures remplies de
-                        cassettes de la part d'une
-                        de ses amies, Hannah Baker, récemment suicidée. Sur les cassettes qui doivent être passées de mains en mains, Hannah explique que chacun a joué un rôle dans sa mort, et donne les 13 raisons expliquant son passage à
-                        l'acte.</p>
+        <p class="textSeriePage h1 text-center p-1"><?= $seriesInfo['sp_series_pages_title'] ?></p>
+                    <p class="textSeriePage text-center p-1 mb-2">Description :<br /><?= $seriesInfo['sp_series_pages_description'] ?></p>
                     <ol class="textSeriePage text-center p-1">
-                        <li>Nombre de Saisons : 2</li>
-                        <li>Nombre d'épisodes : 26</li>
-                        <li>Durée d'un épisode : 55</li>
-                        <li>Diffusion : Netflix</li>
+                        <li>Nombre de Saisons : <?= $seriesInfo['sp_series_pages_number_seasons'] ?></li>
+                        <li>Nombre d'épisodes : <?= $seriesInfo['sp_series_pages_number_episodes'] ?></li>
+                        <li>Durée d'un épisode : <?= $seriesInfo['sp_series_pages_duration_episodes'] ?></li>
+                        <li>Diffusion : <?= $seriesInfo['sp_series_pages_diffusion_channel'] ?></li>
                         <li></li>
                     </ol>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LVVMvRpmu0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="<?= $seriesInfo['sp_series_pages_trailer'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
                 </div>
             </div>
         </div>
-
-        <?php } ?>
 
 
         <nav class="slidemenu">       
@@ -96,42 +90,27 @@ require '../../controller/controller_info_series.php';
             <div class="row">
                 <div class="col-xl-7 col-lg-7 col-md-7 col-12 informationSeriesCard">
                     <p class="h2 mt-2"><b>Informations sur la série</b></p>
-                    <p class="mt-3"><b>Titre Original</b> : <i>13 Reasons Why</i><br /><br />
+                    <p class="mt-3"><b>Titre Original</b> : <i><?= $seriesInfo['sp_series_pages_original_title'] ?></i><br /><br />
 
-                        <b>Titre français</b> :	<i>13 Reasons Why</i><br /><br />
+                        <b>Titre français</b> :	<i><?= $seriesInfo['sp_series_pages_french_title'] ?></i><br /><br />
 
-                        <b>Année de création</b> : <i>2017</i><br /> <br />
+                        <b>Chaîne(s) de diffusion</b> : <i><?= $seriesInfo['sp_series_pages_diffusion_channel'] ?></i><br /><br />
 
-                        <b>Chaîne(s) de diffusion</b> : <i>Netflix</i><br /><br />
-
-                        <b>Nationalité</b> : <i>Américaine</i><br /><br />
+                        <b>Nationalité</b> : <i><?= $seriesInfo['sp_series_pages_origin'] ?></i><br /><br />
 
                         <b>Genres</b> : <i>Drame, Mystere</i><br /><br />
 
-                        <b>Résumé</b> : <i>Un garçon nommé Clay reçoit une boîte à chaussures remplies de
-                            cassettes de la part d'une
-                            de ses amies, Hannah Baker, récemment suicidée. Sur les cassettes qui doivent être passées de mains en mains, Hannah explique que chacun a joué un rôle dans sa mort, et donne les 13 raisons expliquant son passage à
-                            l'acte.</i>
+                        <b>Résumé</b> : <i><?= $seriesInfo['sp_series_pages_description'] ?></i>
                     </p>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-12 h-100 mt-2">
                     <div class="informationSeriesCard">
                         <p class="h2 mt-2 text-center"><b>Création / Production</b></p>
-                        <p class="h5 text-center"><i>Brian Yorkey<br />
-                                July Moon Productions<br />
-                                Kicked to the Curb Productions <br />
-                                Anonymous Content <br />
-                                Paramount Television</i></p>
+                        <p class="h5 text-center"><i><?php foreach($seriesCreator as $value) { ?><i><?= $value['sp_creator_productor'] ?><br /></i><?php } ?></i></p>
                     </div>
                     <div class="informationSeriesCard mt-2">
                         <p class="h2 mt-2 text-center"><b>Acteurs Principaux</b></p>
-                        <p class="h5 text-center">Dylan Minnette<br />
-                            Katherine Langford<br />
-                            Christian Navarro<br />
-                            Alisha Boe<br />
-                            Brandon Flynn<br />
-                            Justin Prentice<br />
-                            Miles Heizer</p>
+                        <p class="h5 text-center"><?php foreach($seriesActor as $value) { ?><i><?= $value['sp_actor_firstname']  . ' ' . $value['sp_actor_lastname'] ?><br /></i><?php } ?></p>
                     </div>
                 </div>
             </div>
@@ -141,35 +120,10 @@ require '../../controller/controller_info_series.php';
             <div class="row">
                 <div class="col-lg-8 col-xl-8 col-md-8 col-8 mx-auto">
                     <div class=" seasonsSeriesCard">
-                        <p class="mt-3 text-center"><span class="seasonsClick" id="seasons1Click">Saison 1</span> / <span class="seasonsClick" id="seasons2Click">Saison 2</span></p>  
+                        <p class="mt-3 text-center"><span class="seasonsClick" id="seasons1Click"> <?php for($i=1; $i <= $seriesInfo['sp_series_pages_number_seasons']; $i++) { ?>Saison <?= $i ?></span> / <?php } ?> </p>  
                     </div>
                     <div class=" seasonsSeriesCard text-center">
-                        <p id="season1Episode">1.1 : Cassette 1, face A<br />
-                            1.2 : Cassette 1, face B<br />
-                            1.3 : Cassette 2, face A<br />
-                            1.4 : Cassette 2, face B<br />
-                            1.5 : Cassette 3, face A<br />
-                            1.6 : Cassette 3, face B<br />
-                            1.7 : Cassette 4, face A<br />
-                            1.8 : Cassette 4, face B<br />
-                            1.9 : Cassette 5, face A<br />
-                            1.10 : Cassette 5, face B<br />
-                            1.11 : Cassette 6, face A<br />
-                            1.12 : Cassette 6, face B<br />
-                            1.13 : Cassette 7, face A</p>
-                        <p id="season2Episode">2.1 : Premier polaroid<br />
-                            2.2 : Deux filles qui s'embrassent<br />
-                            2.3 : Juste une s*** ivre<br />
-                            2.4 : Deuxième polaroid<br />
-                            2.5 : La traceuse de terrain<br />
-                            2.6 : Le sourire au bout du quai<br />
-                            2.7 : Troisième polaroid<br />
-                            2.8 : Notre petite fille<br />
-                            2.9 : La page arrachée<br />
-                            2.10 : Souriez, s*** !<br />
-                            2.11 : Bryce et Chloe<br />
-                            2.12 : La boîte de polaroids<br />
-                            2.13 : Au revoir</p>
+                        <p id="season1Episode"><?php foreach($seriesEpisodes as $value) { ?><i><?= $value['sp_episodes_infos_number']  . ' : ' . $value['sp_episodes_infos_name'] ?><br /></i><?php } ?><br /></p>
                     </div>
                 </div>
             </div>

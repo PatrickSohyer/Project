@@ -51,13 +51,37 @@ class Series extends Database {
         $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
         return $fetchSeriesPagination;
     }
-    
+
     public function seriesPagesInfo() {
         $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
         $reqSeriesPageInfo->bindValue(':id', $this->id);
         $reqSeriesPageInfo->execute();
         $fetchSeriesPageInfo = $reqSeriesPageInfo->fetch();
         return $fetchSeriesPageInfo;
+    }
+
+    public function seriesPagesActor() {
+        $reqSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSeriesPagesActor->bindValue(':id', $this->id);
+        $reqSeriesPagesActor->execute();
+        $fetchSeriesPagesActor = $reqSeriesPagesActor->fetchAll();
+        return $fetchSeriesPagesActor;
+    }
+
+    public function seriesPagesCreator() {
+        $reqSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSeriesPagesCreator->bindValue(':id', $this->id);
+        $reqSeriesPagesCreator->execute();
+        $fetchSeriesPagesCreator = $reqSeriesPagesCreator->fetchAll();
+        return $fetchSeriesPagesCreator;
+    }
+
+    public function seriesPagesEpisodes() {
+        $reqSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSeriesPagesEpisodes->bindValue(':id', $this->id);
+        $reqSeriesPagesEpisodes->execute();
+        $fetchSeriesPagesEpisodes = $reqSeriesPagesEpisodes->fetchAll();
+        return $fetchSeriesPagesEpisodes;
     }
 
 }

@@ -18,9 +18,25 @@ $logout = '../../index.php';
 
 $series = new Series();
 
+
 if (isset($_GET['id'])) {
     $series->id = $_GET['id'];
     $seriesInfo = $series->seriesPagesInfo();
+}
+
+if (isset($_GET['id'])) {
+    $series->id = $_GET['id'];
+    $seriesActor = $series->seriesPagesActor();
+}
+
+if (isset($_GET['id'])) {
+    $series->id = $_GET['id'];
+    $seriesCreator = $series->seriesPagesCreator();
+}
+
+if (isset($_GET['id'])) {
+    $series->id = $_GET['id'];
+    $seriesEpisodes = $series->seriesPagesEpisodes();
 }
 
 if (isset($_GET['logout'])) {
