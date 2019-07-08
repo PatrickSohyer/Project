@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Project/model/SP_users.php</file>
+            <file>file:/C:/wamp64/www/Project/controller/controller_all_article.php</file>
+            <file>file:/C:/wamp64/www/Project/view/pages/page_account_user.php</file>
             <file>file:/C:/wamp64/www/Project/model/SP_series_pages.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_add_series.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_account_user.php</file>
-            <file>file:/C:/wamp64/www/Project/model/SP_database.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_sign_up.php</file>
+            <file>file:/C:/wamp64/www/Project/controller/controller_all_series.php</file>
+            <file>file:/C:/wamp64/www/Project/view/pages/page_all_series.php</file>
         </group>
     </open-files>
 </project-private>

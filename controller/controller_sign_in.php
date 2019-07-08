@@ -9,7 +9,7 @@ $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
 $articlePage = '../pages/page_article_info.php';
-$allSeriesPage = '../pages/page_all_series.php';
+$allSeriesPage = '../pages/page_all_series.php?page=1';
 $allArticlesPage = '../pages/page_all_articles.php';
 $mentionsLegalsPage = '../pages/page_mentions_legals.php';
 $infoSeries = '../pages/page_info_series.php';

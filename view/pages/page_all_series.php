@@ -14,7 +14,7 @@ require '../../controller/controller_all_series.php';
         <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon/favicon.ico">
 
         <title>SériesPhil!</title>
 
@@ -30,46 +30,30 @@ require '../../controller/controller_all_series.php';
 
         <div class="container-fluid" id="allSeries">
             <div class="row  text-center">
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <a href="<?= $infoSeries; ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/13ReasonsWhy.jpg"></a>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/americanHorrorStory.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/batesMotel.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/betterCallSaul.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/blackMirror.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/arrow.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/banshee.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/blacklist.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/breakingBad.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/charmed.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/criminalMinds.jpg">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                    <img class="imgAllSeriesPage" src="../../assets/images/imgSeries/daredevil.jpg">
-                </div>
+                <?php foreach ($seriesResult as $value) { ?>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
+                        <a href="<?= $infoSeries; ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                    </div>
+                <?php } ?>
+             
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="page_all_series.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
+                                </li>
+                                   <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
+                                <li class="page-item"><a class="page-link" href="page_all_series.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                   <?php }   ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="page_all_series.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
+                                </li>
+                            </ul>
+                        </nav>
             </div>
         </div>
 
-        <?php require_once('../include/include_footer.php') ?>
+
+<?php require_once('../include/include_footer.php') ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

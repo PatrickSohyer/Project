@@ -19,6 +19,8 @@ class Series extends Database {
         parent::__construct();
     }
 
+    // Function ajouter une série
+
     public function addSeries() {
         $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel)');
         $reqAddSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title);
@@ -30,6 +32,24 @@ class Series extends Database {
         if ($reqAddSeries->execute()) {
             return true;
         }
+    }
+
+    public function selectSeriesImages() {
+        $nbSeriesPerPages = 12;
+        $currentPage = intval($_GET['page']);
+        $firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
+        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSelectSeries->bindValue(':nbSeriesPerPages', $nbSeriesPerPages, PDO::PARAM_INT);
+        $reqSelectSeries->bindValue(':firstPageSeries', $firstPageSeries, PDO::PARAM_INT);
+        $reqSelectSeries->execute();
+        $reqFetchSeries = $reqSelectSeries->fetchAll();
+        return $reqFetchSeries;
+    }
+
+    public function seriesPagination() {
+        $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
+        $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
+        return $fetchSeriesPagination;
     }
 
 }
