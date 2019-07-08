@@ -27,12 +27,13 @@ require '../../controller/controller_info_series.php';
         <?php
         require_once ('../include/include_header.php');
         ?>
-
+        
+        <?php foreach($seriesInfo as $value) { ?>
 
         <div class="container-fluid container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
-                    <img id="seriesImagesInformation" src="../../assets/images/imgSeries/13ReasonsWhy.jpg" />
+                    <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $value[7] ?>" />
                     <div class="rating rating2 mt-3"><!--
                         --><a href="#5" title="Give 5 stars">★</a><!--
                         --><a href="#4" title="Give 4 stars">★</a><!--
@@ -43,7 +44,7 @@ require '../../controller/controller_info_series.php';
                     <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                    <p class="textSeriePage h1 text-center p-1">13 Reasons Why</p>
+        <p class="textSeriePage h1 text-center p-1"><?= $value['sp_series_pages_title'] ?></p>
                     <p class="textSeriePage text-center p-1 mb-2">Description :<br />Un garçon nommé Clay reçoit une boîte à chaussures remplies de
                         cassettes de la part d'une
                         de ses amies, Hannah Baker, récemment suicidée. Sur les cassettes qui doivent être passées de mains en mains, Hannah explique que chacun a joué un rôle dans sa mort, et donne les 13 raisons expliquant son passage à
@@ -63,7 +64,7 @@ require '../../controller/controller_info_series.php';
             </div>
         </div>
 
-
+        <?php } ?>
 
 
         <nav class="slidemenu">       

@@ -38,7 +38,7 @@ class Series extends Database {
         $nbSeriesPerPages = 12;
         $currentPage = intval($_GET['page']);
         $firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
-        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
         $reqSelectSeries->bindValue(':nbSeriesPerPages', $nbSeriesPerPages, PDO::PARAM_INT);
         $reqSelectSeries->bindValue(':firstPageSeries', $firstPageSeries, PDO::PARAM_INT);
         $reqSelectSeries->execute();
@@ -50,6 +50,14 @@ class Series extends Database {
         $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
         $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
         return $fetchSeriesPagination;
+    }
+    
+    public function seriesPagesInfo() {
+        $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
+        $reqSeriesPageInfo->bindValue(':id', $this->id);
+        $reqSeriesPageInfo->execute();
+        $fetchSeriesPageInfo = $reqSeriesPageInfo->fetch();
+        return $fetchSeriesPageInfo;
     }
 
 }

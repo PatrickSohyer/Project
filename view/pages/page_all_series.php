@@ -32,11 +32,11 @@ require '../../controller/controller_all_series.php';
             <div class="row  text-center">
                 <?php foreach ($seriesResult as $value) { ?>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                        <a href="<?= $infoSeries; ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                        <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
                     </div>
                 <?php } ?>
              
-                        <nav aria-label="...">
+                <nav class="mx-auto m-4" aria-label="...">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link" href="page_all_series.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>

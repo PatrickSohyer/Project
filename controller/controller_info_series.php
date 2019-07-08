@@ -1,4 +1,8 @@
 <?php
+
+require '../../model/SP_database.php';
+require '../../model/SP_series_pages.php';
+
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
@@ -12,6 +16,12 @@ $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 
+$series = new Series();
+
+if (isset($_GET['id'])) {
+    $series->id = $_GET['id'];
+    $seriesInfo = $series->seriesPagesInfo();
+}
 
 if (isset($_GET['logout'])) {
     session_destroy();
