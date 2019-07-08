@@ -85,8 +85,8 @@ require '../../controller/controller_account_user.php';
                                     <form method="POST" action="page_account_user.php" class="text-center">
 
                                         <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPassword'] : ''; ?></span>
-                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPasswordConfirm'] : ''; ?></span>
-                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPassword']) ? $errorMessage['newPasswordDiff'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPasswordConfirm']) ? $errorMessage['newPasswordConfirm'] : ''; ?></span>
+                                        <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newPasswordDiff']) ? $errorMessage['newPasswordDiff'] : ''; ?></span>
                                         <li class="list-group-item infoUsersPassword" name="accountPassword">Changer de mot de passe<a class="buttonModifyPassword"><i class="fas fa-pencil-alt ml-5"></i></a></li>
                                         <label class="modifyInfoUsersPassword list-group-item" for="newPassword">Nouveau mot de passe : 
                                             <input class="modifyInfoUsersPassword" type="password" name="newPassword" required /></label>

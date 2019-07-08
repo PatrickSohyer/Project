@@ -10,9 +10,6 @@ class Users extends Database {
     public $sp_users_avatar;
     public $sp_users_role;
 
-    public function __construct() {
-        parent::__construct();
-    }
 
 // Fonction qui permet d'ajouter un utilisateur
 
@@ -44,7 +41,7 @@ class Users extends Database {
         $searchLoginUsers = $this->db->prepare('SELECT sp_users_login, sp_users_password, id FROM sp_users WHERE sp_users_login = :sp_users_login');
         $searchLoginUsers->bindValue(':sp_users_login', $this->sp_users_login);
         if ($searchLoginUsers->execute()) {
-            $resultSearchLoginUsers = $searchLoginUsers->fetchAll(PDO::FETCH_OBJ);
+            $resultSearchLoginUsers = $searchLoginUsers->fetchAll();
             return $resultSearchLoginUsers;
         }
     }

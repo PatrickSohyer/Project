@@ -9,7 +9,9 @@ $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 $country = implode('|', $countryCode);
 $regexCountry = '/^(' . $country . ')$/ ';
 
-$sourceTest = '../../assets/images/imgAccueil/BannerPhil.jpg';
+
+$sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
+$sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
 $articlePage = '../pages/page_article_info.php';
 $allSeriesPage = '../pages/page_all_series.php';
@@ -40,7 +42,7 @@ if (isset($_POST['modifyLoginValidate'])) {
     } else {
         $errorMessage['newLogin'] = 'Merci de renseigner un pseudonyme.';
     } if (count($resultFilterLogin) > 0) {
-        if ($resultFilterLogin['id'] != $_SESSION['id']) {
+        if ($resultFilterLogin[0]['id'] != $_SESSION['id']) {
             $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
         }
     } else {
@@ -64,7 +66,7 @@ if (isset($_POST['modifyEmailValidate'])) {
     } else {
         $errorMessage['newEmail'] = 'Merci de renseigner votre Email.';
     } if (count($resultFilterEmail) > 0) {
-        if ($resultFilterEmail['id'] != $_SESSION['id']) {
+        if ($resultFilterEmail[0]['id'] != $_SESSION['id']) {
             $errorMessage['resultFilterEmail'] = 'Ce mail est déjà utilisé';
         }
     } else {
@@ -98,6 +100,7 @@ if (isset($_POST['modifyPasswordValidate'])) {
             $newPassword = strip_tags(htmlspecialchars($_POST['newPassword']));
             $passwordCryptSignUp = password_hash($newPassword, PASSWORD_BCRYPT);
             $users->sp_users_password = $passwordCryptSignUp;
+            $users->id = $_SESSION['id'];
         } else {
             $errorMessage['newPassword'] = 'Mot de passe invalide.';
         }
@@ -113,6 +116,7 @@ if (isset($_POST['modifyPasswordValidate'])) {
     } else {
         $errorMessage['newPasswordConfirm'] = 'Merci de renseigner votre mot de passe.';
     }
+    var_dump($_POST['newPasswordConfirm']);
     if ($_POST['newPassword'] != $_POST['newPasswordConfirm']) {
         $errorMessage['newPasswordDiff'] = 'Mot de passe différent';
     } else if ($_POST['newPassword'] == $_POST['newPasswordConfirm']) {

@@ -9,7 +9,8 @@ $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 $country = implode('|', $countryCode);
 $regexCountry = '/^(' . $country . ')$/ ';
 
-$sourceTest = '../../assets/images/imgAccueil/BannerPhil.jpg';
+$sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
+$sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
 $articlePage = '../pages/page_article_info.php';
 $allSeriesPage = '../pages/page_all_series.php';

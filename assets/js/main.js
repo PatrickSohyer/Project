@@ -129,6 +129,7 @@ $('.buttonModifyCountry').click(function () {
 
 $('.buttonModifyPassword').click(function () {
     $('.infoUsersLogin').hide();
+    $('.infoUsersDelete').hide();
     $('.infoUsersEmail').hide();
     $('.infoUsersCountry').hide();
     $('.infoUsersPassword').hide();

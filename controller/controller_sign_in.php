@@ -5,7 +5,8 @@ require '../../model/SP_users.php';
 $regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/';
 $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 
-$sourceTest = '../../assets/images/imgAccueil/BannerPhil.jpg';
+$sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
+$sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
 $articlePage = '../pages/page_article_info.php';
 $allSeriesPage = '../pages/page_all_series.php';
@@ -42,17 +43,21 @@ if (COUNT($_POST) > 0) {
         }
     } else {
         $errorMessageSignIn['passwordSignIn'] = 'Merci de renseigner votre mot de passe.';
-    }
+    } 
     $usersFilter = $users->filterLogin();
     if (count($usersFilter) > 0) {
-        if (password_verify($passwordSignIn, $usersFilter[0]->sp_users_password)) {
+        if (password_verify($passwordSignIn, $usersFilter[0]['sp_users_password'])) {
             $_SESSION['login'] = $loginSignIn;
-            $_SESSION['id'] = $usersFilter[0]->id;
+            $_SESSION['id'] = $usersFilter[0]['id'];
         } else {
             $errorMessageSignIn['passwordConnect'] = 'Mot de passe incorrect';
         }
+        
+    } else {
+        $errorMessageSignIn['loginExist'] = 'Le login est incorrect';
     }
 }
+    
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: index.php');

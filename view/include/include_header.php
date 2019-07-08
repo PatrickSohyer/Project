@@ -1,4 +1,4 @@
-<img src="<?= $sourceTest; ?>" class="img-fluid avatarBanner" />
+<img src="<?= $sourceBanner; ?>" class="img-fluid avatarBanner" />
 
 <?php if (count($_SESSION) === 0) { ?>
 
@@ -55,6 +55,9 @@
         </button>
         <div class="collapse navbar-collapse text-dark" id="navCollapse">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <img src="<?= $sourceImgNav ?>" class="mr-5" />
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link text-light mr-4" href="../../index.php" id="navBodyPage"><b>Accueil</b></a>
                 </li>
