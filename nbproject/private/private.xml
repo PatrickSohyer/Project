@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Project/controller/controller_all_article.php</file>
-            <file>file:/C:/wamp64/www/Project/view/pages/page_account_user.php</file>
+            <file>file:/C:/wamp64/www/Project/controller/controller_info_series.php</file>
             <file>file:/C:/wamp64/www/Project/model/SP_series_pages.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_all_series.php</file>
-            <file>file:/C:/wamp64/www/Project/view/pages/page_all_series.php</file>
+            <file>file:/C:/wamp64/www/Project/requet/Requete_a_faire.sql</file>
+            <file>file:/C:/wamp64/www/Project/view/pages/page_info_series.php</file>
         </group>
     </open-files>
 </project-private>
