@@ -21,25 +21,10 @@ if (isset($_SESSION['role']) == 'admin'){
 }
 
 $series = new Series();
-$seriesResult = $series->selectSeriesImages();
-$seriesPagination = $series->seriesPagination();
-$nbSeriesPerPages = 12;
-$nbSeriesPage = $seriesPagination[0]['total'];
-$nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
-
-if (isset($_GET['page'])) { 
-    $currentPage = intval($_GET['page']);
-    if ($currentPage >= $nbPages) { 
-        $currentPage = $nbPages;
+$seriesAllSeries = $series->seriesPagesAllSeries();
+if (isset($_GET['delete'])) {
+    $series->id = $_GET['delete'];
+    if ($series->seriesPagesDeleteVerif()) {
+        header('Location: page_admin_delete.php');
     }
-} else { 
-    $currentPage = 1; 
-}
-
-
-
-
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: index.php');
 }

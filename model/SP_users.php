@@ -38,7 +38,7 @@ class Users extends Database {
 // Fonction qui permet de vérifier si il existe 2 fois le même login
 
     public function filterLogin() {
-        $searchLoginUsers = $this->db->prepare('SELECT sp_users_login, sp_users_password, id FROM sp_users WHERE sp_users_login = :sp_users_login');
+        $searchLoginUsers = $this->db->prepare('SELECT sp_users_login, sp_users_password, id, sp_users_role FROM sp_users WHERE sp_users_login = :sp_users_login');
         $searchLoginUsers->bindValue(':sp_users_login', $this->sp_users_login);
         if ($searchLoginUsers->execute()) {
             $resultSearchLoginUsers = $searchLoginUsers->fetchAll();

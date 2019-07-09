@@ -17,6 +17,10 @@ $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
+if (isset($_SESSION['role']) == 'admin'){
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+}
 
 $users = new Users();
 
@@ -49,6 +53,10 @@ if (COUNT($_POST) > 0) {
         if (password_verify($passwordSignIn, $usersFilter[0]['sp_users_password'])) {
             $_SESSION['login'] = $loginSignIn;
             $_SESSION['id'] = $usersFilter[0]['id'];
+            $_SESSION['role'] = $usersFilter[0]['sp_users_role'];
+            if ($_SESSION['role'] == 'admin') {
+                header('Location: ../../index.php');
+            }
         } else {
             $errorMessageSignIn['passwordConnect'] = 'Mot de passe incorrect';
         }

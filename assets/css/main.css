@@ -86,6 +86,14 @@ body {
     color: #124559;
 }
 
+.colorFontBlue {
+    color: #01161E;
+}
+
+a  {
+    text-decoration: none; color: white;
+}
+
 .titleSerieMoment {
     color: #01161E;
 }

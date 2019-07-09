@@ -120,7 +120,7 @@ require '../../controller/controller_info_series.php';
             <div class="row">
                 <div class="col-lg-8 col-xl-8 col-md-8 col-8 mx-auto">
                     <div class=" seasonsSeriesCard">
-                        <p class="mt-3 text-center"><span class="seasonsClick" id="seasons1Click"> <?php for($i=1; $i <= $seriesInfo['sp_series_pages_number_seasons']; $i++) { ?>Saison <?= $i ?></span> / <?php } ?> </p>  
+                        <p class="mt-3 text-center"><?php for($i=1; $i <= $seriesInfo['sp_series_pages_number_seasons']; $i++) { ?><span class="seasonsClick" id="seasons1Click">Saison <?= $i ?></span> / <?php } ?> </p>  
                     </div>
                     <div class=" seasonsSeriesCard text-center">
                         <p id="season1Episode"><?php foreach($seriesEpisodes as $value) { ?><i><?= $value['sp_episodes_infos_number']  . ' : ' . $value['sp_episodes_infos_name'] ?><br /></i><?php } ?><br /></p>

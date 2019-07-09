@@ -15,6 +15,10 @@ $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
+if (isset($_SESSION['role']) == 'admin'){
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+}
 
 $series = new Series();
 

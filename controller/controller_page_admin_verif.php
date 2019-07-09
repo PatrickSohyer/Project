@@ -21,25 +21,11 @@ if (isset($_SESSION['role']) == 'admin'){
 }
 
 $series = new Series();
-$seriesResult = $series->selectSeriesImages();
-$seriesPagination = $series->seriesPagination();
-$nbSeriesPerPages = 12;
-$nbSeriesPage = $seriesPagination[0]['total'];
-$nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
-
-if (isset($_GET['page'])) { 
-    $currentPage = intval($_GET['page']);
-    if ($currentPage >= $nbPages) { 
-        $currentPage = $nbPages;
+$seriesVerif = $series->seriesPagesVerification();
+if (isset($_GET['validation'])) {
+    $series->sp_series_pages_verification = 1;
+    $series->id = $_GET['validation'];
+    if ($series->seriesPagesUpdateVerif()) {
+        header('Location: page_admin_verif.php');
     }
-} else { 
-    $currentPage = 1; 
-}
-
-
-
-
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: index.php');
 }

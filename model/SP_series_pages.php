@@ -14,6 +14,7 @@ class Series extends Database {
     public $sp_series_pages_french_title;
     public $sp_series_pages_original_title;
     public $sp_series_pages_origin;
+    public $sp_series_pages_verification;
 
     public function __construct() {
         parent::__construct();
@@ -59,6 +60,13 @@ class Series extends Database {
         $fetchSeriesPageInfo = $reqSeriesPageInfo->fetch();
         return $fetchSeriesPageInfo;
     }
+    
+        public function seriesPagesAllSeries() {
+        $reqSeriesPagesAllSeries = $this->db->query('SELECT * FROM sp_series_pages');
+        $reqSeriesPagesAllSeries->execute();
+        $fetchSeriesPagesAllSeries = $reqSeriesPagesAllSeries->fetchAll();
+        return $fetchSeriesPagesAllSeries;
+    }
 
     public function seriesPagesActor() {
         $reqSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
@@ -83,5 +91,27 @@ class Series extends Database {
         $fetchSeriesPagesEpisodes = $reqSeriesPagesEpisodes->fetchAll();
         return $fetchSeriesPagesEpisodes;
     }
-
+    
+        public function seriesPagesVerification() {
+        $reqSeriesPageVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0');
+        $fetchSeriesPageVerification = $reqSeriesPageVerification->fetchAll();
+        return $fetchSeriesPageVerification;
+    }
+    
+    public function seriesPagesUpdateVerif() {
+        $reqSeriesPageUpdateVerif = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id');
+        $reqSeriesPageUpdateVerif->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification);
+        $reqSeriesPageUpdateVerif->bindValue(':id', $this->id);
+        if($reqSeriesPageUpdateVerif->execute()) {
+            return TRUE;
+        }
+    }
+    
+        public function seriesPagesDeleteVerif() {
+        $reqSeriesPageDeleteVerif = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id');
+        $reqSeriesPageDeleteVerif->bindValue(':id', $this->id);
+        if($reqSeriesPageDeleteVerif->execute()) {
+            return TRUE;
+        }
+    }
 }
