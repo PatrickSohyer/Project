@@ -146,7 +146,7 @@ ol {
 
 .rating {
     width: 226px;
-    margin: 0 auto 1em;
+    margin: 0 auto 10px;
     font-size: 45px;
     overflow:hidden;
 }
@@ -300,8 +300,8 @@ ol {
 }
 
 #seriesImagesInformation {
-    height: 30rem;
-    width: 20rem;
+    height: 27rem;
+    width: 19rem;
 }
 
 /* Bleu foncé : #124559

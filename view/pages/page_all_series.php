@@ -63,7 +63,7 @@ require '../../controller/controller_all_series.php';
     foreach ($categoriesSeries as $value) {
         ?>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                            <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                            <a href="<?= $infoSeries; ?>?id=<?= $value['seriesId'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['seriesImage'] ?>"></a>
                         </div>
         <?php
     }

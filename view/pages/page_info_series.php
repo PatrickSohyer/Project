@@ -38,10 +38,10 @@ require '../../controller/controller_info_series.php';
                         $pourcentageSeriesVote = round($newRate / $newVote, 1);
                         ?>
                         <p class="h2 text-white"><?= $pourcentageSeriesVote ?> / 5<p>
-                            <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
+                            <a href="#"><img src="../../assets/images/imgAccueil/favoriteButton.png" /></a>
                         <?php } elseif (isset($_SESSION['id'])) {
                             ?>
-                        <div class = "rating rating2 mt-3">
+                        <div class = "rating rating2">
                             <a href = "page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=5" title = "Donner 5 étoiles">★</a>
                             <a href = "page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=4" title = "Donner 4 étoiles">★</a>
                             <a href = "page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=3" title = "Donner 3 étoiles">★</a>
@@ -49,7 +49,7 @@ require '../../controller/controller_info_series.php';
                             <a href = "page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=1" title = "Donner 1 étoiles">★</a>
                         </div>
 
-                        <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
+                        <a href="#"><img src="../../assets/images/imgAccueil/favoriteButton.png" /></a>
 
                         <?php
                     } else {
@@ -161,7 +161,7 @@ require '../../controller/controller_info_series.php';
             </div>
         </div>
 
-<?php require_once('../include/include_footer.php') ?>
+        <?php require_once('../include/include_footer.php') ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
