@@ -27,23 +27,30 @@ require '../../controller/controller_info_series.php';
         <?php
         require_once ('../include/include_header.php');
         ?>
-        
+
 
         <div class="container-fluid container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
                     <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $seriesInfo['sp_series_pages_image'] ?>" />
-                    <div class="rating rating2 mt-3"><!--
-                        --><a href="#5" title="Give 5 stars">★</a><!--
-                        --><a href="#4" title="Give 4 stars">★</a><!--
-                        --><a href="#3" title="Give 3 stars">★</a><!--
-                        --><a href="#2" title="Give 2 stars">★</a><!--
-                        --><a href="#1" title="Give 1 star">★</a>
-                    </div>
-                    <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
+                    <?php if (isset($_SESSION['id'])) { ?>
+                        <div class="rating rating2 mt-3">
+                            <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=5" title="Donner 5 étoiles">★</a>
+                            <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=4" title="Donner 4 étoiles">★</a>
+                            <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=3" title="Donner 3 étoiles">★</a>
+                            <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=2" title="Donner 2 étoiles">★</a>
+                            <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=1" title="Donner 1 étoiles">★</a>
+                        </div>
+                        <button class="btn btn-success">Ajouter aux favoris <i class="fas fa-heart"></i></button>
+                        <?php
+                    } else {
+                        echo ' ';
+                    }
+                    ?>
                 </div>
+
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-        <p class="textSeriePage h1 text-center p-1"><?= $seriesInfo['sp_series_pages_title'] ?></p>
+                    <p class="textSeriePage h1 text-center p-1"><?= $seriesInfo['sp_series_pages_title'] ?></p>
                     <p class="textSeriePage text-center p-1 mb-2">Description :<br /><?= $seriesInfo['sp_series_pages_description'] ?></p>
                     <ol class="textSeriePage text-center p-1">
                         <li>Nombre de Saisons : <?= $seriesInfo['sp_series_pages_number_seasons'] ?></li>
@@ -106,11 +113,11 @@ require '../../controller/controller_info_series.php';
                 <div class="col-xl-5 col-lg-5 col-md-5 col-12 h-100 mt-2">
                     <div class="informationSeriesCard">
                         <p class="h2 mt-2 text-center"><b>Création / Production</b></p>
-                        <p class="h5 text-center"><i><?php foreach($seriesCreator as $value) { ?><i><?= $value['sp_creator_productor'] ?><br /></i><?php } ?></i></p>
+                        <p class="h5 text-center"><i><?php foreach ($seriesCreator as $value) { ?><i><?= $value['sp_creator_productor'] ?><br /></i><?php } ?></i></p>
                     </div>
                     <div class="informationSeriesCard mt-2">
                         <p class="h2 mt-2 text-center"><b>Acteurs Principaux</b></p>
-                        <p class="h5 text-center"><?php foreach($seriesActor as $value) { ?><i><?= $value['sp_actor_firstname']  . ' ' . $value['sp_actor_lastname'] ?><br /></i><?php } ?></p>
+                        <p class="h5 text-center"><?php foreach ($seriesActor as $value) { ?><i><?= $value['sp_actor_firstname'] . ' ' . $value['sp_actor_lastname'] ?><br /></i><?php } ?></p>
                     </div>
                 </div>
             </div>
@@ -120,10 +127,10 @@ require '../../controller/controller_info_series.php';
             <div class="row">
                 <div class="col-lg-8 col-xl-8 col-md-8 col-8 mx-auto">
                     <div class=" seasonsSeriesCard">
-                        <p class="mt-3 text-center"><?php for($i=1; $i <= $seriesInfo['sp_series_pages_number_seasons']; $i++) { ?><span class="seasonsClick" id="seasons1Click">Saison <?= $i ?></span> / <?php } ?> </p>  
+                        <p class="mt-3 text-center"><?php for ($i = 1; $i <= $seriesInfo['sp_series_pages_number_seasons']; $i++) { ?><span class="seasonsClick" id="seasons1Click">Saison <?= $i ?></span> / <?php } ?> </p>  
                     </div>
                     <div class=" seasonsSeriesCard text-center">
-                        <p id="season1Episode"><?php foreach($seriesEpisodes as $value) { ?><i><?= $value['sp_episodes_infos_number']  . ' : ' . $value['sp_episodes_infos_name'] ?><br /></i><?php } ?><br /></p>
+                        <p id="season1Episode"><?php foreach ($seriesEpisodes as $value) { ?><i><?= $value['sp_episodes_infos_number'] . ' : ' . $value['sp_episodes_infos_name'] ?><br /></i><?php } ?><br /></p>
                     </div>
                 </div>
             </div>
@@ -145,7 +152,7 @@ require '../../controller/controller_info_series.php';
             </div>
         </div>
 
-<?php require_once('../include/include_footer.php') ?>
+        <?php require_once('../include/include_footer.php') ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

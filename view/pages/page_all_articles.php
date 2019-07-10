@@ -36,7 +36,7 @@ require '../../controller/controller_all_article.php';
                         <div class="card-body text-center">
                             <p class="card-title h4"><b>13 Reasons why</b></p>
                             <p class="card-text"><i>Malgré un nombre de critique assez importante, voilà pourquoi vous devez regarder la saions 2.</i></p>
-                            <a href="articlePage.php" class="sp_style_button btn text-white"><b>Lire l'article</b></a>
+                            <a href="articlePage.php" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ require '../../controller/controller_all_article.php';
                         <div class="card-body text-center">
                             <p class="card-title h4"><b>Lucifer</b></p>
                             <p class="card-text"><i>Racheté par Netflix pour une saison 4 de 10 épisodes, que dire de la qualité de notre diable préféré?</i></p>
-                            <a href="#" class="sp_style_button btn text-white"><b>Lire l'article</b></a>
+                            <a href="#" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ require '../../controller/controller_all_article.php';
                         <div class="card-body text-center">
                             <p class="card-title h4"><b>Game Of Thrones</b></p>
                             <p class="card-text"><i>La saison 8 a subis un nombre de critique énorme, à tel point qu'une pétition demandais à la refaire, mérité?</i></p>
-                            <a href="#" class="sp_style_button btn text-white"><b>Lire l'article</b></a>
+                            <a href="#" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ require '../../controller/controller_all_article.php';
                         <div class="card-body text-center">
                             <p class="card-title h4"><b>The Walking Dead</b></p>
                             <p class="card-text"><i>Une saison 9 marquée par l'arrivé des chuchotteurs ainsi que la perte de 2 acteurs principaux.</i></p>
-                            <a href="#" class="sp_style_button btn text-white"><b>Lire l'article</b></a>
+                            <a href="#" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                         </div>
                     </div>
                 </div>

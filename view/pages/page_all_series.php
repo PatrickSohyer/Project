@@ -30,25 +30,45 @@ require '../../controller/controller_all_series.php';
 
         <div class="container-fluid" id="allSeries">
             <div class="row  text-center">
-                <?php foreach ($seriesResult as $value) { ?>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                        <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
-                    </div>
-                <?php } ?>
-             
-                <nav class="mx-auto m-4" aria-label="...">
-                            <ul class="pagination">
+                <?php if (isset($seriesResult)) { ?>
+                    <?php foreach ($seriesResult as $value) { ?>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
+                            <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                        </div>
+                    <?php } ?>
+
+                    <nav class="mx-auto m-4" aria-label="...">
+                        <ul class="pagination">
+                            <?php if ($currentPage == 1) {
+                                echo ' ';
+                            } else { ?>
                                 <li class="page-item">
                                     <a class="page-link" href="page_all_series.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
                                 </li>
-                                   <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
+                            <?php } ?>
+                            <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
                                 <li class="page-item"><a class="page-link" href="page_all_series.php?page=<?= $i ?>"><?= $i ?></a></li>
-                                   <?php }   ?>
+    <?php } if ($currentPage == $nbPages) {
+        echo ' ';
+    } else { ?>
+
                                 <li class="page-item">
                                     <a class="page-link" href="page_all_series.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
                                 </li>
-                            </ul>
-                        </nav>
+                    <?php } ?>
+                        </ul>
+                    </nav>
+    <?php
+} else {
+    foreach ($categoriesSeries as $value) {
+        ?>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
+                            <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                        </div>
+        <?php
+    }
+}
+?>
             </div>
         </div>
 

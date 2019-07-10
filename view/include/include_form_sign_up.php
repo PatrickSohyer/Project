@@ -34,6 +34,6 @@
 
     <p class="signUpText">En cliquant sur
         s'inscrire vous acceptez nos
-        <a href="<?= $mentionsLegalsPage; ?>" target="_blank">mentions légales</a></p>
+        <a href="<?= $mentionsLegalsPage; ?>" target="_blank" class="text-primary">mentions légales</a></p>
 
 </form>

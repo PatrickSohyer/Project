@@ -35,15 +35,14 @@ require '../../controller/controller_account_user.php';
                         <div class="card-body">
                             <p class="h2 mb-3 text-center">Mon Compte</p>
                             <ul class="list-group list-group-flush">
-                                <?php foreach ($usersResult as $value) { ?>
 
                                     <form method="POST" action="page_account_user.php" class="text-center">
 
                                         <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newLogin']) ? $errorMessage['newLogin'] : ''; ?></span>
                                         <span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterLogin']) ? $errorMessage['resultFilterLogin'] : ''; ?></span>
-                                        <li class="list-group-item infoUsersLogin" name="accountLogin">Login : <?= $value['sp_users_login'] ?><a class="buttonModifyLogin"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+                                        <li class="list-group-item infoUsersLogin" name="accountLogin">Login : <?= $usersResult['sp_users_login'] ?><a class="buttonModifyLogin"><i class="fas fa-pencil-alt ml-5"></i></a></li>
                                         <label class="modifyInfoUsersLogin list-group-item" for="newlogin">Nouveau Login :
-                                            <input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $value['sp_users_login'] ?>" />                                          <button type="submit" name="modifyLoginValidate" class="spStyleButton text-white btn buttonValidateLogin ml-4 mb-2"><i class="fas fa-check-circle"></i></button> </label>  
+                                            <input class="modifyInfoUsersLogin" type="text" name="newLogin" value="<?= $usersResult['sp_users_login'] ?>" />                                          <button type="submit" name="modifyLoginValidate" class="spStyleButton text-white btn buttonValidateLogin ml-4 mb-2"><i class="fas fa-check-circle"></i></button> </label>  
 
                                     </form>
 
@@ -51,15 +50,15 @@ require '../../controller/controller_account_user.php';
 
                                         <span class="errorMessage d-block text-danger"><?= isset($errorMessage['newEmail']) ? $errorMessage['newEmail'] : ''; ?></span>
                                         <span class="errorMessage d-block text-danger"><?= isset($errorMessage['resultFilterEmail']) ? $errorMessage['resultFilterEmail'] : ''; ?></span>
-                                        <li class="list-group-item infoUsersEmail" name="accountEmail">Email : <?= $value['sp_users_email'] ?><a class="buttonModifyEmail"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+                                        <li class="list-group-item infoUsersEmail" name="accountEmail">Email : <?= $usersResult['sp_users_email'] ?><a class="buttonModifyEmail"><i class="fas fa-pencil-alt ml-5"></i></a></li>
                                         <label class="modifyInfoUsersEmail list-group-item" for="newEmail">Nouveau Email : 
-                                            <input class="modifyInfoUsersEmail" type="text" name="newEmail" value="<?= $value['sp_users_email'] ?>" />                                            <button type="submit" name="modifyEmailValidate" class="spStyleButton text-white btn buttonValidateEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label>
+                                            <input class="modifyInfoUsersEmail" type="text" name="newEmail" value="<?= $usersResult['sp_users_email'] ?>" />                                            <button type="submit" name="modifyEmailValidate" class="spStyleButton text-white btn buttonValidateEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label>
 
                                     </form>
 
                                     <form method="POST" action="page_account_user.php" class="text-center">
 
-                                        <li class="list-group-item infoUsersCountry" name="accountCountry">Pays : <?= $value['sp_users_country'] ?><a class="buttonModifyCountry"><i class="fas fa-pencil-alt ml-5"></i></a></li>
+                                        <li class="list-group-item infoUsersCountry" name="accountCountry">Pays : <?= $usersResult['sp_users_country'] ?><a class="buttonModifyCountry"><i class="fas fa-pencil-alt ml-5"></i></a></li>
 
                                         <label class="modifyInfoUsersCountry list-group-item">Nouveau Pays : 
                                             <select id="countrySelect" style="width:6rem" class="form-control d-inline mb-4 modifyInfoUsersCountry" name="newCountry" required>                                              
@@ -100,14 +99,10 @@ require '../../controller/controller_account_user.php';
 
                                         <li class="list-group-item infoUsersDelete" name="accountDelete">Supprimer le compte<a class="buttonModifyDelete"><i class="far fa-trash-alt ml-5"></i></a></li>
                                         <label class="modifyInfoUsersDelete list-group-item" for="newDelete">Êtes vous sur de vouloir quitter ce merveilleux site?</label>
-                                        <a href="page_account_user.php?deleteID=<?= $value['id'] ?>" class="buttonmodifyDeleteYes h5 text-success m-4">Supprimer son compte <i class="fas fa-sad-tear"></i></a>
+                                        <a href="page_account_user.php?deleteID=<?= $usersResult['id'] ?>" class="buttonmodifyDeleteYes h5 text-success m-4">Supprimer son compte <i class="fas fa-sad-tear"></i></a>
                                         <a href="page_account_user.php" class="buttonmodifyDeleteNo h5 text-danger m-4">Rester sur le site <i class="fas fa-laugh-beam"></i></a>
 
                                     </form>
-
-
-
-                                <?php } ?>
                             </ul>
 
                         </div>

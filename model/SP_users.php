@@ -96,9 +96,9 @@ class Users extends Database {
 
     public function selectUsers() {
         $selectUsers = $this->db->prepare('SELECT * FROM sp_users WHERE id = :id');
-        $selectUsers->bindValue(':id', $this->id);
+        $selectUsers->bindValue(':id', $_SESSION['id']);
         if ($selectUsers->execute()) {
-            $selectUsersFetch = $selectUsers->fetchAll();
+            $selectUsersFetch = $selectUsers->fetch();
             return $selectUsersFetch;
         }
     }

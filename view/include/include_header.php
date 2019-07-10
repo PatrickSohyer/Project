@@ -21,17 +21,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégorie</b></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">
-                        <a class="dropdown-item" href="page_all_series.php?categorie=Action"><b>Action</b></a>
-                        <a class="dropdown-item" href="#"><b>Aventure</b></a>
-                        <a class="dropdown-item" href="#"><b>Comédie</b></a>
-                        <a class="dropdown-item" href="#"><b>Drame</b></a>
-                        <a class="dropdown-item" href="#"><b>Enfants</b></a>
-                        <a class="dropdown-item" href="#"><b>Fantastique</b></a>
-                        <a class="dropdown-item" href="#"><b>Horreur</b></a>
-                        <a class="dropdown-item" href="#"><b>Manga</b></a>
-                        <a class="dropdown-item" href="#"><b>Mini-séries</b></a>
-                        <a class="dropdown-item" href="#"><b>Science fiction</b></a>
-                        <a class="dropdown-item" href="#"><b>Thriller</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Action"><b>Action</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Aventure"><b>Aventure</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Comédie"><b>Comédie</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Drame"><b>Drame</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Enfants"><b>Enfants</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Fantastique&"><b>Fantastique</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Horreur"><b>Horreur</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Manga"><b>Manga</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Mini-séries"><b>Mini-séries</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Science fiction"><b>Science fiction</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
                 </li>
             </ul>
@@ -70,17 +70,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégories</b></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">
-                        <a class="dropdown-item" href="#"><b>Action</b></a>
-                        <a class="dropdown-item" href="#"><b>Aventure</b></a>
-                        <a class="dropdown-item" href="#"><b>Comédie</b></a>
-                        <a class="dropdown-item" href="#"><b>Drame</b></a>
-                        <a class="dropdown-item" href="#"><b>Enfants</b></a>
-                        <a class="dropdown-item" href="#"><b>Fantastique</b></a>
-                        <a class="dropdown-item" href="#"><b>Horreur</b></a>
-                        <a class="dropdown-item" href="#"><b>Manga</b></a>
-                        <a class="dropdown-item" href="#"><b>Mini-séries</b></a>
-                        <a class="dropdown-item" href="#"><b>Science fiction</b></a>
-                        <a class="dropdown-item" href="#"><b>Thriller</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Action"><b>Action</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Aventure"><b>Aventure</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Comédie"><b>Comédie</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Drame"><b>Drame</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Enfants"><b>Enfants</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Fantastique&"><b>Fantastique</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Horreur"><b>Horreur</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Manga"><b>Manga</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Mini-séries"><b>Mini-séries</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Science fiction"><b>Science fiction</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -129,17 +129,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Catégories</b></a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">
-                        <a class="dropdown-item" href="#"><b>Action</b></a>
-                        <a class="dropdown-item" href="#"><b>Aventure</b></a>
-                        <a class="dropdown-item" href="#"><b>Comédie</b></a>
-                        <a class="dropdown-item" href="#"><b>Drame</b></a>
-                        <a class="dropdown-item" href="#"><b>Enfants</b></a>
-                        <a class="dropdown-item" href="#"><b>Fantastique</b></a>
-                        <a class="dropdown-item" href="#"><b>Horreur</b></a>
-                        <a class="dropdown-item" href="#"><b>Manga</b></a>
-                        <a class="dropdown-item" href="#"><b>Mini-séries</b></a>
-                        <a class="dropdown-item" href="#"><b>Science fiction</b></a>
-                        <a class="dropdown-item" href="#"><b>Thriller</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Action"><b>Action</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Aventure"><b>Aventure</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Comédie"><b>Comédie</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Drame"><b>Drame</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Enfants"><b>Enfants</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Fantastique&"><b>Fantastique</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Horreur"><b>Horreur</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Manga"><b>Manga</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Mini-séries"><b>Mini-séries</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Science fiction"><b>Science fiction</b></a>
+                        <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
                 </li>
                 <li class="nav-item">

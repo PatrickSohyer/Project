@@ -2,6 +2,7 @@
 
 require '../../model/SP_database.php';
 require '../../model/SP_series_pages.php';
+require '../../model/SP_categories.php';
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -15,26 +16,36 @@ $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
-if (isset($_SESSION['role']) == 'admin'){
+$categoriesSeries = '../pages/page_all_series.php';
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdminVerif = '../pages/page_admin_verif.php';
     $pageAdminDelete = '../pages/page_admin_delete.php';
 }
 
+$categories = new Categories();
 $series = new Series();
-$seriesResult = $series->selectSeriesImages();
 $seriesPagination = $series->seriesPagination();
 $nbSeriesPerPages = 12;
 $nbSeriesPage = $seriesPagination[0]['total'];
 $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
 
-if (isset($_GET['page'])) { 
-    $currentPage = intval($_GET['page']);
-    if ($currentPage >= $nbPages) { 
+
+if (isset($_GET['page']) AND is_numeric($_GET['page']) AND isset($_GET['categorie'])) {
+    $currentPage = $_GET['page'];
+    $categories->sp_categories_gender = $_GET['categorie'];
+    $categoriesSeries = $categories->getSeriesPagesCategories();
+} elseif (isset($_GET['page']) AND is_numeric($_GET['page'])) {
+    $currentPage = $_GET['page'];
+    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
+    $seriesResult = $series->selectSeriesImages();
+    if ($currentPage >= $nbPages) {
         $currentPage = $nbPages;
     }
-} else { 
-    $currentPage = 1; 
+} else {
+    header('Location: page_error.php');
 }
+
 
 
 

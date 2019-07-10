@@ -40,9 +40,21 @@ require_once '../../controller/controller_sign_in.php';
                                 <?php
                                 include '../include/include_form_sign_in.php';
                             } else {
-                                include '../include/include_form_sign_in.php';
                                 ?>
-                                <script src="../../assets/js/swal_sign_in.js"></script>
+                                <div class = "container container-fluid">
+                                    <div class = "row mt-3 mb-3">
+                                        <div class = "col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
+                                            <div class = "card" id = "cardSignIn">
+                                                <div class = "card-body"><?php
+                                                    include '../include/include_form_sign_in.php';
+                                                    ?>
+                                                    <script src="../../assets/js/swal_sign_in.js"></script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             <?php }
                             ?>
 

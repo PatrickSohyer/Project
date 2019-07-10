@@ -1,8 +1,6 @@
 <?php
 
 require '../../model/SP_database.php';
-require '../../model/SP_series_pages.php';
-
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
@@ -16,16 +14,8 @@ $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
-if (isset($_SESSION['role']) == 'admin'){
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdminVerif = '../pages/page_admin_verif.php';
     $pageAdminDelete = '../pages/page_admin_delete.php';
-}
-
-$series = new Series();
-$seriesAllSeries = $series->seriesPagesAllSeries();
-if (isset($_GET['delete'])) {
-    $series->id = $_GET['delete'];
-    if ($series->seriesPagesDeleteVerif()) {
-        header('Location: page_admin_delete.php');
-    }
 }
