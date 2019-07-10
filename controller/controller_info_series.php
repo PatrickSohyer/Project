@@ -17,7 +17,7 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdminVerif = '../pages/page_admin_verif.php';
     $pageAdminDelete = '../pages/page_admin_delete.php';
 }
@@ -28,8 +28,19 @@ if (isset($_GET['rate']) AND is_numeric($_GET['rate'])) {
     $series->id = $_GET['id'];
     $seriesInfoRate = $series->seriesPagesInfo();
     $rate = $_GET['rate'];
-    $newRate = ($seriesInfoRate['sp_series_pages_rate'] + $rate) / 2;
-    $series->sp_series_pages_rate = $_GET['rate'];
+    if (is_null($seriesInfoRate['sp_series_pages_rate'])) {
+        $newRate = $rate;
+        $series->sp_series_pages_rate = $newRate;
+        $newVote = $seriesInfoRate['sp_series_pages_number_vote'] + 1;
+        $series->sp_series_pages_number_vote = $newVote;
+        $seriesInfoRateUpdate = $series->updateNumberVote();
+    } else {
+        $newRate = ($seriesInfoRate['sp_series_pages_rate'] + $rate);
+        $series->sp_series_pages_rate = $newRate;
+        $newVote = $seriesInfoRate['sp_series_pages_number_vote'] + 1;
+        $series->sp_series_pages_number_vote = $newVote;
+        $seriesInfoRateUpdate = $series->updateNumberVote();
+    }
 }
 
 
