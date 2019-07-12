@@ -1,4 +1,8 @@
 <?php
+
+require '../../model/SP_database.php';
+require '../../model/SP_series_pages.php';
+
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
@@ -17,7 +21,12 @@ if (isset($_SESSION['role']) == 'admin'){
     $pageAdmin = '../pages/page_admin.php';
 }
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: index.php');
+$series = new Series();
+$seriesVerif = $series->seriesPagesVerification();
+if (isset($_GET['validation'])) {
+    $series->sp_series_pages_verification = 1;
+    $series->id = $_GET['validation'];
+    if ($series->seriesPagesUpdateVerif()) {
+        header('Location: page_admin_verif.php');
+    }
 }

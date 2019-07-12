@@ -3,7 +3,7 @@
 require '../../model/SP_database.php';
 require '../../model/SP_series_pages.php';
 $regexTitle = '/^^.{2,250}$/';
-$regexDescription = '/^.{2,2500}$/';
+$regexDescription = '/^.{0,8000}$/';
 $regexNumber = '/^[0-9]+$/';
 $errorMessageAddSeries = array();
 
@@ -20,9 +20,9 @@ $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
-if (isset($_SESSION['role']) == 'admin'){
-    $pageAdminVerif = '../pages/page_admin_verif.php';
-    $pageAdminDelete = '../pages/page_admin_delete.php';
+
+if (isset($_SESSION['role']) == 'admin') {
+    $pageAdmin = '../pages/page_admin.php';
 }
 
 $series = new Series();
@@ -39,14 +39,10 @@ if (count($_POST) > 0) {
         $errorMessageAddSeries['addSeriesTitle'] = 'Veuillez ajouter le titre.';
     }
     if (!empty($_POST['addSeriesDescription'])) {
-        if (preg_match($regexDescription, $_POST['addSeriesDescription'])) {
-            $addSeriesDescription = strip_tags(htmlspecialchars($_POST['addSeriesDescription']));
-            $series->sp_series_pages_description = $addSeriesDescription;
-        } else {
-            $errorMessageAddSeries['addSeriesDescription'] = 'La description ne peut pas contenir plus de 2500 caractères';
-        }
+        $addSeriesDescription = strip_tags(htmlspecialchars($_POST['addSeriesDescription']));
+        $series->sp_series_pages_description = $addSeriesDescription;
     } else {
-        $errorMessageAddSeries['addSeriesDescription'] = 'Veuillez ajouter la description.';
+        $errorMessageAddSeries['addSeriesDescription'] = 'La description ne peut pas contenir plus de 2500 caractères';
     }
     if (!empty($_POST['addSeriesSeasonsNumber'])) {
         if (preg_match($regexNumber, $_POST['addSeriesSeasonsNumber'])) {
@@ -83,15 +79,65 @@ if (count($_POST) > 0) {
             $addSeriesDiffusion = strip_tags(htmlspecialchars($_POST['addSeriesDiffusion']));
             $series->sp_series_pages_diffusion_channel = $addSeriesDiffusion;
         } else {
-            $errorMessageAddSeries['addSeriesDiffusion'] = 'Merci de rentrer une chaine valide!';
+            $errorMessageAddSeries['addSeriesDiffusion'] = 'Merci de rentrer une chaine valide.';
         }
     } else {
-        $errorMessageAddSeries['addSeriesDiffusion'] = 'Veuillez ajouter la chaîne de diffusion';
-    }    if ($series->addSeries() == TRUE) {
-            $succes = TRUE;
-            header('Location: ../../index.php');
+        $errorMessageAddSeries['addSeriesDiffusion'] = 'Veuillez ajouter la chaîne de diffusion.';
+    }
+    if (!empty($_POST['addSeriesTrailer'])) {
+        if (preg_match($regexTitle, $_POST['addSeriesTrailer'])) {
+            $addSeriesTrailer = strip_tags(htmlspecialchars($_POST['addSeriesTrailer']));
+            $series->sp_series_pages_trailer = $addSeriesTrailer;
+        } else {
+            $errorMessageAddSeries['addSeriesTrailer'] = 'Merci de rentrer un trailer valide.';
         }
-    
+    } else {
+        $errorMessageAddSeries['addSeriesTrailer'] = 'Veuillez ajouter le trailer de la série.';
+    }
+    if (!empty($_POST['addSeriesImage'])) {
+        if (preg_match($regexTitle, $_POST['addSeriesImage'])) {
+            $addSeriesImage = strip_tags(htmlspecialchars($_POST['addSeriesImage']));
+            $series->sp_series_pages_image = $addSeriesImage;
+        } else {
+            $errorMessageAddSeries['addSeriesImage'] = 'Merci de rentrer une image valide.';
+        }
+    } else {
+        $errorMessageAddSeries['addSeriesImage'] = 'Veuillez ajouter l\'image de la série.';
+    }
+    if (!empty($_POST['addSeriesFrenchTitle'])) {
+        if (preg_match($regexTitle, $_POST['addSeriesFrenchTitle'])) {
+            $addSeriesFrenchTitle = strip_tags(htmlspecialchars($_POST['addSeriesFrenchTitle']));
+            $series->sp_series_pages_french_title = $addSeriesFrenchTitle;
+        } else {
+            $errorMessageAddSeries['addSeriesFrenchTitle'] = 'Merci de rentrer un nom valide.';
+        }
+    } else {
+        $errorMessageAddSeries['addSeriesFrenchTitle'] = 'Veuillez ajouter le nom français la série.';
+    }
+    if (!empty($_POST['addSeriesOriginalTitle'])) {
+        if (preg_match($regexTitle, $_POST['addSeriesOriginalTitle'])) {
+            $addSeriesOriginalTitle = strip_tags(htmlspecialchars($_POST['addSeriesOriginalTitle']));
+            $series->sp_series_pages_original_title = $addSeriesOriginalTitle;
+        } else {
+            $errorMessageAddSeries['addSeriesOriginalTitle'] = 'Merci de rentrer un nom valide.';
+        }
+    } else {
+        $errorMessageAddSeries['addSeriesOriginalTitle'] = 'Veuillez ajouter le nom original de la série.';
+    }
+    if (!empty($_POST['addSeriesOrigin'])) {
+        if (preg_match($regexTitle, $_POST['addSeriesOrigin'])) {
+            $addSeriesOrigin = strip_tags(htmlspecialchars($_POST['addSeriesOrigin']));
+            $series->sp_series_pages_origin = $addSeriesOrigin;
+        } else {
+            $errorMessageAddSeries['addSeriesOrigin'] = 'Merci de rentrer une origine valide.';
+        }
+    } else {
+        $errorMessageAddSeries['addSeriesOrigin'] = 'Veuillez ajouter l\'origine de la série.';
+    }
+    if ($series->addSeries() == TRUE) {
+        $succes = TRUE;
+        header('Location: ../../index.php');
+    }
 }
 
 if (isset($_GET['logout'])) {

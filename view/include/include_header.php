@@ -86,12 +86,8 @@
                 <li class="nav-item">
                     <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Ajouter une série</b></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light mr-4" id="navCategorie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Administration</b></a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navCategorie">
-                        <a class="dropdown-item" href="<?= $pageAdminDelete ?>"><b>Supprimer Séries</b></a>
-                        <a class="dropdown-item" href="<?= $pageAdminVerif ?>"><b>Valider Séries</b></a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link text-light mr-4" href="<?= $pageAdmin ?>" id="navAddSeries"><b>Page Admin</b></a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -141,9 +137,6 @@
                         <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Science fiction"><b>Science fiction</b></a>
                         <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Ajouter une série</b></a>
                 </li>
             </ul>
             <ul class="navbar-nav">

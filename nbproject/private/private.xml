@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp64/www/Project/model/SP_categories.php</file>
-            <file>file:/C:/wamp64/www/Project/view/pages/page_admin_verif.php</file>
-            <file>file:/C:/wamp64/www/Project/model/SP_series_pages.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_index.php</file>
-            <file>file:/C:/wamp64/www/Project/view/include/include_header.php</file>
-            <file>file:/C:/wamp64/www/Project/controller/controller_page_admin_delete.php</file>
-            <file>file:/C:/wamp64/www/Project/index.php</file>
-            <file>file:/C:/wamp64/www/Project/view/pages/page_all_series.php</file>
-            <file>file:/C:/wamp64/www/Project/requet/sp_categories.sql</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

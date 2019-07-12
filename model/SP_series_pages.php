@@ -27,13 +27,18 @@ class Series extends Database {
     // Function ajouter une série
 
     public function addSeries() {
-        $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel)');
+        $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel, sp_series_pages_trailer, sp_series_pages_image, sp_series_pages_french_title, sp_series_pages_original_title, sp_series_pages_origin) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel, :sp_series_pages_trailer, :sp_series_pages_image, :sp_series_pages_french_title, :sp_series_pages_original_title, :sp_series_pages_origin)');
         $reqAddSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title);
         $reqAddSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description);
         $reqAddSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons);
         $reqAddSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes);
         $reqAddSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes);
         $reqAddSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel);
+        $reqAddSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer);
+        $reqAddSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image);
+        $reqAddSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title);
+        $reqAddSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title);
+        $reqAddSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin);
         if ($reqAddSeries->execute()) {
             return true;
         }

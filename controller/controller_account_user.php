@@ -25,8 +25,7 @@ $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
 if (isset($_SESSION['role']) == 'admin'){
-    $pageAdminVerif = '../pages/page_admin_verif.php';
-    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdmin = '../pages/page_admin.php';
 }
 
 $users = new Users();

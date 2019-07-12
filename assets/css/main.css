@@ -52,7 +52,7 @@ body {
     color: #EFF6E0;
 }
 
-#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie {
+#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie, .backgroundTheme {
     border: #01161E 1px solid;
     text-shadow: 1px 1px 1px black;
     line-height: 1rem;

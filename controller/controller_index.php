@@ -26,8 +26,7 @@ if (isset($_SESSION['id'])) {
 }
 
 if (isset($_SESSION['role']) == 'admin') {
-    $pageAdminVerif = 'view/pages/page_admin_verif.php';
-    $pageAdminDelete = 'view/pages/page_admin_delete.php';
+    $pageAdmin = 'view/pages/page_admin.php';
 }
 
 if (isset($_GET['logout'])) {
