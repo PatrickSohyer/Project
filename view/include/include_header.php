@@ -84,9 +84,6 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light mr-4" href="<?= $formAddSeries; ?>" id="navAddSeries"><b>Ajouter une série</b></a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-light mr-4" href="<?= $pageAdmin ?>" id="navAddSeries"><b>Page Admin</b></a>
                 </li>
             </ul>

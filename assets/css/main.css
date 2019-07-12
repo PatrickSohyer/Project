@@ -52,7 +52,7 @@ body {
     color: #EFF6E0;
 }
 
-#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie, .backgroundTheme {
+#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie {
     border: #01161E 1px solid;
     text-shadow: 1px 1px 1px black;
     line-height: 1rem;
@@ -259,7 +259,7 @@ ol {
 
 
 
-.informationSeriesCard, .seasonsSeriesCard {
+.informationSeriesCard, .seasonsSeriesCard, .backgroundTheme {
     border: #01161E 1px solid;
     background-color: #EFF6E0;
 }
@@ -309,3 +309,4 @@ noir : #01161E
 fond bleu clair : #d5f5ff
 praline : #EFF6E0
 bleu clair : #25C4EC */
+

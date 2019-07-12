@@ -17,16 +17,25 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
 $series = new Series();
-$seriesVerif = $series->seriesPagesVerification();
-if (isset($_GET['validation'])) {
-    $series->sp_series_pages_verification = 1;
-    $series->id = $_GET['validation'];
-    if ($series->seriesPagesUpdateVerif()) {
-        header('Location: page_admin_verif.php');
+
+$seriesPagination = $series->seriesPaginationAdmin();
+$nbSeriesPerPages = 12;
+$nbSeriesPage = $seriesPagination[0]['total'];
+$nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
+
+
+if (isset($_GET['page']) and is_numeric($_GET['page'])) {
+    $currentPage = $_GET['page'];
+    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
+    $seriesAllSeries = $series->seriesPagesAllSeries();
+    if ($currentPage >= $nbPages) {
+        $currentPage = $nbPages;
     }
 }
+
+

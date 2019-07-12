@@ -20,8 +20,6 @@ require '../../controller/controller_account_user.php';
 
     </head>
 
-
-
     <body>
 
         <?php

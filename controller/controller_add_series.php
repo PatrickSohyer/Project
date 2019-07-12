@@ -135,8 +135,9 @@ if (count($_POST) > 0) {
         $errorMessageAddSeries['addSeriesOrigin'] = 'Veuillez ajouter l\'origine de la série.';
     }
     if ($series->addSeries() == TRUE) {
-        $succes = TRUE;
-        header('Location: ../../index.php');
+        $successAddSeries = TRUE;
+
+        header('Location: page_form_add_series.php');
     }
 }
 

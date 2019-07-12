@@ -16,16 +16,31 @@ $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
+
 if (isset($_SESSION['role']) == 'admin'){
-    $pageAdminVerif = '../pages/page_admin_verif.php';
-    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdmin = '../pages/page_admin.php';
 }
 
 $series = new Series();
-$seriesAllSeries = $series->seriesPagesAllSeries();
+
 if (isset($_GET['delete'])) {
     $series->id = $_GET['delete'];
     if ($series->seriesPagesDeleteVerif()) {
-        header('Location: page_admin_delete.php');
+        header('Location: page_admin_delete.php?page=1');
+    }
+}
+
+$seriesPagination = $series->seriesPaginationAdmin();
+$nbSeriesPerPages = 12;
+$nbSeriesPage = $seriesPagination[0]['total'];
+$nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
+
+
+if (isset($_GET['page']) AND is_numeric($_GET['page'])) {
+    $currentPage = $_GET['page'];
+    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
+    $seriesAllSeries = $series->seriesPagesAllSeries();
+    if ($currentPage >= $nbPages) {
+        $currentPage = $nbPages;
     }
 }

@@ -57,26 +57,7 @@ require '../../controller/controller_page_admin_delete.php';
                                 <a href="page_info_series.php?id=<?= $value['id'] ?>"><img class="card-img-top" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" alt="Card image cap"></a>
                                 <div class="card-body text-center">
                                     <p class="card-title h5"><?= $value['sp_series_pages_title'] ?></p>
-                                    <a data-toggle="modal" data-target="#deleteSeriesModal<?= $value['id'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="deleteSeriesModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog colorFontBlue" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <p class="modal-title h3" id="exampleModalLabel">Supprimer la série</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Êtes vous sur de vouloir supprimer la série <b><?= $value['sp_series_pages_title'] ?></b> ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btnDeleteSeries btn btn-danger"><a href="page_admin_delete.php?delete=<?= $value['id'] ?>">Supprimer</a></button>
-                                        <button type="button" class="btn btn-success"><a href="page_admin_delete.php">Ne pas supprimer</a></button>
-                                    </div>
+                                    <a href="page_update_series.php?id=<?= $value['id'] ?>"><i class="text-dark fas fa-cog fa-2x"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -88,18 +69,18 @@ require '../../controller/controller_page_admin_delete.php';
                                 echo ' ';
                             } else { ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
+                                    <a class="page-link" href="page_admin_update.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
                                 </li>
                             <?php } ?>
                             <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
-                                <li class="page-item"><a class="page-link" href="page_admin_delete.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                <li class="page-item"><a class="page-link" href="page_admin_update.php?page=<?= $i ?>"><?= $i ?></a></li>
                             <?php }
                             if ($currentPage == $nbPages) {
                                 echo ' ';
                             } else { ?>
 
                                 <li class="page-item">
-                                    <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
+                                    <a class="page-link" href="page_admin_update.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
                                 </li>
                             <?php } ?>
                         </ul>

@@ -1,6 +1,7 @@
 <?php
 
-class Series extends Database {
+class Series extends Database
+{
 
     public $id;
     public $sp_series_pages_title;
@@ -20,13 +21,15 @@ class Series extends Database {
     public $nbSeriesPerPages = 12;
     public $firstPageSeries;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
     // Function ajouter une série
 
-    public function addSeries() {
+    public function addSeries()
+    {
         $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel, sp_series_pages_trailer, sp_series_pages_image, sp_series_pages_french_title, sp_series_pages_original_title, sp_series_pages_origin) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel, :sp_series_pages_trailer, :sp_series_pages_image, :sp_series_pages_french_title, :sp_series_pages_original_title, :sp_series_pages_origin)');
         $reqAddSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title);
         $reqAddSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description);
@@ -44,7 +47,8 @@ class Series extends Database {
         }
     }
 
-    public function selectSeriesImages() {
+    public function selectSeriesImages()
+    {
         $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
         $reqSelectSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
         $reqSelectSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
@@ -53,13 +57,31 @@ class Series extends Database {
         return $reqFetchSeries;
     }
 
-    public function seriesPagination() {
+    public function seriesPagination()
+    {
         $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
         $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
         return $fetchSeriesPagination;
     }
 
-    public function seriesPagesInfo() {
+    public function seriesPaginationAdmin()
+    {
+        $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages');
+        $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
+        return $fetchSeriesPagination;
+    }
+
+    public function selectSeriesPagesUpdate()
+    {
+        $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id');
+        $reqSeriesPageInfo->bindValue(':id', $this->id);
+        $reqSeriesPageInfo->execute();
+        $fetchSeriesPageInfo = $reqSeriesPageInfo->fetchAll();
+        return $fetchSeriesPageInfo;
+    }
+
+    public function seriesPagesInfo()
+    {
         $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
         $reqSeriesPageInfo->bindValue(':id', $this->id);
         $reqSeriesPageInfo->execute();
@@ -67,14 +89,18 @@ class Series extends Database {
         return $fetchSeriesPageInfo;
     }
 
-    public function seriesPagesAllSeries() {
-        $reqSeriesPagesAllSeries = $this->db->query('SELECT * FROM sp_series_pages');
+    public function seriesPagesAllSeries()
+    {
+        $reqSeriesPagesAllSeries = $this->db->prepare('SELECT * FROM sp_series_pages LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSeriesPagesAllSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
+        $reqSeriesPagesAllSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
         $reqSeriesPagesAllSeries->execute();
         $fetchSeriesPagesAllSeries = $reqSeriesPagesAllSeries->fetchAll();
         return $fetchSeriesPagesAllSeries;
     }
 
-    public function seriesPagesActor() {
+    public function seriesPagesActor()
+    {
         $reqSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
         $reqSeriesPagesActor->bindValue(':id', $this->id);
         $reqSeriesPagesActor->execute();
@@ -82,7 +108,8 @@ class Series extends Database {
         return $fetchSeriesPagesActor;
     }
 
-    public function seriesPagesCreator() {
+    public function seriesPagesCreator()
+    {
         $reqSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
         $reqSeriesPagesCreator->bindValue(':id', $this->id);
         $reqSeriesPagesCreator->execute();
@@ -90,7 +117,8 @@ class Series extends Database {
         return $fetchSeriesPagesCreator;
     }
 
-    public function seriesPagesEpisodes() {
+    public function seriesPagesEpisodes()
+    {
         $reqSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
         $reqSeriesPagesEpisodes->bindValue(':id', $this->id);
         $reqSeriesPagesEpisodes->execute();
@@ -98,13 +126,15 @@ class Series extends Database {
         return $fetchSeriesPagesEpisodes;
     }
 
-    public function seriesPagesVerification() {
+    public function seriesPagesVerification()
+    {
         $reqSeriesPageVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0');
         $fetchSeriesPageVerification = $reqSeriesPageVerification->fetchAll();
         return $fetchSeriesPageVerification;
     }
 
-    public function seriesPagesUpdateVerif() {
+    public function seriesPagesUpdateVerif()
+    {
         $reqSeriesPageUpdateVerif = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id');
         $reqSeriesPageUpdateVerif->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification);
         $reqSeriesPageUpdateVerif->bindValue(':id', $this->id);
@@ -113,7 +143,30 @@ class Series extends Database {
         }
     }
 
-    public function seriesPagesDeleteVerif() {
+    public function updateSeries()
+    {
+        $reqUpdateSeries = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_title = :sp_series_pages_title, sp_series_pages_description = :sp_series_pages_description, sp_series_pages_number_seasons = :sp_series_pages_number_seasons, sp_series_pages_number_episodes = :sp_series_pages_number_episodes, sp_series_pages_duration_episodes = :sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel = :sp_series_pages_diffusion_channel, sp_series_pages_trailer = :sp_series_pages_trailer, sp_series_pages_image = :sp_series_pages_image, sp_series_pages_french_title = :sp_series_pages_french_title, sp_series_pages_original_title = :sp_series_pages_original_title, sp_series_pages_origin = :sp_series_pages_origin WHERE id = :id');
+        $reqUpdateSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title);
+        $reqUpdateSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description);
+        $reqUpdateSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons);
+        $reqUpdateSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes);
+        $reqUpdateSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes);
+        $reqUpdateSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel);
+        $reqUpdateSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer);
+        $reqUpdateSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image);
+        $reqUpdateSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title);
+        $reqUpdateSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title);
+        $reqUpdateSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin);
+        $reqUpdateSeries->bindValue(':id', $this->id);
+        if ($reqUpdateSeries->execute()) {
+            return TRUE;
+        } 
+    }
+
+
+
+    public function seriesPagesDeleteVerif()
+    {
         $reqSeriesPageDeleteVerif = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id');
         $reqSeriesPageDeleteVerif->bindValue(':id', $this->id);
         if ($reqSeriesPageDeleteVerif->execute()) {
@@ -121,14 +174,14 @@ class Series extends Database {
         }
     }
 
-    public function updateNumberVote() {
+    public function updateNumberVote()
+    {
         $reqUpdateNumberVote = $this->db->prepare('Update sp_series_pages SET sp_series_pages_number_vote = :sp_series_pages_number_vote, sp_series_pages_rate = :sp_series_pages_rate WHERE id = :id');
         $reqUpdateNumberVote->bindValue(':sp_series_pages_number_vote', $this->sp_series_pages_number_vote);
         $reqUpdateNumberVote->bindValue(':sp_series_pages_rate', $this->sp_series_pages_rate);
         $reqUpdateNumberVote->bindValue(':id', $this->id);
-        if($reqUpdateNumberVote->execute()) {
+        if ($reqUpdateNumberVote->execute()) {
             return TRUE;
         }
     }
-
 }
