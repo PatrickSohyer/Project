@@ -1,4 +1,4 @@
-// Afficher et cacher les élements de la navigation dans SeriesCard
+// Je cache et affiche ce dont j'ai besoin dans mes différentes pages
 
 $('#contentPresentationSerie').show();
 $('#contentSeasons').hide();
@@ -18,12 +18,16 @@ $('.modifyInfoUsersDelete').hide();
 $('.buttonmodifyDeleteNo').hide();
 $('.buttonmodifyDeleteYes').hide();
 
+// fonction au click pour passer sur les saisons
+
 $('#slideItemSeasons').click(function () {
     $('#contentPresentationSerie').hide();
     $('#contentSeasons').show();
     $('#contentComment').hide();
     $('#contentArticle').hide();
 });
+
+// fonction au click pour passer sur presentation
 
 $('#slideItemPresentation').click(function () {
     $('#contentPresentationSerie').show();
@@ -32,12 +36,16 @@ $('#slideItemPresentation').click(function () {
     $('#contentArticle').hide();
 });
 
+// fonction au click pour passer sur les commentaires
+
 $('#slideItemComment').click(function () {
     $('#contentPresentationSerie').hide();
     $('#contentSeasons').hide();
     $('#contentComment').show();
     $('#contentArticle').hide();
 });
+
+// fonction au click pour passer sur les articles
 
 $('#slideItemArticle').click(function () {
     $('#contentPresentationSerie').hide();
@@ -50,43 +58,14 @@ $('#slideItemArticle').click(function () {
 
 
 $('#season1Episode').show();
-$('#season2Episode').hide();
-$('#season3Episode').hide();
-$('#season4Episode').hide();
-$('#season5Episode').hide();
-$('#season6Episode').hide();
-$('#season7Episode').hide();
-$('#season8Episode').hide();
-$('#season9Episode').hide();
-$('#season10Episode').hide();
-$('#season11Episode').hide();
-$('#season12Episode').hide();
-$('#season13Episode').hide();
-$('#season14Episode').hide();
-$('#season15Episode').hide();
 
-$('#seasons1Click').click(function () {
-    $('#season1Episode').show();
-    $('#season2Episode').hide();
-    $('#season3Episode').hide();
-    $('#season4Episode').hide();
-    $('#season5Episode').hide();
-    $('#season6Episode').hide();
-    $('#season7Episode').hide();
-    $('#season8Episode').hide();
-    $('#season9Episode').hide();
-    $('#season10Episode').hide();
-    $('#season11Episode').hide();
-    $('#season12Episode').hide();
-    $('#season13Episode').hide();
-    $('#season14Episode').hide();
-    $('#season15Episode').hide();
-});
-
+// fonction pour les popovers
 
 $(function () {
     $('[data-toggle="popover"]').popover();
 });
+
+// fonction pour modifier le login
 
 $('.buttonModifyLogin').click(function () {
     $('.infoUsersLogin').hide();
@@ -95,6 +74,8 @@ $('.buttonModifyLogin').click(function () {
     $('.buttonValidateLogin').show();
 });
 
+// fonction pour modifier le mail
+
 $('.buttonModifyEmail').click(function () {
     $('.infoUsersEmail').hide();
     $('.modifyInfoUsersEmail').show();
@@ -102,12 +83,16 @@ $('.buttonModifyEmail').click(function () {
     $('.buttonValidateEmail').show();
 });
 
+// fonction pour modifier le pays
+
 $('.buttonModifyCountry').click(function () {
     $('.infoUsersCountry').hide();
     $('.modifyInfoUsersCountry').show();
     $('.buttonModifyCountry').hide();
     $('.buttonValidateCountry').show();
 });
+
+// fonction pour modifier le mot de passe
 
 $('.buttonModifyPassword').click(function () {
     $('.infoUsersLogin').hide();
@@ -120,6 +105,8 @@ $('.buttonModifyPassword').click(function () {
     $('.buttonValidatePassword').show();
     $('.modifyInfoUsersPasswordConfirm').show();
 });
+
+// fonction pour supprimer un compte
 
 $('.buttonModifyDelete').click(function () {
     $('.infoUsersLogin').hide();
