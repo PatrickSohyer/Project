@@ -1,8 +1,12 @@
 <?php
 
+// Require des model dont j'ai besoin 
+
 require '../../model/SP_database.php';
 require '../../model/SP_series_pages.php';
 require '../../model/SP_categories.php';
+
+// Définition des chemins d'accès aux différentes pages
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -18,23 +22,31 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
+// Création de mon objet Categories et Series
+
 $categories = new Categories();
 $series = new Series();
+
+// Création de mes variables pour la pagination
+
 $seriesPagination = $series->seriesPagination();
 $nbSeriesPerPages = 12;
 $nbSeriesPage = $seriesPagination[0]['total'];
 $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
 
+// je créer mes conditions pour les pages et les catégories
 
-if (isset($_GET['page']) AND is_numeric($_GET['page']) AND isset($_GET['categorie'])) {
+if (isset($_GET['page']) and is_numeric($_GET['page']) and isset($_GET['categorie'])) {
     $currentPage = $_GET['page'];
     $categories->sp_categories_gender = $_GET['categorie'];
     $categoriesSeries = $categories->getSeriesPagesCategories();
-} elseif (isset($_GET['page']) AND is_numeric($_GET['page'])) {
+} elseif (isset($_GET['page']) and is_numeric($_GET['page'])) {
     $currentPage = $_GET['page'];
     $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
     $seriesResult = $series->selectSeriesImages();
@@ -45,9 +57,7 @@ if (isset($_GET['page']) AND is_numeric($_GET['page']) AND isset($_GET['categori
     header('Location: page_error.php');
 }
 
-
-
-
+// Ma condition pour la déconnexion
 
 if (isset($_GET['logout'])) {
     session_destroy();

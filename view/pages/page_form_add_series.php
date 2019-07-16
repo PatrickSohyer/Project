@@ -74,10 +74,6 @@ require_once '../../controller/controller_add_series.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/admin.js"></script>
-    <?php if(isset($successAddSeries) AND $successAddSeries === TRUE ) { ?>
-        <script src="../../assets/js/swal_add_series.js"></script>
-    <?php } ?>
-
 
 </body>
 

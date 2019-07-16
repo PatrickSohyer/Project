@@ -1,6 +1,11 @@
 <?php
 
+// Require des model dont j'ai besoin
+
 require '../../model/SP_database.php';
+
+// Définition des chemins d'accès aux différentes pages
+
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
 $accountUser = '../pages/page_account_user.php';
@@ -15,6 +20,8 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }

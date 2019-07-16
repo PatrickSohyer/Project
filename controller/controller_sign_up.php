@@ -1,13 +1,20 @@
 <?php
 
+// Require des model dont j'ai besoin et de mon tableau des pays 
+
 require '../../model/SP_database.php';
 require '../../model/SP_users.php';
-require'../../assets/country/country.php';
+require '../../assets/country/country.php';
+
+// Création des regex pour le formulaire 
+
 $regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/';
 $regexMail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
 $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 $country = implode('|', $countryCode);
 $regexCountry = '/^(' . $country . ')$/ ';
+
+// Définition des chemins d'accès aux différentes pages
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -22,17 +29,24 @@ $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
+// Création de mon objet Users
+
 $users = new Users();
 
+// Création de mon Tableau d'erreur
 
 $errorMessage = array();
 
+// condition et vérification de mon inscription
+
 if (COUNT($_POST) > 0) {
-    require_once ('../../assets/country/country.php');
+    require_once('../../assets/country/country.php');
     if (!empty($_POST['pseudoSignUp'])) {
         if (preg_match($regexLogin, $_POST['pseudoSignUp'])) {
             $pseudoSignUp = strip_tags(htmlspecialchars($_POST['pseudoSignUp']));
@@ -104,8 +118,9 @@ if (COUNT($_POST) > 0) {
     }
 }
 
+// Ma condition pour la déconnexion
+
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: index.php');
 }
-    

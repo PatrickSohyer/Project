@@ -1,7 +1,11 @@
 <?php
 
+// Require des model dont j'ai besoin 
+
 require '../../model/SP_database.php';
 require '../../model/SP_series_pages.php';
+
+// Définition des chemins d'accès aux différentes pages
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -17,12 +21,19 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
 if (isset($_SESSION['role']) == 'admin'){
     $pageAdmin = '../pages/page_admin.php';
 }
 
+// Création de mon objet Series et hydratation
+ 
 $series = new Series();
 $seriesVerif = $series->seriesPagesVerification();
+
+// Condition pour vérifier une série
+
 if (isset($_GET['validation'])) {
     $series->sp_series_pages_verification = 1;
     $series->id = $_GET['validation'];

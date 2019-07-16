@@ -1,11 +1,21 @@
 <?php
 
+// Require des model dont j'ai besoin
+
 require '../../model/SP_database.php';
 require '../../model/SP_series_pages.php';
+
+// Création des regex pour le formulaire 
+
 $regexTitle = '/^^.{2,250}$/';
 $regexDescription = '/^.{0,8000}$/';
 $regexNumber = '/^[0-9]+$/';
+
+// Création de mon Tableau d'erreur
+
 $errorMessageAddSeries = array();
+
+// Définition des chemins d'accès aux différentes pages
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -21,11 +31,17 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
 if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
+// Création de mon objet Series
+
 $series = new Series();
+
+// Vérification de mon formulaire pour ajouter une séries
 
 if (count($_POST) > 0) {
     if (!empty($_POST['addSeriesTitle'])) {
@@ -135,11 +151,13 @@ if (count($_POST) > 0) {
         $errorMessageAddSeries['addSeriesOrigin'] = 'Veuillez ajouter l\'origine de la série.';
     }
     if ($series->addSeries() == TRUE) {
-        $successAddSeries = TRUE;
+        $_SESSION['addSeries'] = TRUE;
 
         header('Location: page_form_add_series.php');
     }
 }
+
+// Ma condition pour la déconnexion
 
 if (isset($_GET['logout'])) {
     session_destroy();

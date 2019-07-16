@@ -1,14 +1,20 @@
 <?php
 
+// Require des model dont j'ai besoin et du tableau des pays
+
 require '../../model/SP_database.php';
 require '../../model/SP_users.php';
-require'../../assets/country/country.php';
+require '../../assets/country/country.php';
+
+// Création des regex pour le formulaire 
+
 $regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/';
 $regexMail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
 $regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
 $country = implode('|', $countryCode);
 $regexCountry = '/^(' . $country . ')$/ ';
 
+// Définition des chemins d'accès aux différentes pages
 
 $sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
 $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
@@ -24,14 +30,21 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
+// Création de mon objet USERS
+
 $users = new Users();
+
+// Création de mon Tableau d'erreur
+
 $errorMessage = array();
 
-
+// Vérification et Update pour le Login
 
 if (isset($_POST['modifyLoginValidate'])) {
     if (!empty($_POST['newLogin'])) {
@@ -45,7 +58,8 @@ if (isset($_POST['modifyLoginValidate'])) {
         }
     } else {
         $errorMessage['newLogin'] = 'Merci de renseigner un pseudonyme.';
-    } if (count($resultFilterLogin) > 0) {
+    }
+    if (count($resultFilterLogin) > 0) {
         if ($resultFilterLogin[0]['id'] != $_SESSION['id']) {
             $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
         }
@@ -56,6 +70,8 @@ if (isset($_POST['modifyLoginValidate'])) {
         }
     }
 }
+
+// Vérification et Update pour l'Email
 
 if (isset($_POST['modifyEmailValidate'])) {
     if (!empty($_POST['newEmail'])) {
@@ -69,7 +85,8 @@ if (isset($_POST['modifyEmailValidate'])) {
         }
     } else {
         $errorMessage['newEmail'] = 'Merci de renseigner votre Email.';
-    } if (count($resultFilterEmail) > 0) {
+    }
+    if (count($resultFilterEmail) > 0) {
         if ($resultFilterEmail[0]['id'] != $_SESSION['id']) {
             $errorMessage['resultFilterEmail'] = 'Ce mail est déjà utilisé';
         }
@@ -80,6 +97,8 @@ if (isset($_POST['modifyEmailValidate'])) {
         }
     }
 }
+
+// Vérification et Update pour le pays
 
 if (isset($_POST['modifyCountryValidate'])) {
     if (!empty($_POST['newCountry'])) {
@@ -92,11 +111,14 @@ if (isset($_POST['modifyCountryValidate'])) {
         }
     } else {
         $errorMessage['newCountry'] = 'Merci de renseigner un pays.';
-    } if ($users->updateCountryUsers() == TRUE) {
+    }
+    if ($users->updateCountryUsers() == TRUE) {
         $succes = TRUE;
         header('Location: page_account_user.php');
     }
 }
+
+// Vérification et Update pour le mot de passe
 
 if (isset($_POST['modifyPasswordValidate'])) {
     if (!empty($_POST['newPassword'])) {
@@ -125,17 +147,19 @@ if (isset($_POST['modifyPasswordValidate'])) {
         $errorMessage['newPasswordDiff'] = 'Mot de passe différent';
     } else if ($_POST['newPassword'] == $_POST['newPasswordConfirm']) {
         $users->updatePasswordUsers() == TRUE;
-            $succes = TRUE;
-            header('Location: page_account_user.php');
+        $succes = TRUE;
+        header('Location: page_account_user.php');
     }
 }
 
-
+// Ma condition pour la déconnexion
 
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: ../index.php');
 }
+
+// Ma condition pour qu'un utilisateur supprime son compte
 
 if (isset($_GET['deleteID'])) {
     $users->id = $_SESSION['id'];
@@ -144,6 +168,8 @@ if (isset($_GET['deleteID'])) {
     header('Location: ../../index.php');
 }
 
+
+// Hydratation de l'id et appel de ma method
 
 $users->id = $_SESSION['id'];
 $usersResult = $users->selectUsers();

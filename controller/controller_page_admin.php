@@ -17,12 +17,13 @@ $formAddSeries = '../pages/page_form_add_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
-if (isset($_SESSION['role']) == 'admin'){
+if (isset($_SESSION['role']) == 'admin') {
     $pageAdmin = '../pages/page_admin.php';
 }
 
 $series = new Series();
 $seriesVerif = $series->seriesPagesVerification();
+
 if (isset($_GET['validation'])) {
     $series->sp_series_pages_verification = 1;
     $series->id = $_GET['validation'];
