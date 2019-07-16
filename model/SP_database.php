@@ -1,8 +1,15 @@
 <?php
 
+// Création de ma class Database
+
 class Database
 {
+
+    // Je déclare mon attribut en protected
+
     protected $db;
+
+    // Je créer mon constructeur et j'appel ma base de donnée
 
     public function __construct()
     {

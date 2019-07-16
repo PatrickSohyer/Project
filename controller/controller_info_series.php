@@ -35,7 +35,7 @@ $series = new Series();
 
 if (isset($_GET['rate']) AND is_numeric($_GET['rate'])) {
     $series->id = $_GET['id'];
-    $seriesInfoRate = $series->seriesPagesInfo();
+    $seriesInfoRate = $series->selectSeriesPagesInfo();
     $rate = $_GET['rate'];
     if (is_null($seriesInfoRate['sp_series_pages_rate'])) {
         $newRate = $rate;
@@ -56,7 +56,7 @@ if (isset($_GET['rate']) AND is_numeric($_GET['rate'])) {
 
 if (isset($_GET['id']) AND is_numeric($_GET['id'])) {
     $series->id = $_GET['id'];
-    $seriesInfo = $series->seriesPagesInfo();
+    $seriesInfo = $series->selectSeriesPagesInfo();
 } else {
     header('Location: page_error.php');
 }
@@ -65,21 +65,21 @@ if (isset($_GET['id']) AND is_numeric($_GET['id'])) {
 
 if (isset($_GET['id'])) {
     $series->id = $_GET['id'];
-    $seriesActor = $series->seriesPagesActor();
+    $seriesActor = $series->selectSeriesPagesActor();
 }
 
 // condition pour afficher les bonnes informations selon l'id
 
 if (isset($_GET['id'])) {
     $series->id = $_GET['id'];
-    $seriesCreator = $series->seriesPagesCreator();
+    $seriesCreator = $series->selectSeriesPagesCreator();
 }
 
 // condition pour afficher les bonnes informations selon l'id
 
 if (isset($_GET['id'])) {
     $series->id = $_GET['id'];
-    $seriesEpisodes = $series->seriesPagesEpisodes();
+    $seriesEpisodes = $series->selectSeriesPagesEpisodes();
 }
 
 // Ma condition pour la déconnexion

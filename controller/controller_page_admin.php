@@ -22,12 +22,12 @@ if (isset($_SESSION['role']) == 'admin') {
 }
 
 $series = new Series();
-$seriesVerif = $series->seriesPagesVerification();
+$seriesVerif = $series->selectSeriesPagesVerification();
 
 if (isset($_GET['validation'])) {
     $series->sp_series_pages_verification = 1;
     $series->id = $_GET['validation'];
-    if ($series->seriesPagesUpdateVerif()) {
+    if ($series->updateVerifSeriesPages()) {
         header('Location: page_admin_verif.php');
     }
 }

@@ -35,7 +35,7 @@ $series = new Series();
 
 // Création de mes variables pour la pagination
 
-$seriesPagination = $series->seriesPagination();
+$seriesPagination = $series->countSeriesPagination();
 $nbSeriesPerPages = 12;
 $nbSeriesPage = $seriesPagination[0]['total'];
 $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);

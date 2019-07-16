@@ -1,7 +1,11 @@
 <?php
 
+// Je créer ma classe Series qui est une enfant de ma class Database
+
 class Series extends Database
 {
+
+    // Je déclare mes attributs
 
     public $id;
     public $sp_series_pages_title;
@@ -21,12 +25,7 @@ class Series extends Database
     public $nbSeriesPerPages = 12;
     public $firstPageSeries;
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    // Function ajouter une série
+    // Methode qui parmet d'ajouter une série
 
     public function addSeries()
     {
@@ -47,6 +46,8 @@ class Series extends Database
         }
     }
 
+    // Methode qui permet de selectionner les images d'une séries
+
     public function selectSeriesImages()
     {
         $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
@@ -57,19 +58,25 @@ class Series extends Database
         return $reqFetchSeries;
     }
 
-    public function seriesPagination()
+    // Methode qui permet de compter le nombre de série total pour la pagination si la série est valider
+
+    public function countSeriesPagination()
     {
-        $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
-        $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
-        return $fetchSeriesPagination;
+        $reqCountSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
+        $fetchCountSeriesPagination = $reqCountSeriesPagination->fetchAll();
+        return $fetchCountSeriesPagination;
     }
 
-    public function seriesPaginationAdmin()
+    // Methode qui permet de compter le nombre de série total pour la pagination sur ma console admin
+
+    public function countSeriesPaginationAdmin()
     {
-        $reqSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages');
-        $fetchSeriesPagination = $reqSeriesPagination->fetchAll();
-        return $fetchSeriesPagination;
+        $reqCountSeriesPaginationAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages');
+        $fetchCountSeriesPaginationAdmin = $reqCountSeriesPaginationAdmin->fetchAll();
+        return $fetchCountSeriesPaginationAdmin;
     }
+
+    // Methode qui permet de selectionner toutes les séries à mettre à jour
 
     public function selectSeriesPagesUpdate()
     {
@@ -80,68 +87,84 @@ class Series extends Database
         return $fetchSeriesPageInfo;
     }
 
-    public function seriesPagesInfo()
+    // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
+
+    public function selectSeriesPagesInfo()
     {
-        $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
-        $reqSeriesPageInfo->bindValue(':id', $this->id);
-        $reqSeriesPageInfo->execute();
-        $fetchSeriesPageInfo = $reqSeriesPageInfo->fetch();
-        return $fetchSeriesPageInfo;
+        $reqselectSeriesPagesInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
+        $reqselectSeriesPagesInfo->bindValue(':id', $this->id);
+        $reqselectSeriesPagesInfo->execute();
+        $fetchselectSeriesPagesInfo = $reqselectSeriesPagesInfo->fetch();
+        return $fetchselectSeriesPagesInfo;
     }
 
-    public function seriesPagesAllSeries()
+    // Methode qui permet de Selectionner selon la limit définis pour la pagination
+
+    public function selectSeriesPagesAllSeries()
     {
-        $reqSeriesPagesAllSeries = $this->db->prepare('SELECT * FROM sp_series_pages LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
-        $reqSeriesPagesAllSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
-        $reqSeriesPagesAllSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
-        $reqSeriesPagesAllSeries->execute();
-        $fetchSeriesPagesAllSeries = $reqSeriesPagesAllSeries->fetchAll();
-        return $fetchSeriesPagesAllSeries;
+        $reqSelectSeriesPagesAllSeries = $this->db->prepare('SELECT * FROM sp_series_pages LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSelectSeriesPagesAllSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
+        $reqSelectSeriesPagesAllSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
+        $reqSelectSeriesPagesAllSeries->execute();
+        $fetchSelectSeriesPagesAllSeries = $reqSelectSeriesPagesAllSeries->fetchAll();
+        return $fetchSelectSeriesPagesAllSeries;
     }
 
-    public function seriesPagesActor()
+    // Methode qui permet de Selectionner les acteurs en fonctions de l'id de la série
+
+    public function selectSeriesPagesActor()
     {
-        $reqSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
-        $reqSeriesPagesActor->bindValue(':id', $this->id);
-        $reqSeriesPagesActor->execute();
-        $fetchSeriesPagesActor = $reqSeriesPagesActor->fetchAll();
-        return $fetchSeriesPagesActor;
+        $reqSelectSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSelectSeriesPagesActor->bindValue(':id', $this->id);
+        $reqSelectSeriesPagesActor->execute();
+        $fetchSelectSeriesPagesActor = $reqSelectSeriesPagesActor->fetchAll();
+        return $fetchSelectSeriesPagesActor;
     }
 
-    public function seriesPagesCreator()
+    // Methode qui permet de Selectionner les créateurs en fonctions de l'id de la série
+
+    public function selectSeriesPagesCreator()
     {
-        $reqSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
-        $reqSeriesPagesCreator->bindValue(':id', $this->id);
-        $reqSeriesPagesCreator->execute();
-        $fetchSeriesPagesCreator = $reqSeriesPagesCreator->fetchAll();
-        return $fetchSeriesPagesCreator;
+        $reqSelectSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSelectSeriesPagesCreator->bindValue(':id', $this->id);
+        $reqSelectSeriesPagesCreator->execute();
+        $fetchSelectSeriesPagesCreator = $reqSelectSeriesPagesCreator->fetchAll();
+        return $fetchSelectSeriesPagesCreator;
     }
 
-    public function seriesPagesEpisodes()
+    // Methode qui permet de Selectionner les épisodes d'une série en fonction de l'id de la série
+
+    public function selectSeriesPagesEpisodes()
     {
-        $reqSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
-        $reqSeriesPagesEpisodes->bindValue(':id', $this->id);
-        $reqSeriesPagesEpisodes->execute();
-        $fetchSeriesPagesEpisodes = $reqSeriesPagesEpisodes->fetchAll();
-        return $fetchSeriesPagesEpisodes;
+        $reqSelectSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSelectSeriesPagesEpisodes->bindValue(':id', $this->id);
+        $reqSelectSeriesPagesEpisodes->execute();
+        $fetchSelectSeriesPagesEpisodes = $reqSelectSeriesPagesEpisodes->fetchAll();
+        return $fetchSelectSeriesPagesEpisodes;
     }
 
-    public function seriesPagesVerification()
+    // Methode qui permet de Selectionner les séries qui n'ont pas encore été valider
+
+    public function selectSeriesPagesVerification()
     {
-        $reqSeriesPageVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0');
-        $fetchSeriesPageVerification = $reqSeriesPageVerification->fetchAll();
-        return $fetchSeriesPageVerification;
+        $reqSelectSeriesPagesVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0');
+        $fetchSelectSeriesPagesVerification = $reqSelectSeriesPagesVerification->fetchAll();
+        return $fetchSelectSeriesPagesVerification;
     }
 
-    public function seriesPagesUpdateVerif()
+    // Methode qui permet de vérifier et valider une série
+
+    public function updateVerifSeriesPages()
     {
-        $reqSeriesPageUpdateVerif = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id');
-        $reqSeriesPageUpdateVerif->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification);
-        $reqSeriesPageUpdateVerif->bindValue(':id', $this->id);
-        if ($reqSeriesPageUpdateVerif->execute()) {
+        $reqUpdateVerifSeriesPages = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id');
+        $reqUpdateVerifSeriesPages->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification);
+        $reqUpdateVerifSeriesPages->bindValue(':id', $this->id);
+        if ($reqUpdateVerifSeriesPages->execute()) {
             return TRUE;
         }
     }
+
+    // Methode qui permet de modifier les informations d'une série
 
     public function updateSeries()
     {
@@ -160,19 +183,21 @@ class Series extends Database
         $reqUpdateSeries->bindValue(':id', $this->id);
         if ($reqUpdateSeries->execute()) {
             return TRUE;
-        } 
+        }
     }
 
+    // Method qui permet de supprimer une série
 
-
-    public function seriesPagesDeleteVerif()
+    public function deleteSeriesPages()
     {
-        $reqSeriesPageDeleteVerif = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id');
-        $reqSeriesPageDeleteVerif->bindValue(':id', $this->id);
-        if ($reqSeriesPageDeleteVerif->execute()) {
+        $reqdeleteSeriesPages = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id');
+        $reqdeleteSeriesPages->bindValue(':id', $this->id);
+        if ($reqdeleteSeriesPages->execute()) {
             return TRUE;
         }
     }
+
+    // Methode qui permet de mettre à jour le nombre de vote 
 
     public function updateNumberVote()
     {

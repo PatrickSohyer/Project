@@ -1,13 +1,17 @@
 <?php
 
+// Création de ma classe Categories qui est une enfant de la classe Database 
+
 class Categories extends Database
 {
+
+    // Déclaration de mes attributs
 
     public $id;
     public $sp_categories_gender;
 
 
-
+    // Déclaration de la method
 
     public function getSeriesPagesCategories()
     {

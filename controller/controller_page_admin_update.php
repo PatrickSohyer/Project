@@ -33,7 +33,7 @@ $series = new Series();
 
 // Création de mes variables pour la pagination
 
-$seriesPagination = $series->seriesPaginationAdmin();
+$seriesPagination = $series->countSeriesPaginationAdmin();
 $nbSeriesPerPages = 12;
 $nbSeriesPage = $seriesPagination[0]['total'];
 $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
@@ -43,7 +43,7 @@ $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages);
 if (isset($_GET['page']) and is_numeric($_GET['page'])) {
     $currentPage = $_GET['page'];
     $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
-    $seriesAllSeries = $series->seriesPagesAllSeries();
+    $seriesAllSeries = $series->selectSeriesPagesAllSeries();
     if ($currentPage >= $nbPages) {
         $currentPage = $nbPages;
     }
