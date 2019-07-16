@@ -2,40 +2,42 @@
 
 // Require des model dont j'ai besoin et de mon tableau des pays 
 
-require '../../model/SP_database.php';
-require '../../model/SP_users.php';
-require '../../assets/country/country.php';
+require '../../model/SP_database.php'; // require de ma database
+require '../../model/SP_users.php'; // require de ma table users
+require '../../assets/country/country.php'; // require de mon tableau des pays
 
 // Création des regex pour le formulaire 
 
-$regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/';
-$regexMail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-$regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/';
-$country = implode('|', $countryCode);
-$regexCountry = '/^(' . $country . ')$/ ';
+$regexLogin = '/^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/'; // regex pour le login
+$regexMail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'; // regex pour le mail
+$regexPassword = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([-.+!*$@%_\w]{8,500})$/'; // regex pour le mot de passe
+$country = implode('|', $countryCode); // je regroupe en une string séparer par |
+$regexCountry = '/^(' . $country . ')$/ '; // regex pour le pays en prenant 
 
 // Définition des chemins d'accès aux différentes pages
 
-$sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg';
-$sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';
-$accountUser = '../pages/page_account_user.php';
-$articlePage = '../pages/page_article_info.php';
-$allSeriesPage = '../pages/page_all_series.php?page=1';
-$allArticlesPage = '../pages/page_all_articles.php';
-$mentionsLegalsPage = '../pages/page_mentions_legals.php';
-$infoSeries = '../pages/page_info_series.php';
-$signUpPage = '../pages/page_form_sign_up.php';
-$signInPage = '../pages/page_form_sign_in.php';
-$formAddSeries = '../pages/page_form_add_series.php';
-$logout = '../../index.php';
+$sourceBanner = '../../assets/images/imgAccueil/BannerPhil.jpg'; // chemin de ma bannière 
+$sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';  // chemin du logo de la navbar
+$accountUser = '../pages/page_account_user.php'; // chemin de la page mon compte
+$articlePage = '../pages/page_article_info.php'; // chemin de la page avec un article
+$allSeriesPage = '../pages/page_all_series.php?page=1'; // chemain de la page avec toutes les séries
+$allArticlesPage = '../pages/page_all_articles.php'; // chemin de la page avec tout les articles
+$mentionsLegalsPage = '../pages/page_mentions_legals.php'; // chemin de la page pour les mentions legals
+$infoSeries = '../pages/page_info_series.php'; // chemin de la page avec une séries et ses informations
+$signUpPage = '../pages/page_form_sign_up.php'; // chemin de la page pour s'inscrire
+$signInPage = '../pages/page_form_sign_in.php'; // chemin de la page pour se connecter
+$formAddSeries = '../pages/page_form_add_series.php'; // chemin de la page pour ajouter une série
+$suggestSeriesPages = '../pages/page_suggest_series.php'; // chemin de la page pour suggérer une série
+$logout = '../../index.php'; // chemin de la page quand on clique sur ce déconnecter
+$categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand on choisis une catégorie
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
-if (isset($_SESSION['role']) == 'admin') {
-    $pageAdmin = '../pages/page_admin.php';
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
+    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
 }
 
-// Création de mon objet Users
+// Instanciation de mon objet Users
 
 $users = new Users();
 
@@ -45,82 +47,82 @@ $errorMessage = array();
 
 // condition et vérification de mon inscription
 
-if (COUNT($_POST) > 0) {
-    require_once('../../assets/country/country.php');
-    if (!empty($_POST['pseudoSignUp'])) {
-        if (preg_match($regexLogin, $_POST['pseudoSignUp'])) {
-            $pseudoSignUp = strip_tags(htmlspecialchars($_POST['pseudoSignUp']));
-            $users->sp_users_login = $pseudoSignUp;
+if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
+    require_once('../../assets/country/country.php'); // je requie une fois mon tableau des pays
+    if (!empty($_POST['pseudoSignUp'])) { // si le post pour le pseudo n'est pas vide
+        if (preg_match($regexLogin, $_POST['pseudoSignUp'])) { // vérification des regex sur le pseudo
+            $pseudoSignUp = strip_tags(htmlspecialchars($_POST['pseudoSignUp'])); // protection du pseudo
+            $users->sp_users_login = $pseudoSignUp; // hydratation de mon objet
         } else {
-            $errorMessage['pseudoSignUp'] = 'Merci de rentrer un pseudonyme valide.';
+            $errorMessage['pseudoSignUp'] = 'Merci de rentrer un login valide!'; // message d'erreur regex
         }
     } else {
-        $errorMessage['pseudoSignUp'] = 'Merci de renseigner un pseudonyme.';
+        $errorMessage['pseudoSignUp'] = 'Merci de renseigner un login.'; // message d'erreur si c'est vide
     }
-    if (!empty($_POST['emailSignUp'])) {
-        if (filter_var($_POST['emailSignUp'], FILTER_VALIDATE_EMAIL)) {
-            $emailSignUp = strip_tags(htmlspecialchars($_POST['emailSignUp']));
-            $users->sp_users_email = $emailSignUp;
+    if (!empty($_POST['emailSignUp'])) { // si le post pour le mail n'est pas vide
+        if (filter_var($_POST['emailSignUp'], FILTER_VALIDATE_EMAIL)) { // je filtre pour vérifier que c'est bien un mail
+            $emailSignUp = strip_tags(htmlspecialchars($_POST['emailSignUp'])); // protection du mail
+            $users->sp_users_email = $emailSignUp; // hydratation de mon objet
         } else {
-            $errorMessage['emailSignUp'] = 'Ceci n\'est pas une adresse mail valide.';
+            $errorMessage['emailSignUp'] = 'Ceci n\'est pas une adresse mail valide.'; // message d'erreur regex
         }
     } else {
-        $errorMessage['emailSignUp'] = 'Merci de renseigner votre Email.';
+        $errorMessage['emailSignUp'] = 'Merci de renseigner votre Email.'; // message d'erreur si c'est vide
     }
-    if (!empty($_POST['countrySignUp'])) {
-        if (preg_match($regexCountry, $_POST['countrySignUp'])) {
-            $countrySignUp = strip_tags(htmlspecialchars($_POST['countrySignUp']));
-            $users->sp_users_country = $countrySignUp;
+    if (!empty($_POST['countrySignUp'])) { // si le post pour le pays n'est pas vide
+        if (preg_match($regexCountry, $_POST['countrySignUp'])) { // vérification des regex sur le pays
+            $countrySignUp = strip_tags(htmlspecialchars($_POST['countrySignUp'])); // protection du pays
+            $users->sp_users_country = $countrySignUp; // hydratation de mon objet
         } else {
-            $errorMessage['countrySignUp'] = 'Votre nationalité n\'est pas valide!';
+            $errorMessage['countrySignUp'] = 'Votre nationalité n\'est pas valide!'; // message d'erreur regex
         }
     } else {
-        $errorMessage['countrySignUp'] = 'Merci de rentrer votre nationalité.';
+        $errorMessage['countrySignUp'] = 'Merci de rentrer votre nationalité.'; // message d'erreur si c'est vide
     }
-    if (!empty($_POST['passwordSignUp'])) {
-        if (preg_match($regexPassword, $_POST['passwordSignUp'])) {
-            $passwordSignUp = strip_tags(htmlspecialchars($_POST['passwordSignUp']));
-            $passwordCryptSignUp = password_hash($passwordSignUp, PASSWORD_BCRYPT);
-            $users->sp_users_password = $passwordCryptSignUp;
+    if (!empty($_POST['passwordSignUp'])) { // si le post pour le mot de passe n'est pas vide
+        if (preg_match($regexPassword, $_POST['passwordSignUp'])) { // vérification des regex sur le mot de passe
+            $passwordSignUp = strip_tags(htmlspecialchars($_POST['passwordSignUp'])); // protection du mot de passe
+            $passwordCryptSignUp = password_hash($passwordSignUp, PASSWORD_BCRYPT); // je hash le mot de passe
+            $users->sp_users_password = $passwordCryptSignUp; // hydratation de mon objet
         } else {
-            $errorMessage['passwordSignUp'] = 'Mot de passe invalide.';
+            $errorMessage['passwordSignUp'] = 'Mot de passe invalide.'; // message d'erreur regex
         }
     } else {
-        $errorMessage['passwordSignUp'] = 'Merci de renseigner votre mot de passe.';
+        $errorMessage['passwordSignUp'] = 'Merci de renseigner votre mot de passe.'; // message d'erreur si c'est vide
     }
-    if (!empty($_POST['passwordConfirmationSignUp'])) {
-        if (preg_match($regexPassword, $_POST['passwordConfirmationSignUp'])) {
-            $passwordConfirmationSignUp = strip_tags(htmlspecialchars($_POST['passwordConfirmationSignUp']));
+    if (!empty($_POST['passwordConfirmationSignUp'])) { // si le post pour la confirmation du mot de passe n'est pas vide
+        if (preg_match($regexPassword, $_POST['passwordConfirmationSignUp'])) { // vérification des regex sur la confirmation du mot de passe
+            $passwordConfirmationSignUp = strip_tags(htmlspecialchars($_POST['passwordConfirmationSignUp'])); // protection de la confirmation du mot de passe
         } else {
-            $errorMessage['passwordConfirmationSignUp'] = 'Mot de passe invalide.';
+            $errorMessage['passwordConfirmationSignUp'] = 'Mot de passe invalide.'; // message d'erreur regex
         }
     } else {
-        $errorMessage['passwordConfirmationSignUp'] = 'Merci de renseigner votre mot de passe.';
+        $errorMessage['passwordConfirmationSignUp'] = 'Merci de renseigner votre mot de passe.';  // message d'erreur si c'est vide
     }
-    if ($_POST['passwordSignUp'] != $_POST['passwordConfirmationSignUp']) {
-        $errorMessage['passwordConfirmation'] = 'Mot de passe différent';
-    } else if ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp']) {
-        $resultFilterMail = $users->filterMail();
-        $resultFilterLogin = $users->filterLogin();
-        if (count($resultFilterMail) === 0) {
-            if (count($resultFilterLogin) > 0) {
-                $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé';
+    if ($_POST['passwordSignUp'] != $_POST['passwordConfirmationSignUp']) { // si le mot de passe et la confirmation du mot de passe sont différents 
+        $errorMessage['passwordConfirmation'] = 'Mot de passe différent'; // message d'erreur mot de passe différent
+    } else if ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp']) { // si le mot de passe correspond à la confirmation 
+        $resultFilterMail = $users->filterMail(); // je filtre les mails pour vérifier qu'il n'est pas déjà rentré dans la BDD
+        $resultFilterLogin = $users->filterLogin(); // je filtre le login pour vérifier qu'il n'est pas déjà rentré dans la BDD
+        if (count($resultFilterMail) === 0) { // Si le filtre du mail est strictement égal à 0 
+            if (count($resultFilterLogin) > 0) { // Si le filtre du login est supérieur à 0
+                $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé'; // Message d'erreur pseudo déjà utilisé
             } else {
-                if ($users->addUsers() == TRUE) {
+                if ($users->addUsers() == TRUE) { // si la methode == true, elle s'execute
                     $succes = TRUE;
                 }
             }
         } else {
-            $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé';
+            $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé'; // message erreur mail déjà utilisé
         }
     } else {
-        $errorMessage['errorInconnu'] = 'Une erreur est survenue';
+        $errorMessage['errorInconnu'] = 'Une erreur est survenue'; // Message d'erreur en cas d'autre problèle
     }
 }
 
 // Ma condition pour la déconnexion
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: index.php');
+if (isset($_GET['logout'])) { // je vérifie que logout existe dans la superglobal GET
+    session_destroy(); // Je détruits la session
+    header('Location: index.php'); // je redirige vers l'index
 }

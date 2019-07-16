@@ -18,7 +18,7 @@ body {
 /*Paramètres de la Navbar et Message bienvenu*/
 
 .navbar {
-    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    background: linear-gradient(0deg, rgba(0, 114, 188, .8), rgba(6, 34, 44, .8) 70.71%);
 }
 
 #navbarSecond {
@@ -37,22 +37,26 @@ body {
     height: 5rem;
 }
 
-/*Paramètres des bouttons*/
+/* Paramètres des bouttons */
 
 .spStyleButton {
     background-image: linear-gradient(0deg, #4b6cb7 0%, #182848 51%, #4b6cb7 100%);
-    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
 }
 
 /*Paramètres des cartes*/
 
 .cardArticle {
-    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
-    background: linear-gradient(0deg, rgba(0,114,188,.8), rgba(6,34,44,.8) 70.71%);
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(0deg, rgba(0, 114, 188, .8), rgba(6, 34, 44, .8) 70.71%);
     color: #EFF6E0;
 }
 
-#serieMoment, #lastArticles, #allSeries, #allArticles, #articleForSerie {
+#serieMoment,
+#lastArticles,
+#allSeries,
+#allArticles,
+#articleForSerie {
     border: #01161E 1px solid;
     text-shadow: 1px 1px 1px black;
     line-height: 1rem;
@@ -60,7 +64,7 @@ body {
 }
 
 .modalSignIn {
-    line-height: 1rem; 
+    line-height: 1rem;
 }
 
 #favoriteMoment {
@@ -74,9 +78,9 @@ body {
 /*Paramètres du carousel*/
 
 .imgMomentAccueil {
-    width : 12rem;
+    width: 12rem;
     height: 18rem;
-    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
     border-radius: 5%;
     cursor: pointer;
     color: #EFF6E0;
@@ -90,8 +94,9 @@ body {
     color: #01161E;
 }
 
-a  {
-    text-decoration: none; color: white;
+a {
+    text-decoration: none;
+    color: white;
 }
 
 .titleSerieMoment {
@@ -138,7 +143,9 @@ ol {
     color: #EFF6E0;
 }
 
-.formSignUp, #cardmyAccount, .formSignIn {
+.formSignUp,
+#cardmyAccount,
+.formSignIn {
     color: #EFF6E0;
 }
 
@@ -148,10 +155,11 @@ ol {
     width: 226px;
     margin: 0 auto 10px;
     font-size: 45px;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .rating a {
-    float:right;
+    float: right;
     color: #aaa;
     text-decoration: none;
     -webkit-transition: color .4s;
@@ -159,37 +167,40 @@ ol {
     -o-transition: color .4s;
     transition: color .4s;
 }
+
 .rating a:hover,
-.rating a:hover ~ a,
+.rating a:hover~a,
 .rating a:focus,
-.rating a:focus ~ a		{
+.rating a:focus~a {
     color: orange;
     cursor: pointer;
 }
+
 .rating2 {
     direction: rtl;
 }
+
 .rating2 a {
-    float:none
+    float: none
 }
 
-.clear{
+.clear {
     clear: both;
 }
 
 
-.slide-toggle{
+.slide-toggle {
     display: none;
 }
 
-.slidemenu{
+.slidemenu {
     font-family: arial, sans-serif;
     max-width: 600px;
     margin: 50px auto;
     overflow: hidden;
 }
 
-.slidemenu label{
+.slidemenu label {
     width: 25%;
     text-align: center;
     display: block;
@@ -199,17 +210,17 @@ ol {
 
 }
 
-.slidemenu label:hover{
+.slidemenu label:hover {
     cursor: pointer;
     color: #EFF6E0;
 }
 
-.slidemenu label span{
+.slidemenu label span {
     display: block;
-    padding: 10px;    
+    padding: 10px;
 }
 
-.slidemenu label .icon{
+.slidemenu label .icon {
     font-size: 20px;
     border: solid 2px #EFF6E0;
     text-align: center;
@@ -223,7 +234,7 @@ ol {
 
 /*Bar Style*/
 
-.slider{
+.slider {
     width: 100%;
     height: 5px;
     display: block;
@@ -232,7 +243,7 @@ ol {
     border-radius: 5px;
 }
 
-.slider .bar{
+.slider .bar {
     width: 25%;
     height: 5px;
     background: #333;
@@ -240,7 +251,8 @@ ol {
 }
 
 /*Animations*/
-.slidemenu label, .slider .bar {
+.slidemenu label,
+.slider .bar {
     transition: all 500ms ease-in-out;
     -webkit-transition: all 500ms ease-in-out;
     -moz-transition: all 500ms ease-in-out;
@@ -248,23 +260,37 @@ ol {
 
 /*Toggle*/
 
-.slidemenu .slide-toggle:checked + label{
+.slidemenu .slide-toggle:checked+label {
     opacity: 1;
 }
 
-.slidemenu #slideItemPresentation:checked ~ .slider .bar{ margin-left: 0; }
-.slidemenu #slideItemSeasons:checked ~ .slider .bar{ margin-left: 25%; }
-.slidemenu #slideItemComment:checked ~ .slider .bar{ margin-left: 50%; }
-.slidemenu #slideItemArticle:checked ~ .slider .bar{ margin-left: 75%; }
+.slidemenu #slideItemPresentation:checked~.slider .bar {
+    margin-left: 0;
+}
+
+.slidemenu #slideItemSeasons:checked~.slider .bar {
+    margin-left: 25%;
+}
+
+.slidemenu #slideItemComment:checked~.slider .bar {
+    margin-left: 50%;
+}
+
+.slidemenu #slideItemArticle:checked~.slider .bar {
+    margin-left: 75%;
+}
 
 
 
-.informationSeriesCard, .seasonsSeriesCard, .backgroundTheme {
+.informationSeriesCard,
+.seasonsSeriesCard,
+.backgroundTheme {
     border: #01161E 1px solid;
     background-color: #EFF6E0;
 }
 
-#season1Episode, #season2Episode {
+#season1Episode,
+#season2Episode {
     word-spacing: 10px;
 }
 
@@ -272,8 +298,16 @@ ol {
     cursor: pointer;
 }
 
-#cardSignUp, #cardSignIn, .signUpText, .signInText , #cardmyAccount, .labelTextFormSignUp, .labelTextFormSignIn, .formAddSeriesText, #cardAddSeries {
-    background-color: #EFF6E0;  
+#cardSignUp,
+#cardSignIn,
+.signUpText,
+.signInText,
+#cardmyAccount,
+.labelTextFormSignUp,
+.labelTextFormSignIn,
+.formAddSeriesText,
+#cardAddSeries {
+    background-color: #EFF6E0;
     color: #06222C;
 }
 
@@ -309,4 +343,3 @@ noir : #01161E
 fond bleu clair : #d5f5ff
 praline : #EFF6E0
 bleu clair : #25C4EC */
-

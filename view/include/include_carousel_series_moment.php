@@ -11,7 +11,9 @@
                     <i class="fas fa-arrow-circle-right fa-2x carouselIconMoment" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
+
                 <!-- Carousel items -->
+
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
@@ -146,7 +148,7 @@
                                                 </tbody>
                                             </table>
                                             <div class="text-center">
-                                                <a href="view/pages/page_info_series.php?id=3" >'<img src="assets/images/imgSeries/theFlash.jpg" class="img-fluid img-thumbnail imgMomentAccueil" alt="Sheep" /></a>
+                                                <a href="view/pages/page_info_series.php?id=3">'<img src="assets/images/imgSeries/theFlash.jpg" class="img-fluid img-thumbnail imgMomentAccueil" alt="Sheep" /></a>
                                             </div>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
@@ -392,6 +394,9 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Fin du carroussel -->
+
             </div>
         </div>
     </div>

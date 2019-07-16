@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../controller/controller_page_admin_delete.php';
+require '../../controller/controller_page_admin_update.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

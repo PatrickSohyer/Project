@@ -135,6 +135,9 @@
                         <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light mr-4" href="<?= $suggestSeriesPages; ?>" id="navArticles"><b>Suggérer une série</b></a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">

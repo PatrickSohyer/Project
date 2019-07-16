@@ -28,6 +28,7 @@ $infoSeries = '../pages/page_info_series.php';
 $signUpPage = '../pages/page_form_sign_up.php';
 $signInPage = '../pages/page_form_sign_in.php';
 $formAddSeries = '../pages/page_form_add_series.php';
+$suggestSeriesPages = '../pages/page_suggest_series.php';
 $logout = '../../index.php';
 $categoriesSeries = '../pages/page_all_series.php';
 
@@ -153,7 +154,7 @@ if (count($_POST) > 0) {
     if ($series->addSeries() == TRUE) {
         $_SESSION['addSeries'] = TRUE;
 
-        header('Location: page_form_add_series.php');
+        header('Location: page_admin_verif.php');
     }
 }
 
