@@ -15,6 +15,17 @@ class Users extends Database
     public $sp_users_avatar;
     public $sp_users_role;
 
+    // Methode qui permet de selectionner les utilisateurs en fonction de leurs id
+
+    public function selectUsers()
+    {
+        $selectUsers = $this->db->prepare('SELECT * FROM sp_users WHERE id = :id');
+        $selectUsers->bindValue(':id', $_SESSION['id']);
+        if ($selectUsers->execute()) {
+            $selectUsersFetch = $selectUsers->fetch();
+            return $selectUsersFetch;
+        }
+    }
 
     // Fonction qui permet d'ajouter un utilisateur
 
@@ -110,18 +121,6 @@ class Users extends Database
         $deleteUsers->bindValue(':id', $this->id);
         if ($deleteUsers->execute()) {
             return TRUE;
-        }
-    }
-
-    // Methode qui permet de selectionner les utilisateurs en fonction de leurs id
-
-    public function selectUsers()
-    {
-        $selectUsers = $this->db->prepare('SELECT * FROM sp_users WHERE id = :id');
-        $selectUsers->bindValue(':id', $_SESSION['id']);
-        if ($selectUsers->execute()) {
-            $selectUsersFetch = $selectUsers->fetch();
-            return $selectUsersFetch;
         }
     }
 }

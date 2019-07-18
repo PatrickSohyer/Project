@@ -1,10 +1,11 @@
 <?php
 
-// Require des model dont j'ai besoin 
+// Require des model dont j'ai besoin
 
 require '../../model/SP_database.php'; // require de ma database
-require '../../model/SP_series_pages.php'; // require de ma table series pages
-require '../../model/SP_categories.php'; // require de ma table categories
+require '../../model/SP_users.php'; // require de ma classe Users
+require '../../model/SP_suggest_series.php'; // require de ma classe Series
+
 
 // Définition des chemins d'accès aux différentes pages
 
@@ -29,33 +30,18 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
 }
 
-// Instanciation de mon objet Categories et Series
+// Instanciation de mon objet SuggestSeries
 
-$categories = new Categories();
-$series = new Series();
+$suggestSeries = new SuggestSeries();
+$selectSuggestSeries = $suggestSeries->selectAllSuggestSeries();
 
-// Création de mes variables pour la pagination
+// Ma condition pour supprimer une suggestion 
 
-$seriesPagination = $series->countSeriesPagination(); // appel de la method pour la pagination
-$nbSeriesPerPages = 12; // Je définis le nombre de série par page à 12
-$nbSeriesPage = $seriesPagination[0]['total']; // le nombre de page est égal au total du nombre de série dans ma BDD
-$nbPages = ceil($nbSeriesPage / $nbSeriesPerPages); // je définis le nombre de page sur un chiffre entier avec ceil.
-
-// je créer mes conditions pour les pages et les catégories
-
-if (isset($_GET['page']) and is_numeric($_GET['page']) and isset($_GET['categorie'])) { // je verifie que page et categorie existe bien dans la superglobal get et que page est bien un chiffre
-    $currentPage = $_GET['page']; // la page actuel est égal à get page
-    $categories->sp_categories_gender = $_GET['categorie']; // hydratation de mon objet ( gender )
-    $categoriesSeries = $categories->getSeriesPagesCategories(); // appel de la method qui permet de selectionner en fonction de la catégorie
-} elseif (isset($_GET['page']) and is_numeric($_GET['page'])) { // sinon je fais la pagination normal
-    $currentPage = $_GET['page']; // la page actuel est égal à get page 
-    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
-    $seriesResult = $series->selectSeriesImages();
-    if ($currentPage >= $nbPages) {
-        $currentPage = $nbPages;
+if(isset($_GET['deleteSuggest'])) {
+    $suggestSeries->id = $_GET['deleteSuggest'];
+    if($suggestSeries->deleteSuggestSeries()) {
+        header('Location: page_admin_suggest_series.php');
     }
-} else {
-    header('Location: page_error.php');
 }
 
 // Ma condition pour la déconnexion

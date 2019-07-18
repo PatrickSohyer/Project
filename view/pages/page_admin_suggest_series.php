@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../controller/controller_page_admin_verif.php';
+require '../../controller/controller_admin_suggest_series.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -29,7 +29,7 @@ require '../../controller/controller_page_admin_verif.php';
         <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <div class="sidebar-header">
-                    <div class="sidebar-brand colorFontNavSide">
+                    <div class="sidebar-brand">
                         <a href="page_admin.php">Menu</a></div>
                 </div>
                 <li class="colorFontNavSide text-center"><a href="page_admin_verif.php"><i class="fas fa-check-circle colorFontNavSide m-2"></i>Vérifier une série</a></li>
@@ -40,38 +40,58 @@ require '../../controller/controller_page_admin_verif.php';
                 <li class="colorFontNavSide text-center"><a href="../../index.php"><i class="fas fa-home colorFontNavSide m-2"></i>Retour au site</a></li>
             </ul>
         </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
         <div id="page-content-wrapper">
             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
                 <span class="hamb-top"></span>
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
+
             <div class="container-fluid backgroundTheme">
                 <div class="row">
-                    <div class="col-12">
-                        <?php foreach ($seriesVerif as $value) { ?>
-                            <div class="card mb-3">
-                            <h1 class="card-title text-center"><?= $value['sp_series_pages_title'] ?></h1>
-                            <div class="text-center">
-                                <img style="width:10rem;" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" class="card-img-top imageVerifySeries text-center" alt="...">
-                            </div>
+                    <?php foreach ($selectSuggestSeries as $value) { ?>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3">
+                            <div class="card" style="width: 15rem;">
                                 <div class="card-body text-center">
-                                    <p class="card-text"><?= $value['sp_series_pages_description'] ?></p>
-                                    <p><?= $value['sp_series_pages_number_seasons'] ?></p>
-                                    <p><?= $value['sp_series_pages_number_episodes'] ?></p>
-                                    <p><?= $value['sp_series_pages_duration_episodes'] ?></p>
-                                    <p><?= $value['sp_series_pages_diffusion_channel'] ?></p>
-                                    <p><?= $value['sp_series_pages_french_title'] ?></p>
-                                    <p><?= $value['sp_series_pages_original_title'] ?></p>
-                                    <p><iframe width="560" height="315" src="<?= $value['sp_series_pages_trailer'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-                                    <p><a href="page_admin_verif.php?validation=<?= $value['id'] ?>"><i class="fas fa-check-circle text-dark fa-2x"></i></a></p>
+                                    <p class="card-title h5"><b><i>Suggéré par <?= $value['sp_users_login'] ?></i></b></p>
+                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N1'] ?></p>
+                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N2'] ?></p>
+                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N3'] ?></p>
+                                    <a data-toggle="modal" data-target="#deleteSuggestModal<?= $value['suggestID'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
                                 </div>
                             </div>
-                        <?php } ?>
-                    </div>
+                        </div>
+                        <div class="modal fade" id="deleteSuggestModal<?= $value['suggestID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog colorFontBlue" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p class="modal-title h3" id="exampleModalLabel">Supprimer la suggestion</p>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Êtes vous sur de vouloir supprimer la suggestion de <b><?= $value['sp_users_login'] ?></b> ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btnDeleteSeries btn btn-danger"><a href="page_admin_suggest_series.php?deleteSuggest=<?= $value['suggestID'] ?>">Supprimer</a></button>
+                                        <button type="button" class="btn btn-success"><a href="page_admin_suggest_series.php">Ne pas supprimer</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
+
         </div>
+        <!-- /#wrapper -->
+
+
 
 
 

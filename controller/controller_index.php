@@ -26,7 +26,7 @@ $categoriesSeries = 'view/pages/page_all_series.php'; // chemin de la page quand
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
 if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
+    $pageAdmin = 'view/pages/page_admin.php'; // alors il balance le chemin la console admin
 }
 
 // Instanciation de mon objet USERS

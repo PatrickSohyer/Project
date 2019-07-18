@@ -84,7 +84,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light mr-4" href="<?= $pageAdmin ?>" id="navAddSeries"><b>Page Admin</b></a>
+                    <a class="nav-link text-light mr-4" href="<?= $pageAdmin ?>" id="navAddSeries"><b>Console Administrateur</b></a>
                 </li>
             </ul>
             <ul class="navbar-nav">

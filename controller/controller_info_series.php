@@ -58,29 +58,11 @@ if (isset($_GET['rate']) AND is_numeric($_GET['rate'])) { // je vérifie que rat
 if (isset($_GET['id']) AND is_numeric($_GET['id'])) { // je verifie si id existe bien dans la superglobal get et si c'est bien un chiffre
     $series->id = $_GET['id']; // hydratation de mon objet ( id )
     $seriesInfo = $series->selectSeriesPagesInfo(); // appel de ma method
+    $seriesActor = $series->selectSeriesPagesActor(); // appel de ma methode pour afficher les acteurs
+    $seriesCreator = $series->selectSeriesPagesCreator(); // appel de ma methode pour afficher les créateurs
+    $seriesEpisodes = $series->selectSeriesPagesEpisodes(); // appel de ma methode pour afficher les épisodes
 } else {
     header('Location: page_error.php');
-}
-
-// condition pour afficher les bons acteurs selon l'id de la série 
-
-if (isset($_GET['id'])) { // je verifie si id existe bien dans la superglobal get
-    $series->id = $_GET['id']; // hydration de mon objet ( id )
-    $seriesActor = $series->selectSeriesPagesActor(); // appel de ma methode pour afficher les acteurs
-}
-
-// condition pour afficher les bons créateurs selon l'id de la série
-
-if (isset($_GET['id'])) { // je verifie si id existe bien dans la superglobal get
-    $series->id = $_GET['id']; // hydration de mon objet ( id )
-    $seriesCreator = $series->selectSeriesPagesCreator(); // appel de ma methode pour afficher les créateurs
-}
-
-// condition pour afficher les bons épisodes selon l'id de la série
-
-if (isset($_GET['id'])) { // je verifie si id existe bien dans la superglobal get
-    $series->id = $_GET['id']; // hydration de mon objet ( id )
-    $seriesEpisodes = $series->selectSeriesPagesEpisodes(); // appel de ma methode pour afficher les épisodes
 }
 
 // Ma condition pour la déconnexion
