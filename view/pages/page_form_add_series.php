@@ -53,7 +53,7 @@ require_once '../../controller/controller_add_series.php';
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
                         <div class="card" id="cardAddSeries">
-                            <div class="card-body">                           
+                            <div class="card-body">
                                 <?php {
                                     include '../include/include_form_add_series.php';
                                 }

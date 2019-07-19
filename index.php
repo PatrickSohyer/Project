@@ -43,8 +43,10 @@ require 'controller/controller_index.php';
                         <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto text-center">
                             <div class="welcomeMessage">
                                 <p class="h4 m-0" id="welcomeMessage">Bienvenu sur SériesPhil!</p>
-                                <p class="h6 m-0"><i>Ici tu pourras retrouver et suivre tes séries préférées et tchater avec d'autres fans!</i></p>
-                                <p class="h6"><i>Si jamais tu veux participer au forum et pouvoir t'abonner aux séries que tu suis, inscrit toi dès maintenant en cliquant juste<a class="text-primary" href="view/pages/page_form_sign_up.php"> ici </a>.</i></p>
+                                <p class="h6 m-0"><i>Ici tu pourras retrouver et suivre tes séries préférées et tchater avec
+                                        d'autres fans!</i></p>
+                                <p class="h6"><i>Si jamais tu veux participer au forum et pouvoir t'abonner aux séries que
+                                        tu suis, inscrit toi dès maintenant en cliquant juste<a class="text-primary" href="view/pages/page_form_sign_up.php"> ici </a>.</i></p>
                             </div>
                         </div>
                     </div>
@@ -52,16 +54,17 @@ require 'controller/controller_index.php';
 
             <?php } else if ($_SESSION['role'] === 'admin') { ?>
 
-<div class="container-fluid mb-3">
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto text-center">
-            <div class="welcomeMessage">
-                <p class="h4 m-0" id="welcomeMessage">Tu es connecté en tant qu'<b>ADMINISTRATEUR</b></p>
-                <p class="h6 m-0"><i>ATTENTION, un grand pouvoir implique de grandes responsabilités!! Ne fais pas n'importe quoi.</i></p>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="container-fluid mb-3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 mx-auto text-center">
+                            <div class="welcomeMessage">
+                                <p class="h4 m-0" id="welcomeMessage">Tu es connecté en tant qu'<b>ADMINISTRATEUR</b></p>
+                                <p class="h6 m-0"><i>ATTENTION, un grand pouvoir implique de grandes responsabilités!! Ne
+                                        fais pas n'importe quoi.</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <?php } else { ?>
 
@@ -71,8 +74,10 @@ require 'controller/controller_index.php';
                             <div class="welcomeMessage">
                                 <p class="h4 m-0" id="welcomeMessage">Content de te revoir sur SériesPhil
                                     <b><?= isset($_SESSION['id']) ? $usersResult['sp_users_login'] : ' ' ?></b>!</p>
-                                <p class="h6 m-0"><i>Tu ne trouve pas ta série préféré? Pas de soucis, suggère la nous <a class="text-primary" href="view/pages/page_suggest_series.php">ici</a>, un administrateur l'ajoutera pour toi!</i></p>
-                                <p class="h6"><i>Et si jamais tu as des suggestions pour améliorer le site, n'hésite pas à nous contacter, et pense à nous suivre sur les réseaux sociaux!</i></p>
+                                <p class="h6 m-0"><i>Tu ne trouve pas ta série préféré? Pas de soucis, suggère la nous <a class="text-primary" href="view/pages/page_suggest_series.php">ici</a>, un
+                                        administrateur l'ajoutera pour toi!</i></p>
+                                <p class="h6"><i>Et si jamais tu as des suggestions pour améliorer le site, n'hésite pas à
+                                        nous contacter, et pense à nous suivre sur les réseaux sociaux!</i></p>
                             </div>
                         </div>
                     </div>

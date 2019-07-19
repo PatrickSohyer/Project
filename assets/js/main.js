@@ -119,3 +119,7 @@ $('.buttonModifyDelete').click(function () {
     $('.buttonmodifyDeleteNo').show();
     $('.buttonmodifyDeleteYes').show();
 });
+
+$('#refreshComment').on('click', function() {
+	location.reload();
+});

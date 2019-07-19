@@ -67,7 +67,8 @@ if (count($_POST) == 3) { // si le nombre de post est strictement égal à 3
         } else {
             $errorMessageAddSeries['suggestSeriesTitleN3'] = 'Le titre ne peut pas contenir plus de 250 caractères.'; // message d'erreur titre
         }
-    } if ($suggestSeries->addAllSuggestSeries() == TRUE) { // si ma methode est strictement égal à True alors ça s'ajoute à ma base de donnée
+    }
+    if ($suggestSeries->addAllSuggestSeries() == TRUE) { // si ma methode est strictement égal à True alors ça s'ajoute à ma base de donnée
         $success = TRUE;
     }
 }

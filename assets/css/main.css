@@ -287,6 +287,7 @@ ol {
 .backgroundTheme {
     border: #01161E 1px solid;
     background-color: #EFF6E0;
+    border-radius: 10px;
 }
 
 #season1Episode,
@@ -331,11 +332,27 @@ ol {
 .textSeriePage {
     border: #01161E 1px solid;
     background-color: #EFF6E0;
+    
 }
 
 #seriesImagesInformation {
     height: 27rem;
     width: 19rem;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 400px) {
+    .g-recaptcha {
+        transform: scale(0.70);
+        -webkit-transform: scale(0.70);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+}
+
+.commentMessage,
+.dateMessage {
+    line-height: 0.0;
 }
 
 

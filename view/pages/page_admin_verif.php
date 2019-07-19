@@ -51,10 +51,10 @@ require '../../controller/controller_page_admin_verif.php';
                     <div class="col-12">
                         <?php foreach ($seriesVerif as $value) { ?>
                             <div class="card mb-3">
-                            <h1 class="card-title text-center"><?= $value['sp_series_pages_title'] ?></h1>
-                            <div class="text-center">
-                                <img style="width:10rem;" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" class="card-img-top imageVerifySeries text-center" alt="...">
-                            </div>
+                                <h1 class="card-title text-center"><?= $value['sp_series_pages_title'] ?></h1>
+                                <div class="text-center">
+                                    <img style="width:10rem;" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" class="card-img-top imageVerifySeries text-center" alt="...">
+                                </div>
                                 <div class="card-body text-center">
                                     <p class="card-text"><?= $value['sp_series_pages_description'] ?></p>
                                     <p><?= $value['sp_series_pages_number_seasons'] ?></p>

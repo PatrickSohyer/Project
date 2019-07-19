@@ -29,7 +29,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
 }
 
 // Instanciation de mon objet Series et appel de ma methode pour vérifier
- 
+
 $series = new Series();
 $seriesVerif = $series->selectSeriesPagesVerification();
 

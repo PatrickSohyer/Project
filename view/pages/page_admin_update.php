@@ -50,7 +50,7 @@ require '../../controller/controller_page_admin_update.php';
                 <span class="hamb-bottom"></span>
             </button>
 
-            <div class="container-fluid backgroundTheme">
+            <div class="container backgroundTheme">
                 <div class="row mx-auto">
                     <?php foreach ($seriesAllSeries as $value) { ?>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">

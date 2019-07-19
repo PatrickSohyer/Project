@@ -28,10 +28,12 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-4">
                 <h6 class="text-uppercase font-weight-bold">Espace Personnel</h6>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto hrFooter">
-                <?php if (count($_SESSION) === 0) { echo ' ';} else { ?>
-                <p>
-                    <a class="footerLink" href="<?= $accountUser; ?>">Mon compte</a>
-                </p>
+                <?php if (count($_SESSION) === 0) {
+                    echo ' ';
+                } else { ?>
+                    <p>
+                        <a class="footerLink" href="<?= $accountUser; ?>">Mon compte</a>
+                    </p>
                 <?php } ?>
                 <p>
                     <a class="footerLink" href="#!">Nous contacter</a>

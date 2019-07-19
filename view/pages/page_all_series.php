@@ -28,8 +28,8 @@ require '../../controller/controller_all_series.php';
     require_once('../include/include_header.php');
     ?>
 
-    <div class="container-fluid" id="allSeries">
-        <div class="row  text-center">
+    <div class="container backgroundTheme" id="allSeries">
+        <div class="row text-center">
             <?php if (isset($seriesResult)) { ?>
                 <?php foreach ($seriesResult as $value) { ?>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
