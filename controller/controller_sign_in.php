@@ -57,7 +57,6 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
             $response = $_POST['g-recaptcha-response'];
             // On récupère l'IP de l'utilisateur
             $remoteip = $_SERVER['REMOTE_ADDR'];
-
             $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
                 . $secret
                 . "&response=" . $response

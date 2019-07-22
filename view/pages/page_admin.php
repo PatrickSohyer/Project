@@ -49,7 +49,7 @@ require '../../controller/controller_page_admin.php';
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
-            <div class="container backgroundTheme">
+            <div class="container accueilAdmin">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <h1>Console Administrateur SériesPhil <img src="../../assets/images/imgAccueil/imgNavbar.png"></h1>

@@ -153,8 +153,6 @@ if (count($_POST) > 0) { // Si le compte du poste est supérieur à 0
     }
     if ($series->addSeries() == TRUE) { // si ma methode est == à true elle s'execute
         $_SESSION['addSeries'] = TRUE;
-
-        header('Location: page_admin_verif.php');
     }
 }
 

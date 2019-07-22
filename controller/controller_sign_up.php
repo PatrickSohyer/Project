@@ -116,7 +116,7 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
     if ($decode['success'] == true) {
         if ($_POST['passwordSignUp'] != $_POST['passwordConfirmationSignUp']) { // si le mot de passe et la confirmation du mot de passe sont différents 
             $errorMessage['passwordConfirmation'] = 'Mot de passe différent'; // message d'erreur mot de passe différent
-        } else if ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp']) { // si le mot de passe correspond à la confirmation 
+        } elseif ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp'] && count($errorMessage) === 0) { // si le mot de passe correspond à la confirmation 
             $resultFilterMail = $users->filterMail(); // je filtre les mails pour vérifier qu'il n'est pas déjà rentré dans la BDD
             $resultFilterLogin = $users->filterLogin(); // je filtre le login pour vérifier qu'il n'est pas déjà rentré dans la BDD
             if (count($resultFilterMail) === 0) { // Si le filtre du mail est strictement égal à 0 
@@ -124,27 +124,17 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
                     $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé'; // Message d'erreur pseudo déjà utilisé
                 } else {
                     if ($users->addUsers() == TRUE) { // si la methode == true, elle s'execute
-                        $succes = TRUE;
+                        $success = TRUE;
                     }
                 }
             } else {
-                $errorMessage['captcha'] = 'Veuillez cocher la case et ne pas être un robot!';
+                $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé'; // message erreur mail déjà utilisé
             }
-        } else {
-            $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé'; // message erreur mail déjà utilisé
-        }
+        } 
     } else {
-        $errorMessage['errorInconnu'] = 'Une erreur est survenue'; // Message d'erreur en cas d'autre problèle
+        $errorMessage['captcha'] = 'Veuillez cocher la case et ne pas être un robot!';
     }
 }
-
-// Ma clé privée
-
-// Paramètre renvoyé par le recaptcha
-
-// On récupère l'IP de l'utilisateur
-
-
 
 // Ma condition pour la déconnexion
 

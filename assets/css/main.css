@@ -332,13 +332,14 @@ ol {
 .textSeriePage {
     border: #01161E 1px solid;
     background-color: #EFF6E0;
-    
+
 }
 
 #seriesImagesInformation {
     height: 27rem;
     width: 19rem;
     border-radius: 10px;
+    box-shadow: 8px 8px 12px black;
 }
 
 @media screen and (max-width: 400px) {
@@ -348,11 +349,6 @@ ol {
         transform-origin: 0 0;
         -webkit-transform-origin: 0 0;
     }
-}
-
-.commentMessage,
-.dateMessage {
-    line-height: 0.0;
 }
 
 

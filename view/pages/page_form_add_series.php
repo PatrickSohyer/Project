@@ -49,6 +49,24 @@ require_once '../../controller/controller_add_series.php';
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
+
+            <?php if (count($errorMessageAddSeries) > 0 or count($_POST) == 0) { ?>
+                <div class="container-fluid container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
+                            <div class="card" id="cardAddSeries">
+                                <div class="card-body">
+                                    <?php {
+                                        include '../include/include_form_add_series.php';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } else { ?>
             <div class="container-fluid container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
@@ -58,13 +76,15 @@ require_once '../../controller/controller_add_series.php';
                                     include '../include/include_form_add_series.php';
                                 }
                                 ?>
+                                <script src="../../assets/js/swal_add_series.js"></script>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+    <?php } ?>
+    <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->

@@ -29,7 +29,7 @@ require '../../controller/controller_info_series.php';
     ?>
 
 
-    <div class="container-fluid container">
+    <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
                 <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $seriesInfo['sp_series_pages_image'] ?>" />
@@ -59,9 +59,9 @@ require '../../controller/controller_info_series.php';
             </div>
 
             <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                <p class="textSeriePage h1 text-center p-1"><?= $seriesInfo['sp_series_pages_title'] ?></p>
-                <p class="textSeriePage text-center p-1 mb-2">Description :<br /><?= $seriesInfo['sp_series_pages_description'] ?></p>
-                <ol class="textSeriePage text-center p-1">
+                <p class="textSeriePage h1 text-center p-1 backgroundTheme"><?= $seriesInfo['sp_series_pages_title'] ?></p>
+                <p class="textSeriePage text-center p-1 mb-2 backgroundTheme">Description :<br /><?= $seriesInfo['sp_series_pages_description'] ?></p>
+                <ol class="textSeriePage text-center p-1 mb-2 backgroundTheme">
                     <li>Nombre de Saisons : <?= $seriesInfo['sp_series_pages_number_seasons'] ?></li>
                     <li>Nombre d'épisodes : <?= $seriesInfo['sp_series_pages_number_episodes'] ?></li>
                     <li>Durée d'un épisode : <?= $seriesInfo['sp_series_pages_duration_episodes'] ?></li>
@@ -152,15 +152,14 @@ require '../../controller/controller_info_series.php';
 
     <div class="container container-fluid" id="contentComment">
         <div class="row">
-            <div class="col-lg-8 col-xl-8 col-md-8 col-8 mx-auto">
+            <div class="col-lg-8 col-xl-8 col-md-8 col-12 mx-auto">
                 <div class="backgroundTheme">
                     <div class="text-center">
-                        <button type="submit" class="btn mx-auto" id="refreshComment"><i class="fas fa-sync"></i>Rafraîchir les commentaires</button>
+                        <button type="submit" class="btn mx-auto" id="refreshComment"><i class="fas fa-sync mr-2"></i>Rafraîchir les commentaires</button>
                     </div>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
                         foreach ($selectComments as $value) { ?>
-                            <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté par <?= $usersResult['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
-                            <small class="dateMessage ml-2 mb-2">(<?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?>)</small>
+                            <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
                             <div class="modal fade" id="deleteCommentModal<?= $value['idComment'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog colorFontBlue" role="document">
                                     <div class="modal-content">
@@ -181,20 +180,19 @@ require '../../controller/controller_info_series.php';
                                 </div>
                             </div>
                         <?php } ?>
-                        <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center">
+                        <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center mt-4">
                             <label for="commentMessage" class="d-block">Poster un Commentaire</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['commentMessage']) ? $errorMessage['commentMessage'] : ''; ?></span><textarea name="commentMessage" id="commentMessage" rows="5" cols="25" class="form-control mb-2" maxlength="500" required></textarea>
                             <button type="submit" id="validateComment" class="btn btnblock spStyleButton text-white mb-2">Envoyer le commentaire</button>
                         </form>
                     <?php } elseif (count($_SESSION) > 0) {
                         foreach ($selectComments as $value) { ?>
-                            <span class="ml-2 mt-2 commentMessage d-block">Posté par <?= $value['sp_use  rs_login'] ?> : <?= $value['sp_message'] ?></span>
-                            <small class="dateMessage ml-2 mb-2">(((<?= strftime('Le %d   %B %Y   à %H:%M', strtotime($value['sp_date_message'])); ?>)</small>
-                            <form method="POST" id="formMessage" action="page_info_series.php?id===<?= $seriesInfo['id'] ?>" class="text-center">
-                                <label for="commentMessage" class="d-block">Poster un Commentaire</label><span class="errorMessage d-block text-danger">">"><?= isset($errorMessage['comment  Message']) ? $errorMessage['commentMessage'] : ''; ?></span><textarea name="commentMessage" id="commentMessage" rows="5" cols="25" class="form-control mb-2" maxlength="500" required></textarea>
-                                <button type="submit" id="validateComment" class="btn btnblock spStyleButton text-white mb-2">Envoyer le commentaire</button>
-                            </form>
-                        <?php }
-                    } else {
+                            <span class="ml-2 mt-2 commentMessage d-block">Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
+                        <?php } ?>
+                        <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center mt-4">
+                            <label for="commentMessage" class="d-block">Poster un Commentaire</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['commentMessage']) ? $errorMessage['commentMessage'] : ''; ?></span><textarea name="commentMessage" id="commentMessage" rows="5" cols="25" class="form-control mb-2" maxlength="500" required></textarea>
+                            <button type="submit" id="validateComment" class="btn btnblock spStyleButton text-white mb-2">Envoyer le commentaire</button>
+                        </form>
+                    <?php } else {
                         foreach ($selectComments as $value) { ?>
                             <span class="ml-2 mt-2 commentMessage d-block">Posté par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
                             <small class="dateMessage ml-2 mb-2">(<?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?>)</small>

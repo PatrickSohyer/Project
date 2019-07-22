@@ -50,11 +50,11 @@ require '../../controller/controller_page_admin_delete.php';
                 <span class="hamb-bottom"></span>
             </button>
 
-            <div class="container-fluid backgroundTheme">
+            <div class="container backgroundTheme">
                 <div class="row mx-auto">
                     <?php foreach ($seriesAllSeries as $value) { ?>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
-                            <div class="card" style="width: 15rem;">
+                            <div class="card mx-auto" style="width: 14rem;">
                                 <a href="page_info_series.php?id=<?= $value['id'] ?>"><img class="card-img-top" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" alt="Card image cap"></a>
                                 <div class="card-body text-center">
                                     <p class="card-title h5"><?= $value['sp_series_pages_title'] ?></p>
@@ -65,12 +65,13 @@ require '../../controller/controller_page_admin_delete.php';
                         <div class="modal fade" id="deleteSeriesModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog colorFontBlue" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <p class="modal-title h3" id="exampleModalLabel">Supprimer la série</p>
+                                    <div class="modal-header text-center">
+                                        <p class="modal-title h3 text-center" id="exampleModalLabel">Supprimer la série</p>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    <img src="../../assets/images/imgAccueil/philDelete.png">
                                     <div class="modal-body">
                                         Êtes vous sur de vouloir supprimer la série <b><?= $value['sp_series_pages_title'] ?></b> ?
                                     </div>

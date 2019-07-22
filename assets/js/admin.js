@@ -26,3 +26,9 @@ $(document).ready(function () { // Je créer une fonction au chargement de la pa
     $('#wrapper').toggleClass('toggled'); // je cible l'id, je toggle la casse toggled
   });
 });
+
+// fonction pour les popovers
+
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});

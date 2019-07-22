@@ -2,7 +2,7 @@
 
 window.onload = function () {
     Swal.fire({
-    text: 'Vous vous êtes bien inscrit(e), profitez bien du site!',
+    text: 'Vous vous êtes bien inscrit(e), Vous pouvez désormais vous connecter!',
             type: 'success',
             confirmButtonText: '<a class="text-white" href="../../index.php">Retour à l\'acceuil</a>',
             onAfterClose: () => {
