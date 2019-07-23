@@ -4,6 +4,7 @@
 
 require '../../model/SP_database.php'; // require de ma database
 require '../../model/SP_series_pages.php'; // require de ma base de donnée sp_series_pages
+require '../../model/SP_suggest_series.php';
 
 // Définition des chemins d'accès aux différentes pages
 
@@ -24,13 +25,26 @@ $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand o
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
+    $pageAdminUpdate = '../pages/page_admin_update.php';
+    $pageAdminUserRole = '../pages/page_admin_user_role.php';
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdmin = '../pages/page_admin.php';
+    $pageFormAddSeries = '../pages/page_form_add_series.php';
+    $pageUpdateSeries = '../pages/page_update_series.php';
+} else {
+    header('Location: page_error.php');
+    exit();
 }
 
 // Instanciation de mon objet Series
 
 $series = new Series();
+$seriesCountVerif = $series->countSeriesVerifAdmin();
+$suggest = new SuggestSeries();
+$suggestCount = $suggest->countSuggestAdmin();
 
 // Création de mes variables pour la pagination
 
@@ -41,8 +55,8 @@ $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages); // je définis le nombre de 
 
 // Condition pour supprimer une série
 
-if (isset($_GET['delete'])) { // je verifie que DELETE existe bien dans la superglobal get
-    $series->id = $_GET['delete']; // hydratation de mon objet ( id )
+if (isset($_POST['deleteSeries'])) {
+    $series->id = $_POST['deleteSeries'];
     if ($series->deleteSeriesPages()) { // j'appel la method qui permet de supprimer une série
         header('Location: page_admin_delete.php?page=1');
     }

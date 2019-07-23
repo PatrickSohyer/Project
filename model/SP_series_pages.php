@@ -76,6 +76,15 @@ class Series extends Database
         return $fetchCountSeriesPaginationAdmin;
     }
 
+    // Methode qui permet de compter le nombre de série pas vérifier 
+
+    public function countSeriesVerifAdmin()
+    {
+        $reqcountSeriesVerifAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 0');
+        $fetchcountSeriesVerifAdmin = $reqcountSeriesVerifAdmin->fetch();
+        return $fetchcountSeriesVerifAdmin;
+    }
+
     // Methode qui permet de selectionner toutes les séries à mettre à jour
 
     public function selectSeriesPagesUpdate()

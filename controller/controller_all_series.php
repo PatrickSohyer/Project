@@ -23,12 +23,6 @@ $suggestSeriesPages = '../pages/page_suggest_series.php'; // chemin de la page p
 $logout = '../../index.php'; // chemin de la page quand on clique sur ce déconnecter
 $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand on choisis une catégorie
 
-// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
-
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
-}
-
 // Instanciation de mon objet Categories et Series
 
 $categories = new Categories();
@@ -46,6 +40,7 @@ $nbPages = ceil($nbSeriesPage / $nbSeriesPerPages); // je définis le nombre de 
 if (isset($_GET['page']) and is_numeric($_GET['page']) and isset($_GET['categorie'])) { // je verifie que page et categorie existe bien dans la superglobal get et que page est bien un chiffre
     $currentPage = $_GET['page']; // la page actuel est égal à get page
     $categories->sp_categories_gender = $_GET['categorie']; // hydratation de mon objet ( gender )
+    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
     $categoriesSeries = $categories->getSeriesPagesCategories(); // appel de la method qui permet de selectionner en fonction de la catégorie
 } elseif (isset($_GET['page']) and is_numeric($_GET['page'])) { // sinon je fais la pagination normal
     $currentPage = $_GET['page']; // la page actuel est égal à get page 
@@ -56,6 +51,19 @@ if (isset($_GET['page']) and is_numeric($_GET['page']) and isset($_GET['categori
     }
 } else {
     header('Location: page_error.php');
+}
+
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
+    $pageAdminUpdate = '../pages/page_admin_update.php';
+    $pageAdminUserRole = '../pages/page_admin_user_role.php';
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdmin = '../pages/page_admin.php';
+    $pageFormAddSeries = '../pages/page_form_add_series.php';
+    $pageUpdateSeries = '../pages/page_update_series.php';
 }
 
 // Ma condition pour la déconnexion

@@ -23,15 +23,22 @@ $suggestSeriesPages = 'view/pages/page_suggest_series.php'; // chemin de la page
 $logout = 'index.php'; // chemin de la page quand on clique sur ce déconnecter
 $categoriesSeries = 'view/pages/page_all_series.php'; // chemin de la page quand on choisis une catégorie
 
-// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
-
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = 'view/pages/page_admin.php'; // alors il balance le chemin la console admin
-}
-
 // Instanciation de mon objet USERS
 
 $users = new Users();
+
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+    $pageAdminDelete = 'view/pages/page_admin_delete.php';
+    $pageAdminSuggestSeries = 'view/pages/page_admin_suggest_series.php';
+    $pageAdminUpdate = 'view/pages/page_admin_update.php';
+    $pageAdminUserRole = 'view/pages/page_admin_user_role.php';
+    $pageAdminVerif = 'view/pages/page_admin_verif.php';
+    $pageAdmin = 'view/pages/page_admin.php';
+    $pageFormAddSeries = 'view/pages/page_form_add_series.php';
+    $pageUpdateSeries = 'view/pages/page_update_series.php';
+}
 
 // Condition pour sélectionner l'utilisateur en fonction de son id
 
@@ -46,3 +53,4 @@ if (isset($_GET['logout'])) { // je vérifie que logout existe dans la superglob
     session_destroy(); // Je détruits la session
     header('Location: index.php'); // je redirige vers l'index
 }
+

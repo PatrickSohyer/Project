@@ -4,7 +4,9 @@
 
 require '../../model/SP_database.php'; // require de ma classe base de donnée
 require '../../model/SP_users.php'; // require de ma classe Users
+require '../../model/SP_comments.php'; // require de ma classe Comments
 require '../../assets/country/country.php'; // require du tableau des pays
+require '../../model/SP_suggest_series.php';
 
 // Création des regex pour le formulaire 
 
@@ -31,19 +33,28 @@ $suggestSeriesPages = '../pages/page_suggest_series.php'; // chemin de la page p
 $logout = '../../index.php'; // chemin de la page quand on clique sur ce déconnecter
 $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand on choisis une catégorie
 
-// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
-
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
-}
-
 // Instanciation de mon objet USERS
 
 $users = new Users();
+$comments = new Comments();
+$suggestSeries = new SuggestSeries();
 
 // Création de mon Tableau d'erreur
 
 $errorMessage = array();
+
+// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
+    $pageAdminUpdate = '../pages/page_admin_update.php';
+    $pageAdminUserRole = '../pages/page_admin_user_role.php';
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdmin = '../pages/page_admin.php';
+    $pageFormAddSeries = '../pages/page_form_add_series.php';
+    $pageUpdateSeries = '../pages/page_update_series.php';
+}
 
 // Vérification et Update pour le Login
 
@@ -159,13 +170,22 @@ if (isset($_GET['logout'])) { // je vérifie que logout existe dans la superglob
     header('Location: index.php'); // je redirige vers l'index
 }
 
+
+
 // Ma condition pour qu'un utilisateur supprime son compte
 
-if (isset($_GET['deleteID'])) { // je vérifie que deleteID existe bien dans la superglobal GET
-    $users->id = $_SESSION['id']; // Hydratation de l'objet ( id )
-    $users->deleteUsers(); // j'appel la methode pour supprimer un utilisateur 
-    session_destroy(); // je détruis la sessions
-    header('Location: ../../index.php');
+if (isset($_POST['deleteUsers'])) { // Je vérifie que j'ai bien appuyé sur le boutton supprimé
+    $users->id = $_POST['deleteUsers']; // Hydratation de l'id
+    $comments->sp_id_users = $_POST['deleteUsers']; // hydratation de sp_id_users des commentaires
+    $suggestSeries->sp_id_users = $_POST['deleteUsers']; // hydratation de sp_id_users des suggestions
+    if ($comments->updateCommentsUser() && $suggestSeries->deleteSuggestUsers()) { // si les 2 méthodes renvoie TRUE
+        if ($users->deleteUsers()) { // j'appel la method qui permet de supprimer une série
+            session_destroy(); // je détruis la sessions
+            header('Location: ../../index.php');
+        }
+    } else {
+        echo 'WTF MEN';
+    }
 }
 
 

@@ -89,7 +89,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="<?= $accountUser; ?>" id="navMyAccount"><b>Mon compte</b></a>
+                    <a class="nav-link text-light" href="<?= $accountUser; ?>" id="navMyAccount"><b><i class="far fa-user-circle mr-2"></i> <b><?= isset($_SESSION['id']) ? $_SESSION['login'] : ' ' ?></b></b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" id="showSignIn" href="<?= $logout ?>?logout=logout"><b>Déconnexion</b></a>
@@ -141,7 +141,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="<?= $accountUser; ?>" id="navMyAccount"><b>Mon compte</b></a>
+                    <a class="nav-link text-light" href="<?= $accountUser; ?>" id="navMyAccount"><i class="far fa-user-circle mr-2"></i> <b><?= isset($_SESSION['id']) ? $_SESSION['login'] : ' ' ?></b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" id="showSignIn" href="<?= $logout ?>?logout=logout"><b>Déconnexion</b></a>

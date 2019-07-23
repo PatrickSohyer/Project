@@ -18,6 +18,7 @@ $('.modifyInfoUsersDelete').hide();
 $('.buttonmodifyDeleteNo').hide();
 $('.buttonmodifyDeleteYes').hide();
 
+
 // fonction au click pour passer sur les saisons
 
 $('#slideItemSeasons').click(function () {

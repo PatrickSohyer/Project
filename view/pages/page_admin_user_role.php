@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../controller/controller_page_admin_update.php';
+require '../../controller/controller_page_admin_user_role.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -53,15 +53,37 @@ require '../../controller/controller_page_admin_update.php';
 
             <div class="container backgroundTheme">
                 <div class="row mx-auto">
-                    <?php foreach ($seriesAllSeries as $value) { ?>
+                    <?php foreach ($selectUsers as $value) { ?>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
-                            <div class="card" style="width: 15rem;">
-                                <a href="page_info_series.php?id=<?= $value['id'] ?>"><img class="card-img-top" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" alt="Card image cap"></a>
-                                <div class="card-body text-center">
-                                    <p class="card-title h5"><?= $value['sp_series_pages_title'] ?></p>
-                                    <a href="page_update_series.php?id=<?= $value['id'] ?>"><i class="text-dark fas fa-cog fa-2x"></i></a>
+                            <ul class="list-group text-center">
+                                <li class="list-group-item"><?= $value['sp_users_login'] ?></li>
+                                <li class="list-group-item"><?= $value['sp_users_email'] ?></li>
+                                <li class="list-group-item"><?= $value['sp_users_country'] ?></li>
+                                <li class="list-group-item"><?= $value['sp_users_role'] ?></li>
+                                <li class="list-group-item text-center"><a data-toggle="modal" data-target="#deleteAccountUserModal<?= $value['id'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a></li>
+                                <div class="modal fade" id="deleteAccountUserModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog colorFontBlue" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <p class="modal-title h3 text-center" id="exampleModalLabel">Supprimer le compte</p>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <img src="../../assets/images/imgAccueil/philDelete.png">
+                                            <div class="modal-body">
+                                                Êtes vous sur de vouloir supprimer le compte de <b><?= $value['sp_users_login'] ?></b> ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="page_admin_user_role.php?page=1" method="POST">
+                                                    <button type="submit" name="deleteUserAccount" value=<?= $value['id'] ?> class="btnDeleteAccount btn btn-danger">Supprimer</button>
+                                                    <button type="button" class="btn btn-success"><a href="page_admin_users_role.php?page=1">Ne pas supprimer</a></button>
+                                                    <form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </ul>
                         </div>
                     <?php } ?>
                 </div>

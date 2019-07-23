@@ -45,4 +45,12 @@ class Comments extends Database
             return TRUE;
         }
     }
+
+    public function updateCommentsUser() {
+        $reqUpdateCommentUser = $this->db->prepare('UPDATE sp_comments SET sp_id_users = 1 WHERE sp_id_users = :id');
+        $reqUpdateCommentUser->bindValue(':id', $this->sp_id_users);
+        if ($reqUpdateCommentUser->execute()) {
+            return TRUE;
+        }
+    }
 }

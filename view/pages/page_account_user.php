@@ -75,7 +75,7 @@ require '../../controller/controller_account_user.php';
                                         <?php
                                         }
                                         ?></select>
-                                    <button type="submit" name="modifyCountryValidate" class="spStyleButton text-white btn buttonCountryEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label></label>
+                                    <button type="submit" name="modifyCountryValidate" class="spStyleButton text-white btn buttonCountryEmail ml-4 mb-2"><i class="fas fa-check-circle"></i></button></label>
 
                             </form>
 
@@ -93,12 +93,13 @@ require '../../controller/controller_account_user.php';
 
                             </form>
 
-                            <form method="GET" action="page_account_user.php" class="text-center">
+                            <form method="POST" action="page_account_user.php" class="text-center">
 
                                 <li class="list-group-item infoUsersDelete" name="accountDelete">Supprimer le compte<a class="buttonModifyDelete"><i class="far fa-trash-alt ml-5"></i></a></li>
                                 <label class="modifyInfoUsersDelete list-group-item" for="newDelete">Êtes vous sur de vouloir quitter ce merveilleux site?</label>
-                                <a href="page_account_user.php?deleteID=<?= $usersResult['id'] ?>" class="buttonmodifyDeleteYes h5 text-success m-4">Supprimer son compte <i class="fas fa-sad-tear"></i></a>
-                                <a href="page_account_user.php" class="buttonmodifyDeleteNo h5 text-danger m-4">Rester sur le site <i class="fas fa-laugh-beam"></i></a>
+                                <img class="img-fluid modifyInfoUsersDelete" src="../../assets/images/imgAccueil/chefDeleteAccount.png">
+                                <button type="submit" name="deleteUsers" value=<?= $_SESSION['id'] ?> class="btnDeleteSeries btn btn-danger modifyInfoUsersDelete">Supprimer son compte <i class="fas fa-sad-tear"></i></button></a>
+                                <button class="btnDeleteSeries btn btn-success modifyInfoUsersDelete"><a href="page_account_user.php" class="buttonmodifyDeleteNo h5 text-white m-4">Rester sur le site <i class="fas fa-laugh-beam"></i></a></button>
 
                             </form>
                         </ul>

@@ -19,8 +19,15 @@ $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand o
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin
-    $pageAdmin = '../pages/page_admin.php'; // alors il balance le chemin la console admin
+if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+    $pageAdminDelete = '../pages/page_admin_delete.php';
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
+    $pageAdminUpdate = '../pages/page_admin_update.php';
+    $pageAdminUserRole = '../pages/page_admin_user_role.php';
+    $pageAdminVerif = '../pages/page_admin_verif.php';
+    $pageAdmin = '../pages/page_admin.php';
+    $pageFormAddSeries = '../pages/page_form_add_series.php';
+    $pageUpdateSeries = '../pages/page_update_series.php';
 }
 
 // Ma condition pour la déconnexion

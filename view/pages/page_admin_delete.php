@@ -32,11 +32,12 @@ require '../../controller/controller_page_admin_delete.php';
                     <div class="sidebar-brand">
                         <a href="page_admin.php">Menu</a></div>
                 </div>
-                <li class="colorFontNavSide text-center"><a href="page_admin_verif.php"><i class="fas fa-check-circle colorFontNavSide m-2"></i>Vérifier une série</a></li>
+                <li class="colorFontNavSide text-center"><a href="page_admin_verif.php"><i class="fas fa-check-circle colorFontNavSide m-2"></i>Vérifier une série <span class="badge badge-pill badge-warning ml-2"><?= $seriesCountVerif['total'] ?></span></a></li>
                 <li class="colorFontNavSide text-center"><a href="page_form_add_series.php"><i class="fas fa-plus-circle colorFontNavSide m-2"></i>Ajouter une série</a></li>
                 <li class="colorFontNavSide text-center"><a href="page_admin_update.php?page=1"><i class="fas fa-cogs colorFontNavSide m-2"></i>Modifier une série</a></li>
                 <li class="colorFontNavSide text-center"><a href="page_admin_delete.php?page=1"><i class="fas fa-trash colorFontNavSide m-2"></i>Supprimer une série</a></li>
-                <li class="colorFontNavSide text-center"><a href="page_admin_suggest_series.php"><i class="fas fa-lightbulb colorFontNavSide m-2"></i>Suggestion de série</a></li>
+                <li class="colorFontNavSide text-center"><a href="page_admin_suggest_series.php"><i class="fas fa-lightbulb colorFontNavSide m-2"></i>Suggestion de série <span class="badge badge-pill badge-warning ml-2"><?= $suggestCount['total'] ?></span></a></li>
+                <li class="colorFontNavSide text-center"><a href="page_admin_user_role.php?page=1"><i class="fas fa-check-circle colorFontNavSide m-2"></i>Changer role d'un user</a></li>
                 <li class="colorFontNavSide text-center"><a href="../../index.php"><i class="fas fa-home colorFontNavSide m-2"></i>Retour au site</a></li>
             </ul>
         </nav>
@@ -57,7 +58,7 @@ require '../../controller/controller_page_admin_delete.php';
                             <div class="card mx-auto" style="width: 14rem;">
                                 <a href="page_info_series.php?id=<?= $value['id'] ?>"><img class="card-img-top" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" alt="Card image cap"></a>
                                 <div class="card-body text-center">
-                                    <p class="card-title h5"><?= $value['sp_series_pages_title'] ?></p>
+                                    <p class="card-title h6"><?= $value['sp_series_pages_title'] ?></p>
                                     <a data-toggle="modal" data-target="#deleteSeriesModal<?= $value['id'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
                                 </div>
                             </div>
@@ -76,38 +77,47 @@ require '../../controller/controller_page_admin_delete.php';
                                         Êtes vous sur de vouloir supprimer la série <b><?= $value['sp_series_pages_title'] ?></b> ?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btnDeleteSeries btn btn-danger"><a href="page_admin_delete.php?delete=<?= $value['id'] ?>">Supprimer</a></button>
-                                        <button type="button" class="btn btn-success"><a href="page_admin_delete.php">Ne pas supprimer</a></button>
+                                        <form action="page_admin_delete.php?page=1" method="POST">
+                                        <button type="submit" name="deleteSeries" value=<?= $value['id'] ?> class="btnDeleteSeries btn btn-danger">Supprimer</button>
+                                        <button type="button" class="btn btn-success"><a href="page_admin_delete.php?page=1">Ne pas supprimer</a></button>
+                                        <form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
-
-                    <nav class="mx-auto m-4" aria-label="...">
-                        <ul class="pagination">
-                            <?php if ($currentPage == 1) {
-                                echo ' ';
-                            } else { ?>
-                                <li class="page-item">
-                                    <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
-                                </li>
-                            <?php } ?>
-                            <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
-                                <li class="page-item"><a class="page-link" href="page_admin_delete.php?page=<?= $i ?>"><?= $i ?></a></li>
-                            <?php }
-                            if ($currentPage == $nbPages) {
-                                echo ' ';
-                            } else { ?>
-
-                                <li class="page-item">
-                                    <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </nav>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="row mx-auto">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
+                        <nav class="mx-auto m-4 text-center" aria-label="...">
+                            <ul class="pagination">
+                                <?php if ($currentPage == 1) {
+                                    echo ' ';
+                                } else { ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
+                                    </li>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
+                                    <li class="page-item"><a class="page-link" href="page_admin_delete.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                <?php }
+                                if ($currentPage == $nbPages) {
+                                    echo ' ';
+                                } else { ?>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
             <!-- /#page-content-wrapper -->
 
         </div>

@@ -28,7 +28,7 @@ require '../../controller/controller_all_article.php';
     require_once('../include/include_header.php');
     ?>
 
-    <div class="container-fluid" id="allArticles">
+    <div class="container backgroundTheme" id="allArticles">
         <div class="row  text-center">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3">
                 <div class="card cardArticle mb-3">

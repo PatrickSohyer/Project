@@ -14,6 +14,27 @@ class Users extends Database
     public $sp_users_country;
     public $sp_users_avatar;
     public $sp_users_role;
+    public $nbUsersPerPages = 20;
+    public $firstPageUsers;
+
+    // Methode qui permet de compter le nombre d'utilisateur
+
+    public function countUsersPaginationAdmin()
+    {
+        $reqCountUsersPaginationAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_users');
+        $fetchCountUsersPaginationAdmin = $reqCountUsersPaginationAdmin->fetchAll();
+        return $fetchCountUsersPaginationAdmin;
+    }
+
+    // Methode qui permet de selectionner les utilisateurs en fonction de leurs id
+
+    public function selectAllUsers()
+    {
+        $selectAllUsers = $this->db->query('SELECT * FROM sp_users');
+        $selectAllUsers->execute();
+        $selectAllUsersFetch = $selectAllUsers->fetchAll();
+        return $selectAllUsersFetch;
+    }
 
     // Methode qui permet de selectionner les utilisateurs en fonction de leurs id
 
@@ -112,6 +133,18 @@ class Users extends Database
             return TRUE;
         }
     }
+
+        // Methode qui permet de mettre à jour le role
+
+        public function updateRoleUsers()
+        {
+            $updateRoleUsers = $this->db->prepare('UPDATE sp_users SET sp_users_role = :new_sp_users_role WHERE id = :id');
+            $updateRoleUsers->bindValue(':new_sp_users_role', $this->sp_users_role);
+            $updateRoleUsers->bindValue(':id', $this->id);
+            if ($updateRoleUsers->execute()) {
+                return TRUE;
+            }
+        }
 
     // Methode qui permet de supprimer un utilisateur
 

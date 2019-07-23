@@ -159,7 +159,9 @@ require '../../controller/controller_info_series.php';
                     </div>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
                         foreach ($selectComments as $value) { ?>
-                            <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"> <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span></li>
+                            </ul>
                             <div class="modal fade" id="deleteCommentModal<?= $value['idComment'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog colorFontBlue" role="document">
                                     <div class="modal-content">
@@ -172,6 +174,7 @@ require '../../controller/controller_info_series.php';
                                         <div class="modal-body">
                                             Êtes vous sur de vouloir supprimer le commentaire de <b><?= $value['sp_users_login'] ?></b> ?
                                         </div>
+                                        <img src="../../assets/images/imgAccueil/philDelete.png">
                                         <div class="modal-footer">
                                             <button type="button" class="btnDeleteComment btn btn-danger"><a href="page_info_series.php?deleteComment=<?= $value['idComment'] ?>&AMP;id=<?= $value['idSeries'] ?>">Supprimer</a></button>
                                             <button type="button" data-dismiss="modal" class="btn btn-success">Ne pas supprimer</a></button>

@@ -42,4 +42,22 @@ class SuggestSeries extends Database
             return TRUE;
         }
     }
+
+    public function deleteSuggestUsers()
+    {
+        $reqDeleteSuggestUsers = $this->db->prepare('DELETE FROM sp_suggest_series WHERE sp_id_users = :id');
+        $reqDeleteSuggestUsers->bindValue(':id', $this->sp_id_users);
+        if ($reqDeleteSuggestUsers->execute()) {
+            return TRUE;
+        }
+    }
+
+        // Methode qui permet de compter le nombre de suggestion pas vérifier 
+
+        public function countSuggestAdmin()
+        {
+            $reqCountSuggestAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_suggest_series');
+            $fetchCountSuggestAdmin = $reqCountSuggestAdmin->fetch();
+            return $fetchCountSuggestAdmin;
+        }
 }
