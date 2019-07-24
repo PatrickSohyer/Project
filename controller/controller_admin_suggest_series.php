@@ -52,8 +52,8 @@ $suggestCount = $suggestSeries->countSuggestAdmin();
 
 // Ma condition pour supprimer une suggestion 
 
-if (isset($_GET['deleteSuggest'])) {
-    $suggestSeries->id = $_GET['deleteSuggest'];
+if (isset($_POST['deleteSuggestSeries'])) {
+    $suggestSeries->id = $_POST['deleteSuggestSeries'];
     if ($suggestSeries->deleteSuggestSeries()) {
         header('Location: page_admin_suggest_series.php');
     }

@@ -44,7 +44,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
 
 // Instanciation de mon objet SuggestSeries
 
-$suggest = new SuggestSeries();
+$suggestSeries = new SuggestSeries();
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
