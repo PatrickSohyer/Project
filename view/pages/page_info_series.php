@@ -176,8 +176,10 @@ require '../../controller/controller_info_series.php';
                                         </div>
                                         <img src="../../assets/images/imgAccueil/philDelete.png">
                                         <div class="modal-footer">
-                                            <button type="button" class="btnDeleteComment btn btn-danger"><a href="page_info_series.php?deleteComment=<?= $value['idComment'] ?>&AMP;id=<?= $value['idSeries'] ?>">Supprimer</a></button>
-                                            <button type="button" data-dismiss="modal" class="btn btn-success">Ne pas supprimer</a></button>
+                                            <form action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" method="POST">
+                                                <button type="submit" name="deleteComment" value="<?= $value['idComment'] ?>" class="btnDeleteComment btn btn-danger">Supprimer</a></button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-success">Ne pas supprimer</a></button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

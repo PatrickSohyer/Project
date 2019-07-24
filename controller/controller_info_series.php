@@ -81,8 +81,8 @@ if (isset($_GET['rate']) and is_numeric($_GET['rate'])) { // je vérifie que rat
     }
 }
 
-if (isset($_GET['deleteComment'])) {
-    $comments->id = $_GET['deleteComment'];
+if (isset($_POST['deleteComment'])) {
+    $comments->id = $_POST['deleteComment'];
     if ($comments->deleteComments() == TRUE) { // j'appel la method qui permet de supprimer un commentaire
         $id = $_GET['id'];
         header("Location: page_info_series.php?id=$id");
