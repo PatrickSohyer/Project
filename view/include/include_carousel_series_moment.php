@@ -20,7 +20,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#reasonsWhyModals"><img src="assets/images/imgSeries/13ReasonsWhy.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>13 Reasons Why</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>13 Reasons Why</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#reasonsWhyModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#supernaturalModals"><img src="assets/images/imgSeries/supernatural.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>Supernatural</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>Supernatural</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#supernaturalModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theFlashModals"><img src="assets/images/imgSeries/theFlash.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>The Flash</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>The Flash</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theFlashModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#breakingBadModals"><img src="assets/images/imgSeries/breakingBad.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>Breaking Bad</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>Breaking Bad</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#breakingBadModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-sm-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#gameOfThronesModals"><img src="assets/images/imgSeries/gameOfThrones.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>Game Of Thrones</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>Game Of Thrones</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#gameOfThronesModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -258,7 +258,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#luciferModals"><img src="assets/images/imgSeries/lucifer.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>Lucifer</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>Lucifer</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#luciferModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -304,7 +304,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theWalkingDeadModals"><img src="assets/images/imgSeries/theWalkingDead.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>The Walking Dead</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>The Walking Dead</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theWalkingDeadModals"><b>Résumé</b></button>
                                 </div>
                             </div>
@@ -349,7 +349,7 @@
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theBigBangTheoryModals"><img src="assets/images/imgSeries/theBigBangTheory.jpg" class="imgMomentAccueil" /></a>
-                                    <p class="h3 mt-2 titleSerieMoment"><b>The Big Bang theory</b></p>
+                                    <p class="h3 mt-2 colorFontBlue"><b>The Big Bang theory</b></p>
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theBigBangTheoryModals"><b>Résumé</b></button>
                                 </div>
                             </div>

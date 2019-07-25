@@ -5,6 +5,8 @@
 require '../../model/SP_database.php'; // require de ma database
 require '../../model/SP_series_pages.php'; // require de ma base de donnée sp_series_pages
 require '../../model/SP_suggest_series.php';
+require '../../model/SP_categories.php';
+require '../../model/SP_relation_series_pages_categories.php';
 
 // Création des regex pour le formulaire 
 
@@ -49,12 +51,18 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     exit();
 }
 
+// Tableau des catégories 
+
+$categoriesArray = ['Action', 'Aventure', 'Comédie', 'Dessin Animés', 'Drame', 'Enfants', 'Fantastique', 'Horreur', 'Manga', 'Mini-séries', 'Science fiction', 'Thriller'];
 // Instanciation de mon objet Series
 
 $series = new Series();
 $seriesCountVerif = $series->countSeriesVerifAdmin();
 $suggest = new SuggestSeries();
 $suggestCount = $suggest->countSuggestAdmin();
+$categories = new Categories();
+$selectCategories = $categories->selectAllCategories();
+$relationCategories = new RelationCategories();
 
 // Vérification de mon formulaire pour ajouter une séries
 

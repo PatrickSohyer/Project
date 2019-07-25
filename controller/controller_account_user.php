@@ -6,7 +6,7 @@ require '../../model/SP_database.php'; // require de ma classe base de donnée
 require '../../model/SP_users.php'; // require de ma classe Users
 require '../../model/SP_comments.php'; // require de ma classe Comments
 require '../../assets/country/country.php'; // require du tableau des pays
-require '../../model/SP_suggest_series.php';
+require '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
 
 // Création des regex pour le formulaire 
 
@@ -33,11 +33,11 @@ $suggestSeriesPages = '../pages/page_suggest_series.php'; // chemin de la page p
 $logout = '../../index.php'; // chemin de la page quand on clique sur ce déconnecter
 $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand on choisis une catégorie
 
-// Instanciation de mon objet USERS
+// Instanciation de mes objets
 
-$users = new Users();
-$comments = new Comments();
-$suggestSeries = new SuggestSeries();
+$users = new Users();  // instanciation de l'objet Users
+$comments = new Comments(); // instanciation de l'objet Comments
+$suggestSeries = new SuggestSeries(); // instanciation de l'obhet SuggestSeries
 
 // Création de mon Tableau d'erreur
 
@@ -46,14 +46,14 @@ $errorMessage = array();
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
 if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
-    $pageAdminDelete = '../pages/page_admin_delete.php';
-    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
-    $pageAdminUpdate = '../pages/page_admin_update.php';
-    $pageAdminUserRole = '../pages/page_admin_user_role.php';
-    $pageAdminVerif = '../pages/page_admin_verif.php';
-    $pageAdmin = '../pages/page_admin.php';
-    $pageFormAddSeries = '../pages/page_form_add_series.php';
-    $pageUpdateSeries = '../pages/page_update_series.php';
+    $pageAdminDelete = '../pages/page_admin_delete.php'; // j'ai accès à cette page
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php'; // j'ai accès à cette page
+    $pageAdminUpdate = '../pages/page_admin_update.php'; // j'ai accès à cette page
+    $pageAdminUserRole = '../pages/page_admin_user_role.php'; // j'ai accès à cette page
+    $pageAdminVerif = '../pages/page_admin_verif.php'; // j'ai accès à cette page
+    $pageAdmin = '../pages/page_admin.php'; // j'ai accès à cette page
+    $pageFormAddSeries = '../pages/page_form_add_series.php'; // j'ai accès à cette page
+    $pageUpdateSeries = '../pages/page_update_series.php'; // j'ai accès à cette page
 }
 
 // Vérification et Update pour le Login
@@ -184,7 +184,7 @@ if (isset($_POST['deleteUsers'])) { // Je vérifie que j'ai bien appuyé sur le 
             header('Location: ../../index.php');
         }
     } else {
-        echo 'WTF MEN';
+        echo 'Je ne comprends pas la demande';
     }
 }
 
