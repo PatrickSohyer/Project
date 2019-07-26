@@ -34,6 +34,12 @@
                         <a class="dropdown-item" href="<?= $allSeriesPage ?>&AMP;categorie=Thriller"><b>Thriller</b></a>
                     </div>
                 </li>
+                <?php if (isset($_GET['page'])) { ?>
+                    <form method="POST" action="page_all_series.php?page=1" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="searchSeries" placeholder="Recherche" aria-label="Recherhche">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                <?php } ?>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -86,6 +92,12 @@
                 <li class="nav-item">
                     <a class="nav-link text-light mr-4" href="<?= $pageAdmin ?>" id="navAddSeries"><b>Console Administrateur</b></a>
                 </li>
+                <?php if (isset($_GET['page'])) { ?>
+                    <form method="POST" action="page_all_series.php?page=1" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="searchSeries" placeholder="Recherche" aria-label="Recherhche">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                <?php } ?>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -138,6 +150,12 @@
                 <li class="nav-item">
                     <a class="nav-link text-light mr-4" href="<?= $suggestSeriesPages; ?>" id="navArticles"><b>Suggérer une série</b></a>
                 </li>
+                <?php if (isset($_GET['page'])) { ?>
+                    <form method="POST" action="page_all_series.php?page=1" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="searchSeries" placeholder="Recherche" aria-label="Recherhche">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                <?php } ?>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">

@@ -30,13 +30,19 @@ require '../../controller/controller_all_series.php';
 
     <div class="container backgroundTheme" id="allSeries">
         <div class="row text-center">
-            <?php if (isset($seriesResult)) { ?>
+            <?php if (isset($seriesResult) and count($seriesResult) > 0) { ?>
                 <?php foreach ($seriesResult as $value) { ?>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
                         <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
                     </div>
                 <?php } ?>
+            </div>
+        </div>
 
+
+
+        <div class="row mx-auto">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
                 <nav class="mx-auto m-4" aria-label="...">
                     <ul class="pagination">
                         <?php if ($currentPage == 1) {
@@ -60,7 +66,11 @@ require '../../controller/controller_all_series.php';
                     </ul>
                 </nav>
             <?php
-            } else {
+            } elseif (isset($seriesResult) and count($seriesResult) == 0) { ?>
+            <div class="mx-auto">
+                <p class="h3 text-center">La série n'est pas sur le site, merci de la suggérer pour qu'un administrateur l'ajoute</p>
+            </div>
+            <?php } else {
                 foreach ($categoriesSeries as $value) {
                     ?>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">

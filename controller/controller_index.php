@@ -13,7 +13,7 @@ $sourceImgNav = 'assets/images/imgAccueil/imgNavbar.png'; // chemin du logo de l
 $accountUser = 'view/pages/page_account_user.php'; // chemin de la page mon compte
 $articlePage = 'view/pages/page_article_info.php'; // chemin de la page avec un article
 $allSeriesPage = 'view/pages/page_all_series.php?page=1'; // chemain de la page avec toutes les séries
-$allArticlesPage = 'view/pages/page_all_articles.php'; // chemin de la page avec tout les articles
+$allArticlesPage = 'view/pages/page_all_articles.php?page=1'; // chemin de la page avec tout les articles
 $mentionsLegalsPage = 'view/pages/page_mentions_legals.php'; // chemin de la page pour les mentions legals
 $infoSeries = 'view/pages/page_info_series.php'; // chemin de la page avec une séries et ses informations
 $signUpPage = 'view/pages/page_form_sign_up.php'; // chemin de la page pour s'inscrire

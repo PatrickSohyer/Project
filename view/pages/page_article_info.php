@@ -14,7 +14,7 @@ require '../../controller/controller_article_info.php';
     <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon/favicon.ico">
 
     <title>SériesPhil!</title>
 
@@ -25,13 +25,26 @@ require '../../controller/controller_article_info.php';
 <body>
 
     <?php
-    require_once('../include/header_nav.php');
+    require_once('../include/include_header.php');
     ?>
 
+    <div class="container backgroundTheme">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 col-md-12 col-12 mx-auto">
+                <div class="text-center mt-2">
+                    <p class="h4"><b><u><?= $selectArticle['sp_article_title'] ?> : <?= $selectArticle['sp_article_description'] ?></u></b></p>
+                    <img id="imgArticleInfo" class="img-fluid mt-3" src="../../assets/images/imgArticles/<?= $selectArticle['sp_article_image'] ?>">
+                </div>
+                <p class="mt-3"><?= nl2br($selectArticle['sp_article_resume']); ?></p>
+            </div>
+        </div>
+    </div>
 
 
 
-    <?php require_once('../include/footer.php') ?>
+    <?php
+    require_once('../include/include_footer.php')
+    ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -121,8 +121,8 @@ a {
 }
 
 .modalSerieMoment {
-    background-color:
-        /* couleur de fond des modal */
+    background-color: #01161E;
+    /* couleur de fond des modal */
 }
 
 .descritpionSerieMoment {
@@ -215,100 +215,142 @@ ol {
 }
 
 .rating2 a {
-    float: none
-        /* je remet le flot à 0
-     */
+    float: none;
+    /* je remet le flot à 0 */
 }
 
 .clear {
-    clear: both;  /* je clear tout */
+    clear: both;
+    /* je clear tout */
 }
 
 
 .slide-toggle {
-    display: none;  /* disposition */
+    display: none;
+    /* disposition */
 }
 
 .slidemenu {
-    font-family: arial, sans-serif;  /* écriture du menu  */
-    max-width: 600px;  /* taille maximum */
-    margin: 50px auto;  /* margin  */
-    overflow: hidden;  /* surplus cacher */
+    font-family: arial, sans-serif;
+    /* écriture du menu  */
+    max-width: 600px;
+    /* taille maximum */
+    margin: 50px auto;
+    /* margin  */
+    overflow: hidden;
+    /* surplus cacher */
 }
 
 .slidemenu label {
-    width: 25%;  /* largeur 25% */
-    text-align: center;  /* je centre tout */
-    display: block;  /* pas de retour à la ligne */
-    float: left;  /* aligne tout à gauche */
-    color: #EFF6E0;  /* couleur des items et texte */
-    opacity: 0.2;  /* opacité */
+    width: 25%;
+    /* largeur 25% */
+    text-align: center;
+    /* je centre tout */
+    display: block;
+    /* pas de retour à la ligne */
+    float: left;
+    /* aligne tout à gauche */
+    color: #EFF6E0;
+    /* couleur des items et texte */
+    opacity: 0.2;
+    /* opacité */
 
 }
 
 .slidemenu label:hover {
-    cursor: pointer;  /* changement de cursor au survol */
-    color: #EFF6E0;  /* couleur */
+    cursor: pointer;
+    /* changement de cursor au survol */
+    color: #EFF6E0;
+    /* couleur */
 }
 
 .slidemenu label span {
-    display: block;  /* annule le retour à la ligne */
-    padding: 10px;  /* ajoute un padding */
+    display: block;
+    /* annule le retour à la ligne */
+    padding: 10px;
+    /* ajoute un padding */
 }
 
 .slidemenu label .icon {
-    font-size: 20px;  /* taille de la police */
-    border: solid 2px #EFF6E0;  /* bordure */
-    text-align: center;  /* centre tout */
-    height: 50px;  /* hauteur */
-    width: 50px;  /* largeur */
-    display: block;  /* annule retour à la ligne */
-    margin: 0 auto;  /* margin */
-    line-height: 50px;  /* espace ligne */
-    border-radius: 50%;  /* fait un rond */
+    font-size: 20px;
+    /* taille de la police */
+    border: solid 2px #EFF6E0;
+    /* bordure */
+    text-align: center;
+    /* centre tout */
+    height: 50px;
+    /* hauteur */
+    width: 50px;
+    /* largeur */
+    display: block;
+    /* annule retour à la ligne */
+    margin: 0 auto;
+    /* margin */
+    line-height: 50px;
+    /* espace ligne */
+    border-radius: 50%;
+    /* fait un rond */
 }
 
-.slider { 
-    width: 100%;  /* largeur */
-    height: 5px;  /* hauteur */
-    display: block;  /* annule retour ligne */
-    background: #ccc;  /* couleur de fond */
-    margin-top: 10px;  /* margin en haut */
-    border-radius: 5px;  /* arrondit bord */
+.slider {
+    width: 100%;
+    /* largeur */
+    height: 5px;
+    /* hauteur */
+    display: block;
+    /* annule retour ligne */
+    background: #ccc;
+    /* couleur de fond */
+    margin-top: 10px;
+    /* margin en haut */
+    border-radius: 5px;
+    /* arrondit bord */
 }
 
 .slider .bar {
-    width: 25%;  /* largeur */
-    height: 5px;  /* hauteur */
-    background: #333;  /* couleur de fond */
-    border-radius: 5px;  /* arrondit bordure */
+    width: 25%;
+    /* largeur */
+    height: 5px;
+    /* hauteur */
+    background: #333;
+    /* couleur de fond */
+    border-radius: 5px;
+    /* arrondit bordure */
 }
 
 .slidemenu label,
 .slider .bar {
-    transition: all 500ms ease-in-out;  /* animation de la barre */
-    -webkit-transition: all 500ms ease-in-out; /* animation de la barre */
-    -moz-transition: all 500ms ease-in-out; /* animation de la barre */
+    transition: all 500ms ease-in-out;
+    /* animation de la barre */
+    -webkit-transition: all 500ms ease-in-out;
+    /* animation de la barre */
+    -moz-transition: all 500ms ease-in-out;
+    /* animation de la barre */
 }
 
-.slidemenu .slide-toggle:checked+label { 
-    opacity: 1; /* opacité */
+.slidemenu .slide-toggle:checked+label {
+    opacity: 1;
+    /* opacité */
 }
 
 .slidemenu #slideItemPresentation:checked~.slider .bar {
-    margin-left: 0; /* margin gauche présentation */
+    margin-left: 0;
+    /* margin gauche présentation */
 }
 
 .slidemenu #slideItemSeasons:checked~.slider .bar {
-    margin-left: 25%; /* margin gauche saisons */
+    margin-left: 25%;
+    /* margin gauche saisons */
 }
 
 .slidemenu #slideItemComment:checked~.slider .bar {
-    margin-left: 50%; /* margin gauche commentaire */
+    margin-left: 50%;
+    /* margin gauche commentaire */
 }
 
 .slidemenu #slideItemArticle:checked~.slider .bar {
-    margin-left: 75%; /* margin gauche article */
+    margin-left: 75%;
+    /* margin gauche article */
 }
 
 
@@ -316,9 +358,12 @@ ol {
 .informationSeriesCard,
 .seasonsSeriesCard,
 .backgroundTheme {
-    border: #01161E 1px solid; /* bordure */
-    background-color: #EFF6E0; /* couleur de fond */
-    border-radius: 10px; /* arrondit des bords */
+    border: #01161E 1px solid;
+    /* bordure */
+    background-color: #EFF6E0;
+    /* couleur de fond */
+    border-radius: 10px;
+    /* arrondit des bords */
 }
 
 #cardSignUp,
@@ -330,41 +375,58 @@ ol {
 .labelTextFormSignIn,
 .formAddSeriesText,
 #cardAddSeries {
-    background-color: #EFF6E0; /* couleur de fond */
-    color: #06222C; /* couleur écriture */
+    background-color: #EFF6E0;
+    /* couleur de fond */
+    color: #06222C;
+    /* couleur écriture */
 }
 
 .flashImgAllSeries img {
-    opacity: 1; /* opacité pour le flash */
-    -webkit-transition: .3s ease-in-out; /* transition */
-    transition: .3s ease-in-out; /* transition */
+    opacity: 1;
+    /* opacité pour le flash */
+    -webkit-transition: .3s ease-in-out;
+    /* transition */
+    transition: .3s ease-in-out;
+    /* transition */
 }
 
 .flashImgAllSeries:hover img {
-    opacity: .5; /* opacité quand on survole l'image */
-    cursor: pointer; /* changement pointeur */
+    opacity: .5;
+    /* opacité quand on survole l'image */
+    cursor: pointer;
+    /* changement pointeur */
 }
 
 .imgAllSeriesPage {
-    box-shadow: 8px 8px 12px #aaa; /* ombre */
-    border-radius: 10px; /* arrondit bordure */
+    box-shadow: 8px 8px 12px #aaa;
+    /* ombre */
+    border-radius: 10px;
+    /* arrondit bordure */
 }
 
 
 .textSeriePage {
-    border: #01161E 1px solid; /* bordure */
-    background-color: #EFF6E0; /* couleur de fond */
+    border: #01161E 1px solid;
+    /* bordure */
+    background-color: #EFF6E0;
+    /* couleur de fond */
 
 }
 
 #seriesImagesInformation {
-    height: 27rem; /* hauteur image info */
-    width: 19rem; /* largeur image info */
-    border-radius: 10px; /* arrondit bordure */
-    box-shadow: 8px 8px 12px black; /* ombre */
+    height: 27rem;
+    /* hauteur image info */
+    width: 19rem;
+    /* largeur image info */
+    border-radius: 10px;
+    /* arrondit bordure */
+    box-shadow: 8px 8px 12px black;
+    /* ombre */
 }
 
-@media screen and (max-width: 400px) { /* media pour réduire le captcha */
+@media screen and (max-width: 400px) {
+
+    /* media pour réduire le captcha */
     .g-recaptcha {
         transform: scale(0.70);
         -webkit-transform: scale(0.70);
@@ -372,6 +434,13 @@ ol {
         -webkit-transform-origin: 0 0;
     }
 }
+
+#imgArticleInfo 
+{
+    height: 20rem;
+    border-radius: 10%;
+}
+
 
 
 /* Bleu foncé : #124559

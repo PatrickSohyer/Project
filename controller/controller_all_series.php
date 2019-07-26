@@ -13,7 +13,7 @@ $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';  // chemin du lo
 $accountUser = '../pages/page_account_user.php'; // chemin de la page mon compte
 $articlePage = '../pages/page_article_info.php'; // chemin de la page avec un article
 $allSeriesPage = '../pages/page_all_series.php?page=1'; // chemain de la page avec toutes les séries
-$allArticlesPage = '../pages/page_all_articles.php'; // chemin de la page avec tout les articles
+$allArticlesPage = '../pages/page_all_articles.php?page=1'; // chemin de la page avec tout les articles
 $mentionsLegalsPage = '../pages/page_mentions_legals.php'; // chemin de la page pour les mentions legals
 $infoSeries = '../pages/page_info_series.php'; // chemin de la page avec une séries et ses informations
 $signUpPage = '../pages/page_form_sign_up.php'; // chemin de la page pour s'inscrire
@@ -42,16 +42,27 @@ if (isset($_GET['page']) and is_numeric($_GET['page']) and isset($_GET['categori
     $categories->sp_categories_gender = $_GET['categorie']; // hydratation de mon objet ( gender )
     $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
     $categoriesSeries = $categories->getSeriesPagesCategories(); // appel de la method qui permet de selectionner en fonction de la catégorie
-} elseif (isset($_GET['page']) and is_numeric($_GET['page'])) { // sinon je fais la pagination normal
+} elseif (isset($_GET['page']) and is_numeric($_GET['page']) and empty($_POST['searchSeries'])) { // sinon je fais la pagination normal
     $currentPage = $_GET['page']; // la page actuel est égal à get page 
     $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
     $seriesResult = $series->selectSeriesImages();
     if ($currentPage >= $nbPages) {
         $currentPage = $nbPages;
     }
+} elseif (isset($_GET['page']) and is_numeric($_GET['page']) and !empty($_POST['searchSeries'])) {
+    $currentPage = $_GET['page']; // la page actuel est égal à get page 
+    $series->firstPageSeries = ($currentPage - 1) * $nbSeriesPerPages;
+    $seriesSearch = '%' . $_POST['searchSeries'] . '%';
+    $series->sp_series_pages_title = $seriesSearch;
+    $seriesResult = $series->selectSeriesImagesSearch();
+    if ($currentPage >= $nbPages) {
+        $currentPage = $nbPages;
+    }
 } else {
     header('Location: page_error.php');
 }
+
+
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 

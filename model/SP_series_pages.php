@@ -50,7 +50,7 @@ class Series extends Database
 
     public function selectSeriesImages() // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
     {
-        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');  // requete SQL qui va sélectionner les images et l'id des séries sélectionner
+        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');  // requete SQL qui va sélectionner les images et l'id des séries sélectionner
         $reqSelectSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
         $reqSelectSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :firstPageSeries
         if ($reqSelectSeries->execute()) { // si la requete s'execute
@@ -58,6 +58,20 @@ class Series extends Database
             return $reqFetchSeries; // je retourne le resultat
         }
     }
+
+      // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
+
+      public function selectSeriesImagesSearch() // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
+      {
+          $reqSeriesImagesSearch = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 AND sp_series_pages_title LIKE :search LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');  // requete SQL qui va sélectionner les images et l'id des séries sélectionner
+          $reqSeriesImagesSearch->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
+          $reqSeriesImagesSearch->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :firstPageSeries
+          $reqSeriesImagesSearch->bindValue(':search', $this->sp_series_pages_title, PDO::PARAM_STR);
+          if ($reqSeriesImagesSearch->execute()) { // si la requete s'execute
+              $fetchSeriesImagesSearch = $reqSeriesImagesSearch->fetchAll(PDO::FETCH_ASSOC); // alors je fetchAll (je récupère toutes les données du tableau)
+              return $fetchSeriesImagesSearch; // je retourne le resultat
+          }
+      }
 
     // Methode qui permet de compter le nombre de série total pour la pagination si la série est valider
 
@@ -110,14 +124,14 @@ class Series extends Database
         }
     }
 
-        // Methode qui permet de selectionner toutes les série validé
+    // Methode qui permet de selectionner toutes les série validé
 
-        public function selectAllSeries() // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
-        {
-            $reqSelectAllSeries = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 1'); // requete SQL pour selectionner les informations des séries qui ont été validé
-                $fetchSelectAllSeries = $reqSelectAllSeries->fetchAll(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
-                return $fetchSelectAllSeries; // je retourne le resultat
-        }
+    public function selectAllSeries() // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
+    {
+        $reqSelectAllSeries = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 1 ORDER BY sp_series_pages_title'); // requete SQL pour selectionner les informations des séries qui ont été validé
+        $fetchSelectAllSeries = $reqSelectAllSeries->fetchAll(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
+        return $fetchSelectAllSeries; // je retourne le resultat
+    }
 
     // Methode qui permet de Selectionner selon la limit définis pour la pagination
 

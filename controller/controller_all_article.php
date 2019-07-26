@@ -10,7 +10,7 @@ $sourceImgNav = '../../assets/images/imgAccueil/imgNavbar.png';  // chemin du lo
 $accountUser = '../pages/page_account_user.php'; // chemin de la page mon compte
 $articlePage = '../pages/page_article_info.php'; // chemin de la page avec un article
 $allSeriesPage = '../pages/page_all_series.php?page=1'; // chemain de la page avec toutes les séries
-$allArticlesPage = '../pages/page_all_articles.php'; // chemin de la page avec tout les articles
+$allArticlesPage = '../pages/page_all_articles.php?page=1'; // chemin de la page avec tout les articles
 $mentionsLegalsPage = '../pages/page_mentions_legals.php'; // chemin de la page pour les mentions legals
 $infoSeries = '../pages/page_info_series.php'; // chemin de la page avec une séries et ses informations
 $signUpPage = '../pages/page_form_sign_up.php'; // chemin de la page pour s'inscrire
@@ -34,8 +34,29 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
 }
 
+
+
 $article = new Article();
-$selectArticle = $article->selectArticle();
+
+// Création de mes variables pour la pagination
+
+$articlePagination = $article->countArticlePagination();
+$nbArticlePerPages = 16;
+$nbArticlePage = $articlePagination[0]['total'];
+$nbPages = ceil($nbArticlePage / $nbArticlePerPages);
+
+// je créer mes conditions pour les pages et les catégories
+
+if (isset($_GET['page']) and is_numeric($_GET['page'])) { // sinon je fais la pagination normal
+    $currentPage = $_GET['page']; // la page actuel est égal à get page 
+    $article->firstPageArticle = ($currentPage - 1) * $nbArticlePerPages;
+    $selectArticle = $article->selectArticle();
+    if ($currentPage >= $nbPages) {
+        $currentPage = $nbPages;
+    }
+} else {
+    header('Location: page_error.php');
+}
 
 // Ma condition pour la déconnexion
 
