@@ -5,8 +5,8 @@
 require '../../model/SP_database.php'; // require de ma classe base de donnée
 require '../../model/SP_users.php'; // require de ma classe Users
 require '../../model/SP_comments.php'; // require de ma classe Comments
-require '../../assets/country/country.php'; // require du tableau des pays
 require '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
+require '../../assets/country/country.php'; // require du tableau des pays
 
 // Création des regex pour le formulaire 
 
@@ -54,6 +54,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageAdmin = '../pages/page_admin.php'; // j'ai accès à cette page
     $pageFormAddSeries = '../pages/page_form_add_series.php'; // j'ai accès à cette page
     $pageUpdateSeries = '../pages/page_update_series.php'; // j'ai accès à cette page
+    $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
 }
 
 // Vérification et Update pour le Login

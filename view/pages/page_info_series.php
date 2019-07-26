@@ -122,7 +122,7 @@ require '../../controller/controller_info_series.php';
 
                     <b>Nationalité</b> : <i><?= $seriesInfo['sp_series_pages_origin'] ?></i><br /><br />
 
-                    <b>Genres</b> : <i>Drame, Mystere</i><br /><br />
+                    <b>Genres</b> : <?php foreach($selectCategories as $value) { ?><i><?= $value['sp_categories_gender'] ?></i> <?php } ?><br /><br />
 
                     <b>Résumé</b> : <i><?= $seriesInfo['sp_series_pages_description'] ?></i>
                 </p>

@@ -3,10 +3,9 @@
 // Require des model dont j'ai besoin
 
 require '../../model/SP_database.php'; // require de ma database
-require '../../model/SP_series_pages.php'; // require de ma base de donnée sp_series_pages
-require '../../model/SP_suggest_series.php';
-require '../../model/SP_categories.php';
-require '../../model/SP_relation_series_pages_categories.php';
+require '../../model/SP_series_pages.php'; // require de ma class Series
+require '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
+require '../../model/SP_categories.php'; // require de ma class Categories
 
 // Création des regex pour le formulaire 
 
@@ -46,15 +45,14 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageAdmin = '../pages/page_admin.php';
     $pageFormAddSeries = '../pages/page_form_add_series.php';
     $pageUpdateSeries = '../pages/page_update_series.php';
+    $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
 } else {
     header('Location: page_error.php');
     exit();
 }
 
-// Tableau des catégories 
 
-$categoriesArray = ['Action', 'Aventure', 'Comédie', 'Dessin Animés', 'Drame', 'Enfants', 'Fantastique', 'Horreur', 'Manga', 'Mini-séries', 'Science fiction', 'Thriller'];
-// Instanciation de mon objet Series
+// Instanciation de mes objets
 
 $series = new Series();
 $seriesCountVerif = $series->countSeriesVerifAdmin();
@@ -62,7 +60,6 @@ $suggest = new SuggestSeries();
 $suggestCount = $suggest->countSuggestAdmin();
 $categories = new Categories();
 $selectCategories = $categories->selectAllCategories();
-$relationCategories = new RelationCategories();
 
 // Vérification de mon formulaire pour ajouter une séries
 

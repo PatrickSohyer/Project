@@ -38,6 +38,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageAdmin = 'view/pages/page_admin.php';
     $pageFormAddSeries = 'view/pages/page_form_add_series.php';
     $pageUpdateSeries = 'view/pages/page_update_series.php';
+    $pageFormAddArticle = 'view/pages/page_form_add_article.php'; // j'ai accès à cette page
 }
 
 // Condition pour sélectionner l'utilisateur en fonction de son id

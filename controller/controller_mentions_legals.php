@@ -20,14 +20,15 @@ $categoriesSeries = '../pages/page_all_series.php'; // chemin de la page quand o
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
 if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
-    $pageAdminDelete = '../pages/page_admin_delete.php';
-    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php';
-    $pageAdminUpdate = '../pages/page_admin_update.php';
-    $pageAdminUserRole = '../pages/page_admin_user_role.php';
-    $pageAdminVerif = '../pages/page_admin_verif.php';
-    $pageAdmin = '../pages/page_admin.php';
-    $pageFormAddSeries = '../pages/page_form_add_series.php';
-    $pageUpdateSeries = '../pages/page_update_series.php';
+    $pageAdminDelete = '../pages/page_admin_delete.php'; // j'ai accès à cette page
+    $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php'; // j'ai accès à cette page
+    $pageAdminUpdate = '../pages/page_admin_update.php'; // j'ai accès à cette page
+    $pageAdminUserRole = '../pages/page_admin_user_role.php'; // j'ai accès à cette page
+    $pageAdminVerif = '../pages/page_admin_verif.php'; // j'ai accès à cette page
+    $pageAdmin = '../pages/page_admin.php'; // j'ai accès à cette page
+    $pageFormAddSeries = '../pages/page_form_add_series.php'; // j'ai accès à cette page
+    $pageUpdateSeries = '../pages/page_update_series.php'; // j'ai accès à cette page
+    $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
 }
 
 // Ma condition pour la déconnexion

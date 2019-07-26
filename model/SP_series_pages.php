@@ -110,6 +110,15 @@ class Series extends Database
         }
     }
 
+        // Methode qui permet de selectionner toutes les série validé
+
+        public function selectAllSeries() // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
+        {
+            $reqSelectAllSeries = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 1'); // requete SQL pour selectionner les informations des séries qui ont été validé
+                $fetchSelectAllSeries = $reqSelectAllSeries->fetchAll(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
+                return $fetchSelectAllSeries; // je retourne le resultat
+        }
+
     // Methode qui permet de Selectionner selon la limit définis pour la pagination
 
     public function selectSeriesPagesAllSeries() // Methode qui permet de Selectionner selon la limit définis pour la pagination

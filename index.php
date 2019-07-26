@@ -34,7 +34,7 @@ require 'controller/controller_index.php';
             ?>
 
 
-            <!--Message sur la page d'acceuil pour souhaiter la bienvenu-->
+            <!-- Message sur la page d'acceuil pour souhaiter la bienvenu -->
 
             <?php if (count($_SESSION) === 0) { ?>
 
@@ -82,34 +82,29 @@ require 'controller/controller_index.php';
                         </div>
                     </div>
                 </div>
-                
+
 
             <?php } ?>
 
-            <!--        J'intègre mon carousel avec les séries du moment        -->
+            <!-- J'intègre mon carousel avec les séries du moment -->
 
             <?php require_once('view/include/include_carousel_series_moment.php'); ?>
 
-            <!--        J'intègre la série coup de coeur du mois        -->
+            <!-- J'intègre la série coup de coeur du mois -->
 
             <?php require_once('view/include/include_favorite_moment.php'); ?>
 
-            <!--        J'intègre les 4 derniers articles qui ont été écris         -->
+            <!-- J'intègre les 4 derniers articles qui ont été écris -->
 
             <?php require_once('view/include/include_last_articles.php'); ?>
 
-            <!--        J'intègre le footer     -->
+            <!-- J'intègre le footer -->
 
             <?php require_once('view/include/include_footer.php') ?>
 
         </div>
     </div>
 
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

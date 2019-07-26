@@ -23,11 +23,22 @@ class Categories extends Database
         }
     }
 
-    public function selectAllCategories() {
+    public function selectAllCategories()
+    {
         $reqSelectAllCategories = $this->db->query('SELECT * FROM sp_categories');
         if ($reqSelectAllCategories->execute()) { // si la requete s'execute 
             $fetchSelectAllCategories = $reqSelectAllCategories->fetchAll(PDO::FETCH_ASSOC); // alors je fectch (Je récupère seulement la ligne du tableau qui m'intéresse)
             return $fetchSelectAllCategories; // je retourn mon résultat
+        }
+    }
+
+    public function selectAllCategoriesSeries()
+    {
+        $reqAllCategoriesSeries = $this->db->prepare('SELECT sp_series_pages.id AS seriesId, sp_categories.sp_categories_gender FROM sp_series_pages INNER JOIN relation_series_pages_categories ON sp_series_pages.id = relation_series_pages_categories.id INNER JOIN sp_categories ON sp_categories.id = relation_series_pages_categories.id_sp_categories WHERE sp_series_pages.id = :id');
+        $reqAllCategoriesSeries->bindValue(':id', $this->id);
+        if ($reqAllCategoriesSeries->execute()) { // si la requete s'execute 
+            $fetchAllCategoriesSeries = $reqAllCategoriesSeries->fetchAll(PDO::FETCH_ASSOC); // alors je fectch (Je récupère seulement la ligne du tableau qui m'intéresse)
+            return $fetchAllCategoriesSeries; // je retourn mon résultat
         }
     }
 }
