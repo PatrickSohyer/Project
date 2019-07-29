@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../controller/controller_add_article.php';
+require_once '../../controller/controller_page_update_article.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -52,23 +52,44 @@ require_once '../../controller/controller_add_article.php';
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
+            <div class="container-fluid container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
+                        <div class="card" id="cardupdateSeries">
+                            <div class="card-body">
 
-                <div class="container-fluid container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
-                            <div class="card" id="cardAddSeries">
-                                <div class="card-body">
-                                    <?php {
-                                        include '../include/include_form_add_article.php';
-                                    }
-                                    ?>
-                                </div>
+                                <?php foreach ($selectArticle as $value) { ?>
+
+                                    <form class="formUpdateArticle text-center p-5" method="POST" action="page_update_article.php?id=<?= $value['id'] ?>">
+
+                                        <p class="h2 mb-5 formupdateArticleText"><u><b>Modifier un article!</u></b></p>
+
+
+                                        <label for="updateArticleTitle"><b>Titre de l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['updateArticleTitle']) ? $errorMessage['updateArticleTitle'] : ''; ?></span><input type="text" id="updateArticleTitle" class="form-control mb-4" name="updateArticleTitle" value="<?= $value['sp_article_title'] ?>" required />
+
+                                        <label for="updateArticleDescription"><b>Description de l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['updateArticleDescription']) ? $errorMessage['updateArticleDescription'] : ''; ?></span><textarea id="updateArticleDescription" class="form-control mb-4" name="updateArticleDescription" required><?= $value['sp_article_description'] ?></textarea>
+
+                                        <label for="updateArticleImage"><b>Nom de l'image</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['updateArticleImage']) ? $errorMessage['updateArticleImage'] : ''; ?></span><input type="text" id="updateArticleImage" class="form-control mb-4" name="updateArticleImage" value="<?= $value['sp_article_image'] ?>" required />
+
+                                        <label for="updateArticleResume"><b>Contenu de l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['updateArticleResume']) ? $errorMessage['updateArticleResume'] : ''; ?></span><textarea id="updateArticleResume" class="form-control mb-4" name="updateArticleResume" required><?= $value['sp_article_resume'] ?></textarea>
+
+                                        <label for="updateIdSeriesPages"><b>Série liée à l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['updateIdSeriesPages']) ? $errorMessage['updateIdSeriesPages'] : ''; ?></span><select class="form-control" name="updateIdSeriesPages">
+                                            <?php foreach ($selectSeries as $value) { ?>
+                                                <option value="<?= $value['id'] ?>"><?= $value['sp_series_pages_title'] ?></option>
+                                            <?php } ?>
+                                        </select>
+
+                                    <?php } ?>
+
+                                    <button class="spStyleButton btn btn-block text-white my-4" type="submit">Valider</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->

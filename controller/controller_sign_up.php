@@ -47,6 +47,8 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageFormAddSeries = '../pages/page_form_add_series.php'; // j'ai accès à cette page
     $pageUpdateSeries = '../pages/page_update_series.php'; // j'ai accès à cette page
     $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
+    $pageAdminUpdateArticle = '../pages/page_admin_update_article.php'; // j'ai accès à cette page
+    $pageUpdateArticle = '../pages/page_update_article.php'; // j'ai accès à cette page
 }
 
 // Création de mon Tableau d'erreur
