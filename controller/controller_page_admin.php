@@ -37,7 +37,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
     $pageAdminUpdateArticle = '../pages/page_admin_update_article.php'; // j'ai accès à cette page
     $pageUpdateArticle = '../pages/page_update_article.php'; // j'ai accès à cette page
-    $pageAdminDeleteArticle = '..pages/page_admin_delete_article.php'; // j'ai accès à cette page
+    $pageAdminDeleteArticle = '../pages/page_admin_delete_article.php'; // j'ai accès à cette page
 } else {
     header('Location: page_error.php');
     exit();
