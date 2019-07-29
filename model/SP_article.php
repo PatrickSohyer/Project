@@ -12,6 +12,7 @@ class Article extends Database
     public $sp_article_description; // attribut description
     public $sp_article_image; // attribut image
     public $sp_article_resume; // attribut contenu article
+    public $sp_article_date; // attribut date article
     public $id_sp_series_pages; // attribut id series
     public $nbArticlePerPages = 16; // attribut nombre de série par page
     public $firstPageArticle; // attribut page
@@ -21,11 +22,12 @@ class Article extends Database
 
     public function addArticle()
     {
-        $reqAddArticle = $this->db->prepare('INSERT INTO sp_article (sp_article_title, sp_article_description, sp_article_image, sp_article_resume, id_sp_series_pages) VALUES (:sp_article_title, :sp_article_description, :sp_article_image, :sp_article_resume, :id_sp_series_pages)');
+        $reqAddArticle = $this->db->prepare('INSERT INTO sp_article (sp_article_title, sp_article_description, sp_article_image, sp_article_resume, sp_article_date, id_sp_series_pages) VALUES (:sp_article_title, :sp_article_description, :sp_article_image, :sp_article_resume, :sp_article_date, :id_sp_series_pages)');
         $reqAddArticle->bindValue(':sp_article_title', $this->sp_article_title);
         $reqAddArticle->bindValue(':sp_article_description', $this->sp_article_description);
         $reqAddArticle->bindValue(':sp_article_image', $this->sp_article_image);
         $reqAddArticle->bindValue(':sp_article_resume', $this->sp_article_resume);
+        $reqAddArticle->bindValue(':sp_article_date', $this->sp_article_date);
         $reqAddArticle->bindValue(':id_sp_series_pages', $this->id_sp_series_pages);
         if ($reqAddArticle->execute()) {
             return TRUE;
@@ -85,4 +87,15 @@ class Article extends Database
             return $fetchSelectArticleUpdate; // je retourne le resultat
         }
     }
+
+        // Method qui permet de supprimer un article
+
+        public function deleteArticle() // Method qui permet de supprimer une série
+        {
+            $reqDeleteArticle = $this->db->prepare('DELETE FROM sp_article WHERE id = :id'); // requete SQL qui permet de supprimer un article
+            $reqDeleteArticle->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id 
+            if ($reqDeleteArticle->execute()) { // si la requete s'execute
+                return TRUE; // je retourne un booléen (TRUE)
+            }
+        }
 }

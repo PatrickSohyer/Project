@@ -33,6 +33,7 @@ require '../../controller/controller_article_info.php';
             <div class="col-xl-10 col-lg-10 col-md-12 col-12 mx-auto">
                 <div class="text-center mt-2">
                     <p class="h4"><b><u><?= $selectArticle['sp_article_title'] ?> : <?= $selectArticle['sp_article_description'] ?></u></b></p>
+                    <span class="ml-2 mt-2 commentMessage d-block">Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($selectArticle['sp_article_date'])); ?></span>
                     <img id="imgArticleInfo" class="img-fluid mt-3" src="../../assets/images/imgArticles/<?= $selectArticle['sp_article_image'] ?>">
                 </div>
                 <p class="mt-3"><?= nl2br($selectArticle['sp_article_resume']); ?></p>

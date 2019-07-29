@@ -1,5 +1,11 @@
 <?php
 
+/* Configure le script en français */
+setlocale(LC_TIME, 'fr_FR.UTF8', 'fra');
+//Définit le décalage horaire par défaut de toutes les fonctions date/heure
+date_default_timezone_set("Europe/Paris");
+//Convertir une date US en françcais function dateFr($date){ return strftime('%A %d %B %Y, %H:%M:%S',strtotime($date)); }
+
 // Require des model dont j'ai besoin
 
 require '../../model/SP_database.php'; // require de ma database
@@ -43,6 +49,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
     $pageAdminUpdateArticle = '../pages/page_admin_update_article.php'; // j'ai accès à cette page
     $pageUpdateArticle = '../pages/page_update_article.php'; // j'ai accès à cette page
+    $pageAdminDeleteArticle = '..pages/page_admin_delete_article.php'; // j'ai accès à cette page
 } else {
     header('Location: page_error.php');
     exit();
@@ -63,12 +70,15 @@ $selectCategories = $categories->selectAllCategories();
 // Vérification de mon formulaire pour ajouter une séries
 
 if (count($_POST) > 0) { // Si le compte du poste est supérieur à 0
+    $timeStamp = time();
+    $date = date('Y-m-d H:i:s');
+    $article->sp_article_date = $date;
     if (!empty($_POST['addArticleTitle'])) { // si le poste du titre n'est pas vide
-            $addArticleTitle = strip_tags(htmlspecialchars($_POST['addArticleTitle'])); // protection pour le titre
-            $article->sp_article_title = $addArticleTitle; // hydratation de mon objet ( title )
-        } else {
-            $errorMessage['addArticleTitle'] = 'Le titre ne peut pas contenir plus de 250 caractères.'; // Message erreur regex
-        }
+        $addArticleTitle = strip_tags(htmlspecialchars($_POST['addArticleTitle'])); // protection pour le titre
+        $article->sp_article_title = $addArticleTitle; // hydratation de mon objet ( title )
+    } else {
+        $errorMessage['addArticleTitle'] = 'Le titre ne peut pas contenir plus de 250 caractères.'; // Message erreur regex
+    }
     if (!empty($_POST['addArticleDescription'])) { // si le poste de la description n'est pas vide
         $addArticleDescription = strip_tags(htmlspecialchars($_POST['addArticleDescription'])); // protection pour la description
         $article->sp_article_description = $addArticleDescription; // hydratation de mon objet ( description )
@@ -76,23 +86,23 @@ if (count($_POST) > 0) { // Si le compte du poste est supérieur à 0
         $errorMessage['addArticleDescription'] = 'La description ne peut pas être vide!'; // Message erreur si vide
     }
     if (!empty($_POST['addArticleImage'])) { // si le poste du nombre de saison n'est pas vide
-            $addArticleImage = strip_tags(htmlspecialchars($_POST['addArticleImage'])); // protection pour le nombre de saison
-            $article->sp_article_image = $addArticleImage; // hydratation de mon objet ( nombre de saison )
-        } else {
-            $errorMessage['addArticleImage'] = 'Merci de rentrer un nombre!'; // Message erreur regex
-        }
+        $addArticleImage = strip_tags(htmlspecialchars($_POST['addArticleImage'])); // protection pour le nombre de saison
+        $article->sp_article_image = $addArticleImage; // hydratation de mon objet ( nombre de saison )
+    } else {
+        $errorMessage['addArticleImage'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+    }
     if (!empty($_POST['addArticleResume'])) {  // si le poste du nombre d'épisode n'est pas vide
-            $addArticleResume = strip_tags(htmlspecialchars($_POST['addArticleResume'])); // protection pour le nombre d'épisodes
-            $article->sp_article_resume = $addArticleResume; // hydratation de mon objet ( nombre d'épisode )
-        } else {
-            $errorMessage['addArticleResume'] = 'Merci de rentrer un nombre!'; // Message erreur regex
-        }
+        $addArticleResume = strip_tags(htmlspecialchars($_POST['addArticleResume'])); // protection pour le nombre d'épisodes
+        $article->sp_article_resume = $addArticleResume; // hydratation de mon objet ( nombre d'épisode )
+    } else {
+        $errorMessage['addArticleResume'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+    }
     if (!empty($_POST['addIdSpSeries'])) {  // si le poste de la durée d'un épisode n'est pas vide
-            $addIdSpSeries = strip_tags(htmlspecialchars($_POST['addIdSpSeries'])); // protection pour la durée d'un épisode
-            $article->id_sp_series_pages = $addIdSpSeries; // hydratation de mon objet ( durée d'un épisode )
-        } else {
-            $errorMessageAddSeries['addIdSpSeries'] = 'Merci de rentrer un nombre!'; // Message erreur regex
-        }
+        $addIdSpSeries = strip_tags(htmlspecialchars($_POST['addIdSpSeries'])); // protection pour la durée d'un épisode
+        $article->id_sp_series_pages = $addIdSpSeries; // hydratation de mon objet ( durée d'un épisode )
+    } else {
+        $errorMessageAddSeries['addIdSpSeries'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+    }
     if ($article->addArticle() == TRUE) { // si ma methode est == à true elle s'execute
         header('Location: ../../index.php');
     }

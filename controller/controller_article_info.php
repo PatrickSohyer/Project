@@ -1,5 +1,11 @@
 <?php
 
+/* Configure le script en français */
+setlocale(LC_TIME, 'fr_FR.UTF8', 'fra');
+//Définit le décalage horaire par défaut de toutes les fonctions date/heure
+date_default_timezone_set("Europe/Paris");
+//Convertir une date US en françcais function dateFr($date){ return strftime('%A %d %B %Y, %H:%M:%S',strtotime($date)); }
+
 require '../../model/SP_database.php';
 require '../../model/SP_article.php';
 
@@ -36,6 +42,7 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageFormAddArticle = '../pages/page_form_add_article.php'; // j'ai accès à cette page
     $pageAdminUpdateArticle = '../pages/page_admin_update_article.php'; // j'ai accès à cette page
     $pageUpdateArticle = '../pages/page_update_article.php'; // j'ai accès à cette page
+    $pageAdminDeleteArticle = '..pages/page_admin_delete_article.php'; // j'ai accès à cette page
 }
 
 // condition pour afficher les bonnes informations selon l'id

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../controller/controller_admin_suggest_series.php';
+require '../../controller/controller_page_admin_delete_article.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -54,37 +54,36 @@ require '../../controller/controller_admin_suggest_series.php';
                 <span class="hamb-bottom"></span>
             </button>
 
-            <div class="container-fluid backgroundTheme">
+            <div class="container backgroundTheme">
                 <div class="row">
-                    <?php foreach ($selectSuggestSeries as $value) { ?>
+                    <?php foreach ($selectArticle as $value) { ?>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3">
-                            <div class="card" style="width: 15rem;">
+                            <div class="card mx-auto" style="width: 14rem;">
+                                <a href="page_article_info.php?id=<?= $value['id'] ?>"><img class="card-img-top" src="../../assets/images/imgArticles/<?= $value['sp_article_image'] ?>" alt="<?= $value['sp_article_title'] ?>"></a>
                                 <div class="card-body text-center">
-                                    <p class="card-title h5"><b><i>Suggéré par <?= $value['sp_users_login'] ?></i></b></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N1'] ?></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N2'] ?></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N3'] ?></p>
-                                    <a data-toggle="modal" data-target="#deleteSuggestModal<?= $value['suggestID'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
+                                    <p class="card-title h6"><?= $value['sp_article_title'] ?></p>
+                                    <p class="card-title"><?= $value['sp_article_description'] ?></p>
+                                    <a data-toggle="modal" data-target="#deleteArticleModal<?= $value['id'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="deleteSuggestModal<?= $value['suggestID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteArticleModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog colorFontBlue" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <p class="modal-title h3" id="exampleModalLabel">Supprimer la suggestion</p>
+                                    <div class="modal-header text-center">
+                                        <p class="modal-title h3 text-center" id="exampleModalLabel">Supprimer l'article</p>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <img src="../../assets/images/imgAccueil/philDelete.png">
                                     <div class="modal-body">
-                                        Êtes vous sur de vouloir supprimer la suggestion de <b><?= $value['sp_users_login'] ?></b> ?
+                                        Êtes vous sur de vouloir supprimer l'article <b><?= $value['sp_article_title'] ?></b> ?
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="page_admin_suggest_series.php" method="POST">
-                                            <button type="submit" name="deleteSuggestSeries" value="<?= $value['suggestID'] ?>" class="btnDeleteSeries btn btn-danger">Supprimer</button>
-                                            <button type="button" class="btn btn-success"><a href="page_admin_suggest_series.php">Ne pas supprimer</a></button>
+                                        <form action="page_admin_delete_article.php?page=1" method="POST">
+                                            <button type="submit" name="deleteArticle" value="<?= $value['id'] ?>" class="btnDeleteSeries btn btn-danger">Supprimer</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Ne pas supprimer</button>
                                         </form>
                                     </div>
                                 </div>
@@ -93,6 +92,36 @@ require '../../controller/controller_admin_suggest_series.php';
                     <?php } ?>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="row mx-auto">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
+                        <nav class="mx-auto m-4 text-center" aria-label="...">
+                            <ul class="pagination">
+                                <?php if ($currentPage == 1) {
+                                    echo ' ';
+                                } else { ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage - 1) < 1 ? 1 : $currentPage - 1) ?>">Précédent</a>
+                                    </li>
+                                <?php } ?>
+                                <?php for ($i = 1; $i <= $nbPages; $i++) { ?>
+                                    <li class="page-item"><a class="page-link" href="page_admin_delete.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                <?php }
+                                if ($currentPage == $nbPages) {
+                                    echo ' ';
+                                } else { ?>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="page_admin_delete.php?page=<?= (($currentPage + 1) > $nbPages ? $nbPages : $currentPage + 1) ?>">Suivant</a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
             <!-- /#page-content-wrapper -->
 
         </div>
