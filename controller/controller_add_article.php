@@ -58,53 +58,53 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
 
 // Instanciation de mes objets
 
-$article = new Article();
-$series = new Series();
-$selectSeries = $series->selectAllSeries();
-$seriesCountVerif = $series->countSeriesVerifAdmin();
-$suggest = new SuggestSeries();
-$suggestCount = $suggest->countSuggestAdmin();
-$categories = new Categories();
-$selectCategories = $categories->selectAllCategories();
+$article = new Article(); // instanciation de mon objet article
+$series = new Series(); // instanciation de mon objet Series
+$selectSeries = $series->selectAllSeries(); // Methode qui me permet de sélectionner toute les séries
+$seriesCountVerif = $series->countSeriesVerifAdmin(); // Methode qui me permet de compter le nombre de série à vérifier
+$suggest = new SuggestSeries(); // instanciation de mon objet SuggestSeries
+$suggestCount = $suggest->countSuggestAdmin(); // Methode qui me permet de compte le nombre de suggestion
+$categories = new Categories(); // instanciation de mon objet Categories
+$selectCategories = $categories->selectAllCategories(); // Methode qui me permet selectionner toutes les catégories
 
 // Vérification de mon formulaire pour ajouter une séries
 
 if (count($_POST) > 0) { // Si le compte du poste est supérieur à 0
-    $timeStamp = time();
-    $date = date('Y-m-d H:i:s');
-    $article->sp_article_date = $date;
-    if (!empty($_POST['addArticleTitle'])) { // si le poste du titre n'est pas vide
-        $addArticleTitle = strip_tags(htmlspecialchars($_POST['addArticleTitle'])); // protection pour le titre
-        $article->sp_article_title = $addArticleTitle; // hydratation de mon objet ( title )
+    $timeStamp = time(); // je créer le timeStamp de la date du jour
+    $date = date('Y-m-d H:i:s'); // je créer le format de la date
+    $article->sp_article_date = $date; // hydratation de sp_article_date
+    if (!empty($_POST['addArticleTitle'])) { // si le poste du titre de l'artice n'est pas vide
+        $addArticleTitle = strip_tags(htmlspecialchars($_POST['addArticleTitle'])); // protection pour le titre de l'article
+        $article->sp_article_title = $addArticleTitle; // hydratation de sp_article_title
     } else {
-        $errorMessage['addArticleTitle'] = 'Le titre ne peut pas contenir plus de 250 caractères.'; // Message erreur regex
+        $errorMessage['addArticleTitle'] = 'Veuillez saisir le titre de l\'article.'; // Message d'erreur si le titre est vide 
     }
-    if (!empty($_POST['addArticleDescription'])) { // si le poste de la description n'est pas vide
-        $addArticleDescription = strip_tags(htmlspecialchars($_POST['addArticleDescription'])); // protection pour la description
-        $article->sp_article_description = $addArticleDescription; // hydratation de mon objet ( description )
+    if (!empty($_POST['addArticleDescription'])) { // si le poste de la description de l'article n'est pas vide
+        $addArticleDescription = strip_tags(htmlspecialchars($_POST['addArticleDescription'])); // protection pour la description de l'article
+        $article->sp_article_description = $addArticleDescription; // hydratation de sp_article_description
     } else {
-        $errorMessage['addArticleDescription'] = 'La description ne peut pas être vide!'; // Message erreur si vide
+        $errorMessage['addArticleDescription'] = 'Veuillez saisir la description de l\'article!'; // Message d'erreur si la description est vide
     }
-    if (!empty($_POST['addArticleImage'])) { // si le poste du nombre de saison n'est pas vide
-        $addArticleImage = strip_tags(htmlspecialchars($_POST['addArticleImage'])); // protection pour le nombre de saison
-        $article->sp_article_image = $addArticleImage; // hydratation de mon objet ( nombre de saison )
+    if (!empty($_POST['addArticleImage'])) { // si le poste dde l'image de l'article n'est pas vide
+        $addArticleImage = strip_tags(htmlspecialchars($_POST['addArticleImage'])); // protection pour l'image de l'article
+        $article->sp_article_image = $addArticleImage; // hydratation de sp_article_image
     } else {
-        $errorMessage['addArticleImage'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+        $errorMessage['addArticleImage'] = 'Veuillez choisir l\'image de l\'article!'; // Message d'erreur si l'image est vide
     }
-    if (!empty($_POST['addArticleResume'])) {  // si le poste du nombre d'épisode n'est pas vide
-        $addArticleResume = strip_tags(htmlspecialchars($_POST['addArticleResume'])); // protection pour le nombre d'épisodes
-        $article->sp_article_resume = $addArticleResume; // hydratation de mon objet ( nombre d'épisode )
+    if (!empty($_POST['addArticleResume'])) {  // si le poste du contenu de l'article
+        $addArticleResume = strip_tags(htmlspecialchars($_POST['addArticleResume'])); // protection pour le contenu de l'article
+        $article->sp_article_resume = $addArticleResume; // hydratation de sp_article_resume
     } else {
-        $errorMessage['addArticleResume'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+        $errorMessage['addArticleResume'] = 'Merci de rentrer un nombre!'; // Message d'erreur si le contenu de l'article est vide
     }
-    if (!empty($_POST['addIdSpSeries'])) {  // si le poste de la durée d'un épisode n'est pas vide
-        $addIdSpSeries = strip_tags(htmlspecialchars($_POST['addIdSpSeries'])); // protection pour la durée d'un épisode
-        $article->id_sp_series_pages = $addIdSpSeries; // hydratation de mon objet ( durée d'un épisode )
+    if (!empty($_POST['addIdSpSeries'])) {  // si le poste de l'id de la série n'est pas vide
+        $addIdSpSeries = strip_tags(htmlspecialchars($_POST['addIdSpSeries'])); // protection pour l'id de la série
+        $article->id_sp_series_pages = $addIdSpSeries; // hydratation de id_sp_series_pages
     } else {
-        $errorMessageAddSeries['addIdSpSeries'] = 'Merci de rentrer un nombre!'; // Message erreur regex
+        $errorMessageAddSeries['addIdSpSeries'] = 'Merci de rentrer un nombre!'; // Message d'erreur si l'id est vide
     }
-    if ($article->addArticle() == TRUE) { // si ma methode est == à true elle s'execute
-        header('Location: ../../index.php');
+    if ($article->addArticle() == TRUE) { // si la methode s'execute
+        header('Location: page_all_articles.php?page=1'); // alors je suis renvoyé vers la page des articles.
     }
 }
 

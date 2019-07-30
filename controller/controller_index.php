@@ -1,10 +1,11 @@
 <?php
 
-// Require des model dont j'ai besoin
+// Require des models dont j'ai besoin
 
-require 'model/SP_database.php'; // require de ma database
-require 'model/SP_categories.php'; // require de ma table categories
-require 'model/SP_users.php'; // require de ma table users
+require 'model/SP_database.php'; // require de ma Database
+require 'model/SP_categories.php'; // require de ma table Categories
+require 'model/SP_users.php'; // require de ma table Users
+require 'model/SP_article.php'; // require de ma table Article
 
 // Définition des chemins d'accès aux différentes pages
 
@@ -26,6 +27,8 @@ $categoriesSeries = 'view/pages/page_all_series.php'; // chemin de la page quand
 // Instanciation de mon objet USERS
 
 $users = new Users();
+$article = new Article();
+$selectArticle = $article->selectArticleIndex();
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 

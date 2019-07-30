@@ -54,49 +54,62 @@ require '../../controller/controller_admin_suggest_series.php';
                 <span class="hamb-bottom"></span>
             </button>
 
-            <div class="container-fluid backgroundTheme">
+            <div class="container backgroundTheme">
                 <div class="row">
-                    <?php foreach ($selectSuggestSeries as $value) { ?>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3">
-                            <div class="card" style="width: 15rem;">
-                                <div class="card-body text-center">
-                                    <p class="card-title h5"><b><i>Suggéré par <?= $value['sp_users_login'] ?></i></b></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N1'] ?></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N2'] ?></p>
-                                    <p class="card-title h5"><?= $value['sp_suggest_series_title_N3'] ?></p>
-                                    <a data-toggle="modal" data-target="#deleteSuggestModal<?= $value['suggestID'] ?>"><i class="fas fa-trash-alt fa-2x"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="deleteSuggestModal<?= $value['suggestID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog colorFontBlue" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <p class="modal-title h3" id="exampleModalLabel">Supprimer la suggestion</p>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                        <table class="table table-bordered bg-white text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">Suggestion 1</th>
+                                    <th scope="col">Suggestion 2</th>
+                                    <th scope="col">Suggestion 3</th>
+                                    <th scope="col">Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($selectSuggestSeries as $value) { ?>
+                                    <tr>
+                                        <th scope="row"><?= $value['sp_users_login'] ?></th>
+                                        <td><?= $value['sp_suggest_series_title_N1'] ?></td>
+                                        <td><?= $value['sp_suggest_series_title_N2'] ?></td>
+                                        <td><?= $value['sp_suggest_series_title_N3'] ?></td>
+                                        <td> <a data-toggle="modal" data-target="#deleteSuggestModal<?= $value['suggestID'] ?>"><i class="fas fa-trash-alt fa-1x"></i></a></td>
+                                    </tr>
+                                    <div class="modal fade" id="deleteSuggestModal<?= $value['suggestID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog colorFontBlue" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <p class="modal-title h3" id="exampleModalLabel">Supprimer la suggestion</p>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <img src="../../assets/images/imgAccueil/philDelete.png">
+                                                <div class="modal-body">
+                                                    Êtes vous sur de vouloir supprimer la suggestion de <b><?= $value['sp_users_login'] ?></b> ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="page_admin_suggest_series.php" method="POST">
+                                                        <button type="submit" name="deleteSuggestSeries" value="<?= $value['suggestID'] ?>" class="btnDeleteSeries btn btn-danger">Supprimer</button>
+                                                        <button type="button" class="btn btn-success" data-dismiss="modal">Ne pas supprimer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <img src="../../assets/images/imgAccueil/philDelete.png">
-                                    <div class="modal-body">
-                                        Êtes vous sur de vouloir supprimer la suggestion de <b><?= $value['sp_users_login'] ?></b> ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="page_admin_suggest_series.php" method="POST">
-                                            <button type="submit" name="deleteSuggestSeries" value="<?= $value['suggestID'] ?>" class="btnDeleteSeries btn btn-danger">Supprimer</button>
-                                            <button type="button" class="btn btn-success"><a href="page_admin_suggest_series.php">Ne pas supprimer</a></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
-
         </div>
-        <!-- /#wrapper -->
+    </div>
+    <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 
 
 
@@ -104,14 +117,14 @@ require '../../controller/controller_admin_suggest_series.php';
 
 
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-        <script src="../../assets/js/admin.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/admin.js"></script>
 </body>
 
 </html>

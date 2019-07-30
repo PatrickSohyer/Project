@@ -28,7 +28,7 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Un garçon nommé Clay reçoit une boîte à chaussures remplies de
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Un garçon nommé Clay reçoit une boîte à chaussures remplies de
                                                         cassettes de la part d'une
                                                         de ses amies, Hannah Baker, récemment suicidée. Sur les cassettes qui doivent être passées de mains en mains, Hannah explique que chacun a joué un rôle dans sa mort, et donne les 13 raisons expliquant son passage à
                                                         l'acte.</i></span></p>
@@ -59,6 +59,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=1"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +75,7 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Les aventures et le destin des deux frères Winchester sur les
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Les aventures et le destin des deux frères Winchester sur les
                                                         traces
                                                         de leur père, un
                                                         "chasseur", à la poursuite de monstres vivant parmi les humains.</i></span></p>
@@ -105,6 +106,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=2"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -153,6 +155,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=3"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -198,6 +201,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=4"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -251,6 +255,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=5"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -297,6 +302,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=6"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -342,6 +348,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=7"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -387,6 +394,7 @@
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex justify-content-between">
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
+                                            <a href="view/pages/page_info_series.php?id=8"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
                                     </div>
                                 </div>

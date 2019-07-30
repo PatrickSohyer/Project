@@ -2,7 +2,7 @@
 
 // Require des model dont j'ai besoin et du tableau des pays
 
-require '../../model/SP_database.php'; // require de ma classe base de donnée
+require '../../model/SP_database.php'; // require de ma classe Database
 require '../../model/SP_users.php'; // require de ma classe Users
 require '../../model/SP_comments.php'; // require de ma classe Comments
 require '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
@@ -70,18 +70,18 @@ if (isset($_POST['modifyLoginValidate'])) { // je vérifie qu'il existe bien mod
             $users->id = $_SESSION['id'];  // hydratation pour l'objet ( id )
             $resultFilterLogin = $users->filterLogin();  // je lance la method pour filter les login
         } else {
-            $errorMessage['newLogin'] = 'Merci de rentrer un pseudonyme valide.'; // message erreur regex
+            $errorMessage['newLogin'] = 'Le login n\'est pas valide.'; // message erreur regex
         }
     } else {
-        $errorMessage['newLogin'] = 'Merci de renseigner un pseudonyme.'; // message erreur si vide
+        $errorMessage['newLogin'] = 'Veuillez saisir votre Login.'; // message erreur si vide
     }
     if (count($resultFilterLogin) > 0) { // si les résultat du filtre est supérieur à 0
         if ($resultFilterLogin[0]['id'] != $_SESSION['id']) { // si l'id du resultfilter et l'id de la session ne corresponde pas
-            $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé'; // message erreur 
+            $errorMessage['resultFilterLogin'] = 'Ce Login est déjà utilisé'; // message erreur 
         }
     } else {
         if ($users->updateLoginUsers() == TRUE) { // sinon l'update ce passe bien
-            $succes = TRUE;
+            $success = TRUE;
             header('Location: page_account_user.php');
         }
     }
@@ -97,18 +97,18 @@ if (isset($_POST['modifyEmailValidate'])) { // je vérifie qu'il existe bien mod
             $users->id = $_SESSION['id']; // hydratation de l'objet ( id )
             $resultFilterEmail = $users->filterMail(); // je lance la methode pour filtrer les mail
         } else {
-            $errorMessage['newEmail'] = 'Ceci n\'est pas une adresse mail valide.'; // message erreur regex
+            $errorMessage['newEmail'] = 'Ceci n\'est pas une adresse email valide.'; // message erreur regex
         }
     } else {
-        $errorMessage['newEmail'] = 'Merci de renseigner votre Email.'; // message erreur si vide
+        $errorMessage['newEmail'] = 'Veuillez saisir votre adresse email.'; // message erreur si vide
     }
     if (count($resultFilterEmail) > 0) { // si les résultat du filtre est supérieur à 0
         if ($resultFilterEmail[0]['id'] != $_SESSION['id']) { // si l'id du resultfilter et l'id de la session ne corresponde pas
-            $errorMessage['resultFilterEmail'] = 'Ce mail est déjà utilisé'; // message erreur 
+            $errorMessage['resultFilterEmail'] = 'Cette adresse email est déjà utilisé'; // message erreur 
         }
     } else {
         if ($users->updateEmailUsers() == TRUE) { // sinon l'update ce passe bien
-            $succes = TRUE;
+            $success = TRUE;
             header('Location: page_account_user.php');
         }
     }
@@ -126,10 +126,10 @@ if (isset($_POST['modifyCountryValidate'])) { // je vérifie qu'il existe bien m
             $errorMessage['newCountry'] = 'Merci de rentrer un pays valide.'; // message erreur regex
         }
     } else {
-        $errorMessage['newCountry'] = 'Merci de renseigner un pays.'; // message erreur si vide
+        $errorMessage['newCountry'] = 'Veuillez choisir un pays.'; // message erreur si vide
     }
     if ($users->updateCountryUsers() == TRUE) { // sinon l'update ce passe bien
-        $succes = TRUE;
+        $success = TRUE;
         header('Location: page_account_user.php');
     }
 }
@@ -147,22 +147,22 @@ if (isset($_POST['modifyPasswordValidate'])) { // je vérifie qu'il existe bien 
             $errorMessage['newPassword'] = 'Mot de passe invalide.'; // message erreur regex
         }
     } else {
-        $errorMessage['newPassword'] = 'Merci de renseigner votre mot de passe.'; // message erreur si vide
+        $errorMessage['newPassword'] = 'Veuillez saisir votre mot de passe.'; // message erreur si vide
     }
     if (!empty($_POST['newPasswordConfirm'])) {  // si le post n'est pas vide
         if (preg_match($regexPassword, $_POST['newPasswordConfirm'])) { // regex pour le mdp
             $newConfirmPassword = strip_tags(htmlspecialchars($_POST['newPasswordConfirm'])); // protection du mdp
         } else {
-            $errorMessage['newPasswordConfirm'] = 'Mot de passe invalide.'; // message erreur regex
+            $errorMessage['newPasswordConfirm'] = 'Confirmation de Mot de passe invalide.'; // message erreur regex
         }
     } else {
-        $errorMessage['newPasswordConfirm'] = 'Merci de renseigner votre mot de passe.'; // message erreur si vide
+        $errorMessage['newPasswordConfirm'] = 'Veuillez saisir votre confirmation de mot de passe.'; // message erreur si vide
     }
     if ($_POST['newPassword'] != $_POST['newPasswordConfirm']) { // si les mots de passe ne corresponde pas 
         $errorMessage['newPasswordDiff'] = 'Mot de passe différent'; // message erreur
     } else if ($_POST['newPassword'] == $_POST['newPasswordConfirm']) { // si les mots de passe correspondent bien
         $users->updatePasswordUsers() == TRUE; // sinon l'update ce passe bien
-        $succes = TRUE;
+        $success = TRUE;
         header('Location: page_account_user.php');
     }
 }

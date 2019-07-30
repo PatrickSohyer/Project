@@ -82,7 +82,7 @@ require '../../controller/controller_page_admin_delete.php';
                                     <div class="modal-footer">
                                         <form action="page_admin_delete.php?page=1" method="POST">
                                             <button type="submit" name="deleteSeries" value="<?= $value['id'] ?>" class="btnDeleteSeries btn btn-danger">Supprimer</button>
-                                            <button type="button" class="btn btn-success"><a href="page_admin_delete.php?page=1">Ne pas supprimer</a></button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Ne pas supprimer</button>
                                         </form>
                                     </div>
                                 </div>

@@ -54,6 +54,13 @@ class Article extends Database
         }
     }
 
+    public function selectArticleIndex()
+    {
+        $reqSelectArticleIndex = $this->db->query('SELECT * FROM sp_article ORDER BY sp_article_date DESC LIMIT 4 ');
+            $fetchSelectArticleIndex = $reqSelectArticleIndex->fetchAll();
+            return $fetchSelectArticleIndex;
+        }
+
     public function selectArticleInfo()
     {
         $reqSelectArticleInfo = $this->db->prepare('SELECT * FROM sp_article WHERE id = :id');
