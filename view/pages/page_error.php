@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_page_error.php';
+require_once '../../controller/controller_page_error.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,12 +21,10 @@ require '../../controller/controller_page_error.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container-fluid" id="allSeries">
@@ -37,17 +36,17 @@ require '../../controller/controller_page_error.php';
         </div>
     </div>
 
+    <?php
+    require_once '../include/include_footer.php';
+    ?>
 
-    <?php require_once('../include/include_footer.php') ?>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+
 </body>
 
 </html>

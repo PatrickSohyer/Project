@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_page_admin.php';
+require_once '../../controller/controller_page_admin.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,12 +21,12 @@ require '../../controller/controller_page_admin.php';
 
 </head>
 
-
-
 <body>
 
     <div id="wrapper">
-        <div class="overlay"></div>
+        <div class="overlay">
+        </div>
+
         <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <div class="sidebar-header">
@@ -44,15 +45,15 @@ require '../../controller/controller_page_admin.php';
                 <li class="colorFontNavSide text-center"><a href="../../index.php"><i class="fas fa-home colorFontNavSide m-2"></i>Retour au site</a></li>
             </ul>
         </nav>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
+
             <button type="button" class="hamburger animated fadeInLeft text-white is-closed" data-toggle="offcanvas">
                 <span class="hamb-top"></span>
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
+
             <div class="container accueilAdmin">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
@@ -63,20 +64,15 @@ require '../../controller/controller_page_admin.php';
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/admin.js"></script>
+
 </body>
 
 </html>

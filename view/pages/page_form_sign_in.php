@@ -23,12 +23,10 @@ require_once '../../controller/controller_sign_in.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <?php if (count($errorMessageSignIn) > 0 or count($_POST) == 0) { ?>
@@ -46,9 +44,10 @@ require_once '../../controller/controller_sign_in.php';
                                 <div class="row mt-3 mb-3">
                                     <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
                                         <div class="card" id="cardSignIn">
-                                            <div class="card-body"><?php
-                                                                    include '../include/include_form_sign_in.php';
-                                                                    ?>
+                                            <div class="card-body">
+                                                <?php
+                                                include '../include/include_form_sign_in.php';
+                                                ?>
                                                 <script src="../../assets/js/swal_sign_in.js"></script>
                                             </div>
                                         </div>
@@ -56,7 +55,8 @@ require_once '../../controller/controller_sign_in.php';
                                 </div>
                             </div>
 
-                        <?php }
+                        <?php
+                        }
                         ?>
 
                     </div>
@@ -65,23 +65,17 @@ require_once '../../controller/controller_sign_in.php';
         </div>
     </div>
 
+    <?php
+    require_once '../include/include_footer.php';
+    ?>
 
-
-
-
-
-
-    <?php require_once('../include/include_footer.php') ?>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+
 </body>
 
 </html>

@@ -1,22 +1,25 @@
 <div class="container-fluid" id="serieMoment">
+    
     <p class="h2 text-center m-3"><b><i>Séries du moment</i></b></p>
+
     <div class="row blog">
         <div class="col">
             <div id="carouselSerieMoment" class="carousel slide" data-ride="carousel" data-interval="false">
+
                 <a class="carousel-control-prev" data-target="#carouselSerieMoment" role="button" data-slide="prev">
                     <i class="fas fa-arrow-circle-left fa-2x carouselIconMoment" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
+
                 <a class="carousel-control-next" data-target="#carouselSerieMoment" role="button" data-slide="next">
                     <i class="fas fa-arrow-circle-right fa-2x carouselIconMoment" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
 
-                <!-- Carousel items -->
-
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#reasonsWhyModals"><img src="assets/images/imgSeries/13ReasonsWhy.jpg" class="imgMomentAccueil" /></a>
@@ -24,6 +27,7 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#reasonsWhyModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="reasonsWhyModals" tabindex="-1" role="dialog" aria-labelledby="reasonsWhyModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
@@ -64,6 +68,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#supernaturalModals"><img src="assets/images/imgSeries/supernatural.jpg" class="imgMomentAccueil" /></a>
@@ -71,6 +76,7 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#supernaturalModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="supernaturalModals" tabindex="-1" role="dialog" aria-labelledby="supernaturalModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
@@ -111,6 +117,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theFlashModals"><img src="assets/images/imgSeries/theFlash.jpg" class="imgMomentAccueil" /></a>
@@ -118,11 +125,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theFlashModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="theFlashModals" tabindex="-1" role="dialog" aria-labelledby="theFlashModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Barry Allen est un jeune scientifique qui travaille pour la police
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Barry Allen est un jeune scientifique qui travaille pour la police
                                                         de
                                                         Central City. Témoin enfant du meurtre de sa mère par une entité mystérieuse, il croit aux phénomènes paranormaux et cherche le moyen de le prouver pour faire innocenter son père emprisonné. Touché par un éclair
                                                         provoqué
@@ -160,6 +168,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#breakingBadModals"><img src="assets/images/imgSeries/breakingBad.jpg" class="imgMomentAccueil" /></a>
@@ -167,11 +176,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#breakingBadModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="breakingBadModals" tabindex="-1" role="dialog" aria-labelledby="breakingBadModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>La vie de Walter White, professeur de chimie dans un lycée, est
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>La vie de Walter White, professeur de chimie dans un lycée, est
                                                         bouleversée lorsqu'il apprend qu'il est atteint d'un cancer en phase terminale. Une nouvelle qui le sort de la torpeur de son quotidien et l'amène à prendre des mesures radicales pour anticiper l'avenir de sa
                                                         famille.</i></span></p>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -211,6 +221,7 @@
 
                     <div class="carousel-item">
                         <div class="row">
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-sm-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#gameOfThronesModals"><img src="assets/images/imgSeries/gameOfThrones.jpg" class="imgMomentAccueil" /></a>
@@ -218,11 +229,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#gameOfThronesModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="gameOfThronesModals" tabindex="-1" role="dialog" aria-labelledby="gameOfThronesModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Il y a très longtemps, à une époque oubliée, une force a détruit
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Il y a très longtemps, à une époque oubliée, une force a détruit
                                                         l'équilibre des saisons. Dans un pays où l'été peut durer plusieurs années et l'hiver toute une vie, des forces sinistres et surnaturelles se pressent aux portes du Royaume des Sept Couronnes. La confrérie de la
                                                         Garde
                                                         de Nuit, protégeant le Royaume de toute créature pouvant provenir d'au-delà du Mur protecteur, n'a plus les ressources nécessaires pour assurer la sécurité de tous. Après un été de dix années, un hiver rigoureux
@@ -260,6 +272,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#luciferModals"><img src="assets/images/imgSeries/lucifer.jpg" class="imgMomentAccueil" /></a>
@@ -267,11 +280,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#luciferModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="luciferModals" tabindex="-1" role="dialog" aria-labelledby="luciferModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Lassé et fatigué d'être le "Seigneur des Enfers", Lucifer
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Lassé et fatigué d'être le "Seigneur des Enfers", Lucifer
                                                         Morningstar abandonne son royaume et s'en va à Los Angeles où il est propriétaire d'une boîte de nuit appelée le "Lux". Lucifer a reçu le don de contraindre les gens à révéler leurs désirs les plus profonds. Un soir,
                                                         Lucifer assiste au meurtre d'une chanteuse pop devant son club. Il décide donc d'aller à la recherche du coupable et croise sur son chemin une policière nommée Chloé Decker qui résiste à son don et lui met des bâtons
                                                         dans les roues. Pendant que Lucifer Morningstar et Chloé Decker font équipe pour trouver le meurtrier, Dieu envoie l'ange Amenadiel sur Terre pour convaincre Lucifer de régner à nouveau sur l'Enfer...</i></span></p>
@@ -307,6 +321,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theWalkingDeadModals"><img src="assets/images/imgSeries/theWalkingDead.jpg" class="imgMomentAccueil" /></a>
@@ -314,11 +329,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theWalkingDeadModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="theWalkingDeadModals" tabindex="-1" role="dialog" aria-labelledby="theWalkingDeadModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Le policier Rick Grimes se réveille à l'hôpital après un long coma.
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Le policier Rick Grimes se réveille à l'hôpital après un long coma.
                                                         Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants. Parti sur les traces de sa femme et de son fils, Rick arrive à Atlanta où, avec un groupe de rescapés, il va devoir
                                                         apprendre à survivre.</i></span></p>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -353,6 +369,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-lg-3 col-xl-3 col-12 mb-3">
                                 <div class="Modals mx-auto text-center">
                                     <a class="btnModalsAcceuil" data-toggle="modal" data-target="#theBigBangTheoryModals"><img src="assets/images/imgSeries/theBigBangTheory.jpg" class="imgMomentAccueil" /></a>
@@ -360,11 +377,12 @@
                                     <button type="button" class="spStyleButton btn text-white" data-toggle="modal" data-target="#theBigBangTheoryModals"><b>Résumé</b></button>
                                 </div>
                             </div>
+
                             <div class="modal fade" id="theBigBangTheoryModals" tabindex="-1" role="dialog" aria-labelledby="theBigBangTheoryModals" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content modalSerieMoment">
                                         <div class="modal-header border-bottom-0 text-light">
-                                            <p class="h5 modal-title text-center"><b><u>Description de la série</br></u></b><span class="descritpionSerieMoment"><i>Que se passe-t-il quand les très intelligents colocataires Sheldon
+                                            <p class="h5 modal-title text-center"><b><u>Description de la série<br /></u></b><span class="descritpionSerieMoment"><i>Que se passe-t-il quand les très intelligents colocataires Sheldon
                                                         et Leonard rencontrent Penny, une beauté libre d'esprit qui emménage la porte d'à côté, et réalisent qu'ils ne connaissent presque rien de la vie hors de leur laboratoire. Leur bande d'amis est complétée par le
                                                         mielleux Wolowitz, qui pense être aussi sexy que futé, et Koothrappali, qui est incapable de parler en présence de femmes.</i></span></p>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -396,15 +414,13 @@
                                             <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Retour</button>
                                             <a href="view/pages/page_info_series.php?id=8"><button type="button" class="btn btn-light text-dark mx-right">Résumé</button></a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Fin du carroussel -->
-
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ class Article extends Database
         $reqSelectArticle->bindValue(':nbArticlePerPages', $this->nbArticlePerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
         $reqSelectArticle->bindValue(':firstPageArticle', $this->firstPageArticle, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
         if ($reqSelectArticle->execute()) {
-            $fetchSelectArticle = $reqSelectArticle->fetchAll();
+            $fetchSelectArticle = $reqSelectArticle->fetchAll(PDO::FETCH_ASSOC);
             return $fetchSelectArticle;
         }
     }
@@ -57,7 +57,7 @@ class Article extends Database
     public function selectArticleIndex()
     {
         $reqSelectArticleIndex = $this->db->query('SELECT * FROM sp_article ORDER BY sp_article_date DESC LIMIT 4 ');
-            $fetchSelectArticleIndex = $reqSelectArticleIndex->fetchAll();
+            $fetchSelectArticleIndex = $reqSelectArticleIndex->fetchAll(PDO::FETCH_ASSOC);
             return $fetchSelectArticleIndex;
         }
 
@@ -66,7 +66,7 @@ class Article extends Database
         $reqSelectArticleInfo = $this->db->prepare('SELECT * FROM sp_article WHERE id = :id');
         $reqSelectArticleInfo->bindValue(':id', $this->id);
         if ($reqSelectArticleInfo->execute()) {
-            $fetchSelectArticleInfo = $reqSelectArticleInfo->fetch();
+            $fetchSelectArticleInfo = $reqSelectArticleInfo->fetch(PDO::FETCH_ASSOC);
             return $fetchSelectArticleInfo;
         }
     }
@@ -97,12 +97,24 @@ class Article extends Database
 
         // Method qui permet de supprimer un article
 
-        public function deleteArticle() // Method qui permet de supprimer une série
+        public function deleteArticle() // Method qui permet de supprimer  un article
         {
             $reqDeleteArticle = $this->db->prepare('DELETE FROM sp_article WHERE id = :id'); // requete SQL qui permet de supprimer un article
             $reqDeleteArticle->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id 
             if ($reqDeleteArticle->execute()) { // si la requete s'execute
                 return TRUE; // je retourne un booléen (TRUE)
+            }
+        }
+
+        // Method qui permet de selectionner un article en fonction de l'id de la série
+
+        public function selectArticleSeries()   // Method qui permet de selectionner un article en fonction de l'id de la série
+        {
+            $reqSelectArticleSeries = $this->db->prepare('SELECT * FROM sp_article WHERE id_sp_series_pages = :id_sp_series_pages'); // requete SQL pour selectionner les séries en fonction de leurs id
+            $reqSelectArticleSeries->bindValue(':id_sp_series_pages', $this->id_sp_series_pages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
+            if ($reqSelectArticleSeries->execute()) { // si la requete s'execute 
+                $fetchSelectArticleSeries = $reqSelectArticleSeries->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
+                return $fetchSelectArticleSeries; // je retourne le resultat
             }
         }
 }

@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_info_series.php';
+require_once '../../controller/controller_info_series.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,27 +21,31 @@ require '../../controller/controller_info_series.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
 
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center mt-3">
+
                 <img id="seriesImagesInformation" src="../../assets/images/imgSeries/<?= $seriesInfo['sp_series_pages_image'] ?>" />
+
                 <?php
                 if (isset($_GET['rate'])) {
                     $pourcentageSeriesVote = round($newRate / $newVote, 1);
                     ?>
                     <p class="h2 text-white"><?= $pourcentageSeriesVote ?> / 5<p>
                             <a href="#"><img src="../../assets/images/imgAccueil/favoriteButton.png" /></a>
-                        <?php } elseif (isset($_SESSION['id'])) {
+
+                        <?php
+                        } elseif (isset($_SESSION['id'])) {
+
                             ?>
+
                             <div class="rating rating2">
                                 <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=5" title="Donner 5 étoiles">★</a>
                                 <a href="page_info_series.php?id=<?= $seriesInfo['id'] ?>&AMP;rate=4" title="Donner 4 étoiles">★</a>
@@ -61,6 +66,7 @@ require '../../controller/controller_info_series.php';
             <div class="col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                 <p class="textSeriePage h1 text-center p-1 backgroundTheme"><?= $seriesInfo['sp_series_pages_title'] ?></p>
                 <p class="textSeriePage text-center p-1 mb-2 backgroundTheme">Description :<br /><?= $seriesInfo['sp_series_pages_description'] ?></p>
+
                 <ol class="textSeriePage text-center p-1 mb-2 backgroundTheme">
                     <li>Nombre de Saisons : <?= $seriesInfo['sp_series_pages_number_seasons'] ?></li>
                     <li>Nombre d'épisodes : <?= $seriesInfo['sp_series_pages_number_episodes'] ?></li>
@@ -68,6 +74,7 @@ require '../../controller/controller_info_series.php';
                     <li>Diffusion : <?= $seriesInfo['sp_series_pages_diffusion_channel'] ?></li>
                     <li></li>
                 </ol>
+
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe width="560" height="315" src="<?= $seriesInfo['sp_series_pages_trailer'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -78,25 +85,26 @@ require '../../controller/controller_info_series.php';
 
 
     <nav class="slidemenu">
-        <!--                     Item 1 -->
+
+        <!-- Présentation -->
         <input type="radio" name="slideItem" id="slideItemPresentation" class="slide-toggle" checked />
         <label for="slideItemPresentation">
             <p class="icon"><i class="fas fa-home"></i></p><span>Présentation</span>
         </label>
 
-        <!--                     Item 2 -->
+        <!-- Episode -->
         <input type="radio" name="slideItem" id="slideItemSeasons" class="slide-toggle" />
         <label for="slideItemSeasons">
             <p class="icon"><i class="fas fa-list-alt"></i></p><span>Épisodes</span>
         </label>
 
-        <!--                     Item 3 -->
+        <!-- Commentaires -->
         <input type="radio" name="slideItem" id="slideItemComment" class="slide-toggle" />
         <label for="slideItemComment">
-            <p class="icon"><i class="fas fa-comments"></i></p><span>Avis</span>
+            <p class="icon"><i class="fas fa-comments"></i></p><span>Commentaires</span>
         </label>
 
-        <!--                     Item 4 -->
+        <!-- Articles -->
         <input type="radio" name="slideItem" id="slideItemArticle" class="slide-toggle" />
         <label for="slideItemArticle">
             <p class="icon"><i class="fas fa-pen-nib"></i></p><span>Articles</span>
@@ -104,16 +112,19 @@ require '../../controller/controller_info_series.php';
 
         <div class="clear"></div>
 
-        <!--                     Bar -->
+        <!-- SlideBar -->
         <div class="slider">
             <div class="bar"></div>
         </div>
+
     </nav>
 
     <div class="container container-fluid" id="contentPresentationSerie">
         <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-7 col-12 informationSeriesCard">
+
                 <p class="h2 mt-2"><b>Informations sur la série</b></p>
+
                 <p class="mt-3"><b>Titre Original</b> : <i><?= $seriesInfo['sp_series_pages_original_title'] ?></i><br /><br />
 
                     <b>Titre français</b> : <i><?= $seriesInfo['sp_series_pages_french_title'] ?></i><br /><br />
@@ -122,20 +133,25 @@ require '../../controller/controller_info_series.php';
 
                     <b>Nationalité</b> : <i><?= $seriesInfo['sp_series_pages_origin'] ?></i><br /><br />
 
-                    <b>Genres</b> : <?php foreach($selectCategories as $value) { ?><i><?= $value['sp_categories_gender'] ?></i> <?php } ?><br /><br />
+                    <b>Genres</b> : <?php foreach ($selectCategories as $value) { ?><i><?= $value['sp_categories_gender'] ?></i> <?php } ?><br /><br />
 
                     <b>Résumé</b> : <i><?= $seriesInfo['sp_series_pages_description'] ?></i>
                 </p>
+
             </div>
+
             <div class="col-xl-5 col-lg-5 col-md-5 col-12 h-100 mt-2">
+
                 <div class="informationSeriesCard">
                     <p class="h2 mt-2 text-center"><b>Création / Production</b></p>
                     <p class="h5 text-center"><i><?php foreach ($seriesCreator as $value) { ?><i><?= $value['sp_creator_productor'] ?><br /></i><?php } ?></i></p>
                 </div>
+
                 <div class="informationSeriesCard mt-2">
                     <p class="h2 mt-2 text-center"><b>Acteurs Principaux</b></p>
                     <p class="h5 text-center"><?php foreach ($seriesActor as $value) { ?><i><?= $value['sp_actor_firstname'] . ' ' . $value['sp_actor_lastname'] ?><br /></i><?php } ?></p>
                 </div>
+
             </div>
         </div>
     </div>
@@ -157,10 +173,14 @@ require '../../controller/controller_info_series.php';
                     <div class="text-center">
                         <button type="submit" class="btn mx-auto" id="refreshComment"><i class="fas fa-sync mr-2"></i>Rafraîchir les commentaires</button>
                     </div>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
-                        foreach ($selectComments as $value) { ?>
+
+                    <?php
+                    if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                        foreach ($selectComments as $value) {
+                            ?>
+
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"> <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span></li>
+                                <li class="list-group-item"> <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span></li>
                             </ul>
                             <div class="modal fade" id="deleteCommentModal<?= $value['idComment'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog colorFontBlue" role="document">
@@ -184,53 +204,86 @@ require '../../controller/controller_info_series.php';
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
+
+                        <?php
+                        }
+                        ?>
+
                         <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center mt-4">
                             <label for="commentMessage" class="d-block">Poster un Commentaire</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['commentMessage']) ? $errorMessage['commentMessage'] : ''; ?></span><textarea name="commentMessage" id="commentMessage" rows="5" cols="25" class="form-control mb-2" maxlength="500" required></textarea>
                             <button type="submit" id="validateComment" class="btn btnblock spStyleButton text-white mb-2">Envoyer le commentaire</button>
                         </form>
-                    <?php } elseif (count($_SESSION) > 0) {
-                        foreach ($selectComments as $value) { ?>
-                            <span class="ml-2 mt-2 commentMessage d-block">Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
+
+                    <?php
+                    } elseif (count($_SESSION) > 0) {
+                        foreach ($selectComments as $value) {
+                            ?>
+
+                            <span class="ml-2 mt-2 commentMessage d-block">Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span>
                         <?php } ?>
+
                         <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center mt-4">
                             <label for="commentMessage" class="d-block">Poster un Commentaire</label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['commentMessage']) ? $errorMessage['commentMessage'] : ''; ?></span><textarea name="commentMessage" id="commentMessage" rows="5" cols="25" class="form-control mb-2" maxlength="500" required></textarea>
                             <button type="submit" id="validateComment" class="btn btnblock spStyleButton text-white mb-2">Envoyer le commentaire</button>
                         </form>
-                    <?php } else {
-                        foreach ($selectComments as $value) { ?>
+
+                    <?php
+                    } else {
+                        foreach ($selectComments as $value) {
+                            ?>
+
                             <span class="ml-2 mt-2 commentMessage d-block">Posté par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
                             <small class="dateMessage ml-2 mb-2">(<?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?>)</small>
-                        <?php } ?>
+
+                        <?php
+                        }
+                        ?>
+
                         <a href="page_form_sign_up.php">
                             <p class="h5 text-center text-primary mt-5"><b><u>Inscrit toi dès maintenant pour pouvoir poster un commentaire</u></b></p>
                         </a>
+
                     <?php
                     }
                     ?>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container container-fluid" id="contentArticle">
-        <div class="row">
-            <div class="col-">
-                <p class="text-light">C'est un Test numéro 3!</p>
-            </div>
+    <div class="containere" id="contentArticle">
+        <div class="row mx-auto">
+
+            <?php foreach ($selectArticle as $value) { ?>
+
+                <div class="col-4 mx-auto backgroundTheme">
+                    <div class="card cardArticle mt-2 mb-2 mx-auto">
+                        <img class="card-img-top" src="../../assets/images/imgArticles/<?= $value['sp_article_image'] ?>">
+                        <div class="card-body text-center">
+                            <p class="card-title h4"><b><?= $value['sp_article_title'] ?></b></p>
+                            <p class="card-text"><i><?= $value['sp_article_description'] ?></i></p>
+                        </div>
+                        <a href="page_article_info.php?id=<?= $value['id'] ?>" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
+                    </div>
+                </div>
+
+            <?php } ?>
+
         </div>
     </div>
 
-    <?php require_once('../include/include_footer.php') ?>
+    <?php
+    require_once '../include/include_footer.php';
+    ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+
 </body>
 
 </html>

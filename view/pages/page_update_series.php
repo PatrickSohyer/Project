@@ -2,6 +2,7 @@
 session_start();
 require_once '../../controller/controller_page_update_series.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -23,14 +24,16 @@ require_once '../../controller/controller_page_update_series.php';
 
 <body>
 
-
     <div id="wrapper">
-        <div class="overlay"></div>
+        <div class="overlay">
+        </div>
+
         <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <div class="sidebar-header">
                     <div class="sidebar-brand">
-                        <a href="page_admin.php">Menu</a></div>
+                        <a href="page_admin.php">Menu</a>
+                    </div>
                 </div>
                 <li class="colorFontNavSide text-center"><a href="page_admin_verif.php"><i class="fas fa-check-circle colorFontNavSide m-2"></i>Vérifier une série <span class="badge badge-pill badge-warning ml-2"><?= $seriesCountVerif['total'] ?></span></a></li>
                 <li class="colorFontNavSide text-center"><a href="page_form_add_series.php"><i class="fas fa-plus-circle colorFontNavSide m-2"></i>Ajouter une série</a></li>
@@ -44,15 +47,15 @@ require_once '../../controller/controller_page_update_series.php';
                 <li class="colorFontNavSide text-center"><a href="../../index.php"><i class="fas fa-home colorFontNavSide m-2"></i>Retour au site</a></li>
             </ul>
         </nav>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
         <div id="page-content-wrapper">
+
             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
                 <span class="hamb-top"></span>
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
+
             <div class="container-fluid container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
@@ -98,10 +101,7 @@ require_once '../../controller/controller_page_update_series.php';
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

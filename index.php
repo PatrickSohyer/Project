@@ -21,22 +21,21 @@ require 'controller/controller_index.php';
 
 </head>
 
-
-
 <body>
-
 
     <div id="slideImage1">
         <div class="slide_inside">
 
             <?php
-            require_once('view/include/include_header.php');
+            require_once 'view/include/include_header.php';
             ?>
 
 
             <!-- Message sur la page d'acceuil pour souhaiter la bienvenu -->
 
-            <?php if (count($_SESSION) === 0) { ?>
+            <?php
+            if (count($_SESSION) === 0) {
+                ?>
 
                 <div class="container-fluid mb-3">
                     <div class="row">
@@ -52,7 +51,9 @@ require 'controller/controller_index.php';
                     </div>
                 </div>
 
-            <?php } else if ($_SESSION['role'] === 'admin') { ?>
+            <?php
+            } else if ($_SESSION['role'] === 'admin') {
+                ?>
 
                 <div class="container-fluid mb-3">
                     <div class="row">
@@ -66,7 +67,9 @@ require 'controller/controller_index.php';
                     </div>
                 </div>
 
-            <?php } else { ?>
+            <?php
+            } else {
+                ?>
 
                 <div class="container-fluid mb-3">
                     <div class="row">
@@ -84,23 +87,25 @@ require 'controller/controller_index.php';
                 </div>
 
 
-            <?php } ?>
+            <?php
+            }
+            ?>
 
             <!-- J'intègre mon carousel avec les séries du moment -->
 
-            <?php require_once('view/include/include_carousel_series_moment.php'); ?>
+            <?php require_once 'view/include/include_carousel_series_moment.php'; ?>
 
             <!-- J'intègre la série coup de coeur du mois -->
 
-            <?php require_once('view/include/include_favorite_moment.php'); ?>
+            <?php require_once 'view/include/include_favorite_moment.php'; ?>
 
             <!-- J'intègre les 4 derniers articles qui ont été écris -->
 
-            <?php require_once('view/include/include_last_articles.php'); ?>
+            <?php require_once 'view/include/include_last_articles.php'; ?>
 
             <!-- J'intègre le footer -->
 
-            <?php require_once('view/include/include_footer.php') ?>
+            <?php require_once 'view/include/include_footer.php'; ?>
 
         </div>
     </div>

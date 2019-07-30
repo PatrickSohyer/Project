@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_mentions_legals.php';
+require_once '../../controller/controller_mentions_legals.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,18 +21,17 @@ require '../../controller/controller_mentions_legals.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="mentionsLegals">
+
                     <p class="text-center mt-2 mb-5"><b>Mentions Légales et politique de confidentialité</b></p>
                     <p class="mt-5">L'entreprise individuelle Patrick Sohyer, soucieuse des droits des individus, notamment au regard des traitements automatisés et dans une volonté de transparence avec ses clients, a mis en place une politique reprenants l'ensemble de ces traitements, des finalités poursuivies par ces derniers ainsi que des moyens d'actions à la disposition des individus afin qu'ils puissent au mieux exercer leurs droits. <br />
                         Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter le site : <a target="_blank" href="https://www.cnil.fr">https://wwww.cnil.fr</a><br /><br />
@@ -190,18 +190,16 @@ require '../../controller/controller_mentions_legals.php';
     </div>
 
     <?php
-    require_once('../include/include_footer.php');
+    require_once '../include/include_footer.php';
     ?>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_all_series.php';
+require_once '../../controller/controller_all_series.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,12 +21,10 @@ require '../../controller/controller_all_series.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container backgroundTheme" id="allSeries">
@@ -33,7 +32,7 @@ require '../../controller/controller_all_series.php';
             <?php if (isset($seriesResult) and count($seriesResult) > 0) { ?>
                 <?php foreach ($seriesResult as $value) { ?>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 flashImgAllSeries">
-                        <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>"></a>
+                        <a href="<?= $infoSeries; ?>?id=<?= $value['id'] ?>"><img class="imgAllSeriesPage" src="../../assets/images/imgSeries/<?= $value['sp_series_pages_image'] ?>" title="<?= $value['sp_series_pages_title'] ?>" alt="<?= $value['sp_series_pages_title'] ?>"></a>
                     </div>
                 <?php } ?>
             </div>
@@ -43,6 +42,7 @@ require '../../controller/controller_all_series.php';
 
         <div class="row mx-auto">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mt-3 mb-3 mx-auto">
+
                 <nav class="mx-auto m-4" aria-label="...">
                     <ul class="pagination">
                         <?php if ($currentPage == 1) {
@@ -65,11 +65,12 @@ require '../../controller/controller_all_series.php';
                         <?php } ?>
                     </ul>
                 </nav>
+
             <?php
             } elseif (isset($seriesResult) and count($seriesResult) == 0) { ?>
-            <div class="mx-auto">
-                <p class="h3 text-center">La série n'est pas sur le site, merci de la suggérer pour qu'un administrateur l'ajoute</p>
-            </div>
+                <div class="mx-auto">
+                    <p class="h3 text-center">La série n'est pas sur le site, merci de la suggérer pour qu'un administrateur l'ajoute</p>
+                </div>
             <?php } else {
                 foreach ($categoriesSeries as $value) {
                     ?>
@@ -84,16 +85,17 @@ require '../../controller/controller_all_series.php';
     </div>
 
 
-    <?php require_once('../include/include_footer.php') ?>
+    <?php
+    require_once '../include/include_footer.php';
+    ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+
 </body>
 
 </html>

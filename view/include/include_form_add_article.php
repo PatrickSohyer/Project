@@ -10,12 +10,22 @@
 
     <label for="addArticleResume"><b>Contenu de l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['addArticleResume']) ? $errorMessage['addArticleResume'] : ''; ?></span><textarea id="addArticleResume" class="form-control mb-4" name="addArticleResume" value="<?= isset($_POST['addArticleResume']) ? $_POST['addArticleResume'] : ''; ?>" required></textarea>
 
-    <label for="addIdSpSeries"><b>Série liée à l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['addIdSpSeries']) ? $errorMessage['addIdSpSeries'] : ''; ?></span><select class="form-control" name="addIdSpSeries">
-        <?php foreach($selectSeries as $value) { ?>
-        <option value="<?= $value['id'] ?>"><?= $value['sp_series_pages_title'] ?></option>
-        <?php } ?>
+    <label for="addIdSpSeries"><b>Série liée à l'article</b></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['addIdSpSeries']) ? $errorMessage['addIdSpSeries'] : ''; ?></span>
+    <select class="form-control" name="addIdSpSeries">
+        <option value=""></option>
+
+        <?php
+        foreach ($selectSeries as $value) {
+            ?>
+
+            <option value="<?= $value['id'] ?>"><?= $value['sp_series_pages_title'] ?></option>
+
+        <?php
+        }
+        ?>
     </select>
 
 
     <button class="spStyleButton btn btn-block text-white my-4" type="submit">Valider</button>
+
 </form>

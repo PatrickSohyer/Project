@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_account_user.php';
+require_once '../../controller/controller_account_user.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -23,7 +24,7 @@ require '../../controller/controller_account_user.php';
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container container-fluid">
@@ -31,7 +32,9 @@ require '../../controller/controller_account_user.php';
             <div class="col-xl-6 col-lg-6 col-md-12 col-12 mx-auto">
                 <div class="card" id="cardmyAccount">
                     <div class="card-body">
+
                         <p class="h2 mb-3 text-center">Mon Compte</p>
+
                         <ul class="list-group list-group-flush">
 
                             <form method="POST" action="page_account_user.php" class="text-center">
@@ -102,28 +105,26 @@ require '../../controller/controller_account_user.php';
                                 <button class="btnDeleteSeries btn btn-success modifyInfoUsersDelete"><a href="page_account_user.php" class="buttonmodifyDeleteNo h5 text-white m-4">Rester sur le site <i class="fas fa-laugh-beam"></i></a></button>
 
                             </form>
+                            
                         </ul>
-
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
     <?php
-    require_once('../include/include_footer.php');
+    require_once '../include/include_footer.php';
     ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="../../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+    
 </body>
 
 </html>

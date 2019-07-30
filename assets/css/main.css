@@ -47,6 +47,8 @@ body {
 }
 
 .cardArticle {
+    width: 15rem;
+    height: 23rem;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
     /* ombre des cartes pour les articles */
     background: linear-gradient(0deg, rgba(0, 114, 188, .8), rgba(6, 34, 44, .8) 70.71%);

@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_all_article.php';
+require_once '../../controller/controller_all_article.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,12 +21,10 @@ require '../../controller/controller_all_article.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container backgroundTheme" id="allArticles">
@@ -37,8 +36,8 @@ require '../../controller/controller_all_article.php';
                         <div class="card-body text-center">
                             <p class="card-title h4"><b><?= $value['sp_article_title'] ?></b></p>
                             <p class="card-text"><i><?= $value['sp_article_description'] ?></i></p>
-                            <a href="page_article_info.php?id=<?= $value['id'] ?>" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                         </div>
+                        <a href="page_article_info.php?id=<?= $value['id'] ?>" class="spStyleButton btn text-white"><b>Lire l'article</b></a>
                     </div>
                 </div>
             <?php } ?>
@@ -47,6 +46,7 @@ require '../../controller/controller_all_article.php';
 
     <div class="container">
         <div class="row text-center">
+
             <nav class="mx-auto m-4" aria-label="...">
                 <ul class="pagination">
                     <?php if ($currentPage == 1) {
@@ -69,11 +69,14 @@ require '../../controller/controller_all_article.php';
                     <?php } ?>
                 </ul>
             </nav>
+
         </div>
     </div>
 
 
-    <?php require_once('../include/include_footer.php') ?>
+    <?php
+    require_once '../include/include_footer.php';
+    ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

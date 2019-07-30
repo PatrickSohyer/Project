@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../../controller/controller_article_info.php';
+require_once '../../controller/controller_article_info.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -20,12 +21,10 @@ require '../../controller/controller_article_info.php';
 
 </head>
 
-
-
 <body>
 
     <?php
-    require_once('../include/include_header.php');
+    require_once '../include/include_header.php';
     ?>
 
     <div class="container backgroundTheme">
@@ -44,7 +43,7 @@ require '../../controller/controller_article_info.php';
 
 
     <?php
-    require_once('../include/include_footer.php')
+    require_once '../include/include_footer.php';
     ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>

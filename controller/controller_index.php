@@ -2,10 +2,10 @@
 
 // Require des models dont j'ai besoin
 
-require 'model/SP_database.php'; // require de ma Database
-require 'model/SP_categories.php'; // require de ma table Categories
-require 'model/SP_users.php'; // require de ma table Users
-require 'model/SP_article.php'; // require de ma table Article
+require_once 'model/SP_database.php'; // require de ma Database
+require_once 'model/SP_categories.php'; // require de ma table Categories
+require_once 'model/SP_users.php'; // require de ma table Users
+require_once 'model/SP_article.php'; // require de ma table Article
 
 // Définition des chemins d'accès aux différentes pages
 
@@ -30,7 +30,19 @@ $users = new Users();
 $article = new Article();
 $selectArticle = $article->selectArticleIndex();
 
-// Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
+// Condition pour sélectionner l'utilisateur en fonction de son id
+
+if (isset($_SESSION['id'])) { // si id existe bien dans la superglobal GET
+    $users->id = $_SESSION['id']; // hydratation de mon objet ( id )
+    $usersResult = $users->selectUsers(); // appel la method pour selection un users
+}
+
+// Ma condition pour la déconnexion
+
+if (isset($_GET['logout'])) { // je vérifie que logout existe dans la superglobal GET
+    session_destroy(); // Je détruits la session
+    header('Location: index.php'); // je redirige vers l'index
+}
 
 if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
     $pageAdminDelete = 'view/pages/page_admin_delete.php'; // j'ai accès à cette page
@@ -45,19 +57,5 @@ if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est stric
     $pageAdminUpdateArticle = 'view/pages/page_admin_update_article.php'; // j'ai accès à cette page
     $pageUpdateArticle = 'view/pages/page_update_article.php'; // j'ai accès à cette page
     $pageAdminDeleteArticle = 'view/pages/page_admin_delete_article.php'; // j'ai accès à cette page
-}
-
-// Condition pour sélectionner l'utilisateur en fonction de son id
-
-if (isset($_SESSION['id'])) { // si id existe bien dans la superglobal GET
-    $users->id = $_SESSION['id']; // hydratation de mon objet ( id )
-    $usersResult = $users->selectUsers(); // appel la method pour selection un users
-}
-
-// Ma condition pour la déconnexion
-
-if (isset($_GET['logout'])) { // je vérifie que logout existe dans la superglobal GET
-    session_destroy(); // Je détruits la session
-    header('Location: index.php'); // je redirige vers l'index
 }
 
