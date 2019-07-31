@@ -6,10 +6,12 @@ setlocale(LC_TIME, 'fr_FR.UTF8', 'fra');
 date_default_timezone_set("Europe/Paris");
 //Convertir une date US en françcais function dateFr($date){ return strftime('%A %d %B %Y, %H:%M:%S',strtotime($date)); }
 
-require_once '../../model/SP_database.php';
-require_once '../../model/SP_article.php';
-require_once '../include/include_page_admin_user.php';
-require_once '../include/include_route.php';
+require_once '../../model/SP_database.php'; // require de ma classe Database
+require_once '../../model/SP_article.php'; // require de ma classe Article
+require_once '../include/include_page_admin_user.php'; // require de mes chemins pour la page admin
+require_once '../include/include_route.php'; // require de mes chemin d'accès
+
+// Instanciation de mon objet Article
 
 $article = new Article();
 

@@ -14,8 +14,8 @@ require_once '../../model/SP_users.php'; // require de ma table SP_users
 require_once '../../model/SP_comments.php'; // require de ma table SP_comments
 require_once '../../model/SP_categories.php'; // require de ma table Categories
 require_once '../../model/SP_article.php'; // require de ma table Article
-require_once '../include/include_page_admin_user.php';
-require_once '../include/include_route.php';
+require_once '../include/include_page_admin_user.php'; // require de mes chemins pour la page admin
+require_once '../include/include_route.php'; // require de mes chemin d'accès
 
 // Création des regex pour le formulaire 
 

@@ -13,8 +13,8 @@ require_once '../../model/SP_series_pages.php'; // require de ma class Series
 require_once '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
 require_once '../../model/SP_categories.php'; // require de ma class Categories
 require_once '../../model/SP_article.php'; // require de ma class Article
-require_once '../include/include_page_admin.php';
-require_once '../include/include_route.php';
+require_once '../include/include_page_admin.php'; // require de mes chemins pour la page admin
+require_once '../include/include_route.php'; // require de mes chemin d'accès
 
 // Création de mon Tableau d'erreur
 

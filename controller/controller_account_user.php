@@ -7,8 +7,8 @@ require_once '../../model/SP_users.php'; // require de ma classe Users
 require_once '../../model/SP_comments.php'; // require de ma classe Comments
 require_once '../../model/SP_suggest_series.php'; // require de ma class SuggestSeries
 require_once '../../assets/country/country.php'; // require du tableau des pays
-require_once '../include/include_page_admin_user.php';
-require_once '../include/include_route.php';
+require_once '../include/include_page_admin_user.php'; // require de mes chemins pour la page admin
+require_once '../include/include_route.php'; // require de mes chemin d'accès
 
 // Création des regex pour le formulaire 
 
@@ -31,7 +31,7 @@ $errorMessage = array();
 // Vérification et Update pour le Login
 
 if (isset($_POST['modifyLoginValidate'])) { // je vérifie qu'il existe bien modify... dans le post
-    if (!empty($_POST['newLogin'])) { // si le post n'est pas vide
+    if (!empty($_POST['newLogin'])) { // si le post du login n'est pas vide
         if (preg_match($regexLogin, $_POST['newLogin'])) { // regex pour le login
             $newLogin = strip_tags(htmlspecialchars($_POST['newLogin'])); // protection pour le login
             $users->sp_users_login = $newLogin; // hydratation pour l'objet ( login )

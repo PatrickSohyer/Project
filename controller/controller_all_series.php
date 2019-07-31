@@ -5,8 +5,8 @@
 require_once '../../model/SP_database.php'; // require de ma database
 require_once '../../model/SP_series_pages.php'; // require de ma table series pages
 require_once '../../model/SP_categories.php'; // require de ma table categories
-require_once '../include/include_page_admin_user.php';
-require_once '../include/include_route.php';
+require_once '../include/include_page_admin_user.php'; // require de mes chemins pour la page admin
+require_once '../include/include_route.php'; // require de mes chemin d'accès
 
 // Instanciation de mon objet Categories et Series
 

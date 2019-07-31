@@ -25,227 +25,227 @@ class Series extends Database
     public $nbSeriesPerPages = 12; // attribut nombre de série par page
     public $firstPageSeries; // attribut page
 
-    // Methode qui parmet d'ajouter une série à la base de données
+    // Methode qui permet d'ajouter une série à la base de données
 
-    public function addSeries() // Methode qui parmet d'ajouter une série à la base de données
+    public function addSeries()
     {
-        $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel, sp_series_pages_trailer, sp_series_pages_image, sp_series_pages_french_title, sp_series_pages_original_title, sp_series_pages_origin) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel, :sp_series_pages_trailer, :sp_series_pages_image, :sp_series_pages_french_title, :sp_series_pages_original_title, :sp_series_pages_origin)'); // requete SQL qui va insérer une série dans la base de données
-        $reqAddSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_title
-        $reqAddSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_description
-        $reqAddSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_number_seasons
-        $reqAddSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_number_episodes
-        $reqAddSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_duration_episodes
-        $reqAddSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_diffusion_channel
-        $reqAddSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_trailer
-        $reqAddSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_image
-        $reqAddSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_french_title
-        $reqAddSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_original_title
-        $reqAddSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_origin
-        if ($reqAddSeries->execute()) { // si la requete s'execute
-            return true; // je retourne un booléen (TRUE)
+        $reqAddSeries = $this->db->prepare('INSERT INTO sp_series_pages(sp_series_pages_title, sp_series_pages_description, sp_series_pages_number_seasons, sp_series_pages_number_episodes, sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel, sp_series_pages_trailer, sp_series_pages_image, sp_series_pages_french_title, sp_series_pages_original_title, sp_series_pages_origin) VALUES (:sp_series_pages_title, :sp_series_pages_description, :sp_series_pages_number_seasons, :sp_series_pages_number_episodes, :sp_series_pages_duration_episodes, :sp_series_pages_diffusion_channel, :sp_series_pages_trailer, :sp_series_pages_image, :sp_series_pages_french_title, :sp_series_pages_original_title, :sp_series_pages_origin)');
+        $reqAddSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons, PDO::PARAM_INT);
+        $reqAddSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes, PDO::PARAM_INT);
+        $reqAddSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes, PDO::PARAM_INT);
+        $reqAddSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title, PDO::PARAM_STR);
+        $reqAddSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin, PDO::PARAM_STR);
+        if ($reqAddSeries->execute()) {
+            return true;
         }
     }
 
     // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
 
-    public function selectSeriesImages() // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
+    public function selectSeriesImages()
     {
-        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');  // requete SQL qui va sélectionner les images et l'id des séries sélectionner
-        $reqSelectSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
-        $reqSelectSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :firstPageSeries
-        if ($reqSelectSeries->execute()) { // si la requete s'execute
-            $reqFetchSeries = $reqSelectSeries->fetchAll(PDO::FETCH_ASSOC); // alors je fetchAll (je récupère toutes les données du tableau)
-            return $reqFetchSeries; // je retourne le resultat
+        $reqSelectSeries = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSelectSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
+        $reqSelectSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
+        if ($reqSelectSeries->execute()) {
+            $reqFetchSeries = $reqSelectSeries->fetchAll(PDO::FETCH_ASSOC);
+            return $reqFetchSeries;
         }
     }
 
-      // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
+      // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination et de la recherche
 
-      public function selectSeriesImagesSearch() // Methode qui permet de selectionner les images d'une séries vérifier et en fonction de la pagination
+      public function selectSeriesImagesSearch()
       {
-          $reqSeriesImagesSearch = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 AND sp_series_pages_title LIKE :search LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');  // requete SQL qui va sélectionner les images et l'id des séries sélectionner
-          $reqSeriesImagesSearch->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
-          $reqSeriesImagesSearch->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :firstPageSeries
+          $reqSeriesImagesSearch = $this->db->prepare('SELECT sp_series_pages_image, id, sp_series_pages_title FROM sp_series_pages WHERE sp_series_pages_verification = 1 AND sp_series_pages_title LIKE :search LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+          $reqSeriesImagesSearch->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
+          $reqSeriesImagesSearch->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
           $reqSeriesImagesSearch->bindValue(':search', $this->sp_series_pages_title, PDO::PARAM_STR);
-          if ($reqSeriesImagesSearch->execute()) { // si la requete s'execute
-              $fetchSeriesImagesSearch = $reqSeriesImagesSearch->fetchAll(PDO::FETCH_ASSOC); // alors je fetchAll (je récupère toutes les données du tableau)
-              return $fetchSeriesImagesSearch; // je retourne le resultat
+          if ($reqSeriesImagesSearch->execute()) {
+              $fetchSeriesImagesSearch = $reqSeriesImagesSearch->fetchAll(PDO::FETCH_ASSOC);
+              return $fetchSeriesImagesSearch;
           }
       }
 
     // Methode qui permet de compter le nombre de série total pour la pagination si la série est valider
 
-    public function countSeriesPagination() // Methode qui permet de compter le nombre de série total pour la pagination si la série est valider
+    public function countSeriesPagination()
     {
-        $reqCountSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1'); // requete SQL qui compte le nombre d'entrée dans la table sp_series_pages
-        $fetchCountSeriesPagination = $reqCountSeriesPagination->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-        return $fetchCountSeriesPagination; // je retourne le resultat
+        $reqCountSeriesPagination = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 1');
+        $fetchCountSeriesPagination = $reqCountSeriesPagination->fetchAll(PDO::FETCH_ASSOC);
+        return $fetchCountSeriesPagination;
     }
 
     // Methode qui permet de compter le nombre de série total pour la pagination sur ma console admin
 
-    public function countSeriesPaginationAdmin() // Methode qui permet de compter le nombre de série total pour la pagination sur ma console admin
+    public function countSeriesPaginationAdmin()
     {
-        $reqCountSeriesPaginationAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages'); // requete SQL pour compter le nombre d'entrée dans la table sp_series_pages
-        $fetchCountSeriesPaginationAdmin = $reqCountSeriesPaginationAdmin->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-        return $fetchCountSeriesPaginationAdmin; // je retourne le resultat
+        $reqCountSeriesPaginationAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages');
+        $fetchCountSeriesPaginationAdmin = $reqCountSeriesPaginationAdmin->fetchAll(PDO::FETCH_ASSOC);
+        return $fetchCountSeriesPaginationAdmin;
     }
 
     // Methode qui permet de compter le nombre de série pas vérifier 
 
-    public function countSeriesVerifAdmin() // Methode qui permet de compter le nombre de série pas vérifier 
+    public function countSeriesVerifAdmin()
     {
-        $reqcountSeriesVerifAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 0'); // requete SQL pour compter le nombre d'entré pas vérifiée
-        $fetchcountSeriesVerifAdmin = $reqcountSeriesVerifAdmin->fetch(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
-        return $fetchcountSeriesVerifAdmin; // je retourne le resultat
+        $reqcountSeriesVerifAdmin = $this->db->query('SELECT COUNT(*) AS total FROM sp_series_pages WHERE sp_series_pages_verification = 0');
+        $fetchcountSeriesVerifAdmin = $reqcountSeriesVerifAdmin->fetch(PDO::FETCH_ASSOC);
+        return $fetchcountSeriesVerifAdmin;
     }
 
     // Methode qui permet de selectionner toutes les séries à mettre à jour
 
-    public function selectSeriesPagesUpdate() // Methode qui permet de selectionner les séries pour les mettres à jour
+    public function selectSeriesPagesUpdate()
     {
-        $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id'); // requete SQL pour selectionner les séries en fonction de leurs id
-        $reqSeriesPageInfo->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqSeriesPageInfo->execute()) { // si la requete s'execute 
-            $fetchSeriesPageInfo = $reqSeriesPageInfo->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-            return $fetchSeriesPageInfo; // je retourne le resultat
+        $reqSeriesPageInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id');
+        $reqSeriesPageInfo->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqSeriesPageInfo->execute()) {
+            $fetchSeriesPageInfo = $reqSeriesPageInfo->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchSeriesPageInfo;
         }
     }
 
     // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
 
-    public function selectSeriesPagesInfo() // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
+    public function selectSeriesPagesInfo()
     {
-        $reqselectSeriesPagesInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1'); // requete SQL pour selectionner les informations des séries qui ont été validé
-        $reqselectSeriesPagesInfo->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqselectSeriesPagesInfo->execute()) { // si la requete s'execute
-            $fetchselectSeriesPagesInfo = $reqselectSeriesPagesInfo->fetch(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
-            return $fetchselectSeriesPagesInfo; // je retourne le resultat
+        $reqselectSeriesPagesInfo = $this->db->prepare('SELECT * FROM sp_series_pages WHERE id = :id AND sp_series_pages_verification = 1');
+        $reqselectSeriesPagesInfo->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqselectSeriesPagesInfo->execute()) {
+            $fetchselectSeriesPagesInfo = $reqselectSeriesPagesInfo->fetch(PDO::FETCH_ASSOC);
+            return $fetchselectSeriesPagesInfo;
         }
     }
 
     // Methode qui permet de selectionner toutes les série validé
 
-    public function selectAllSeries() // Methode qui permet de selectionner toutes les informations de sp_series_pages si la séries est validée
+    public function selectAllSeries()
     {
-        $reqSelectAllSeries = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 1 ORDER BY sp_series_pages_title'); // requete SQL pour selectionner les informations des séries qui ont été validé
-        $fetchSelectAllSeries = $reqSelectAllSeries->fetchAll(PDO::FETCH_ASSOC); // je fetch (je récupère la première ligne du tableau)
-        return $fetchSelectAllSeries; // je retourne le resultat
+        $reqSelectAllSeries = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 1 ORDER BY sp_series_pages_title');
+        $fetchSelectAllSeries = $reqSelectAllSeries->fetchAll(PDO::FETCH_ASSOC);
+        return $fetchSelectAllSeries;
     }
 
     // Methode qui permet de Selectionner selon la limit définis pour la pagination
 
-    public function selectSeriesPagesAllSeries() // Methode qui permet de Selectionner selon la limit définis pour la pagination
+    public function selectSeriesPagesAllSeries()
     {
-        $reqSelectSeriesPagesAllSeries = $this->db->prepare('SELECT * FROM sp_series_pages LIMIT :nbSeriesPerPages OFFSET :firstPageSeries'); // requete SQL pour selectionner les séries en fonction de la pagination
-        $reqSelectSeriesPagesAllSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :nbSeriesPerPages
-        $reqSelectSeriesPagesAllSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :firstPageSeries
-        if ($reqSelectSeriesPagesAllSeries->execute()) { // si la requete s'executee
-            $fetchSelectSeriesPagesAllSeries = $reqSelectSeriesPagesAllSeries->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-            return $fetchSelectSeriesPagesAllSeries; // je retourne le resultat 
+        $reqSelectSeriesPagesAllSeries = $this->db->prepare('SELECT * FROM sp_series_pages LIMIT :nbSeriesPerPages OFFSET :firstPageSeries');
+        $reqSelectSeriesPagesAllSeries->bindValue(':nbSeriesPerPages', $this->nbSeriesPerPages, PDO::PARAM_INT);
+        $reqSelectSeriesPagesAllSeries->bindValue(':firstPageSeries', $this->firstPageSeries, PDO::PARAM_INT);
+        if ($reqSelectSeriesPagesAllSeries->execute()) {
+            $fetchSelectSeriesPagesAllSeries = $reqSelectSeriesPagesAllSeries->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchSelectSeriesPagesAllSeries;
         }
     }
 
     // Methode qui permet de selectionner les acteurs en fonctions de l'id de la série
 
-    public function selectSeriesPagesActor() // Methode qui permet de selectionner les acteurs en fonctions de l'id de la série
+    public function selectSeriesPagesActor()
     {
-        $reqSelectSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1'); // requete SQL qui permet de selectionner les acteurs en fonction de la série grace à une jointure
-        $reqSelectSeriesPagesActor->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqSelectSeriesPagesActor->execute()) { // si la requete s'execute
-            $fetchSelectSeriesPagesActor = $reqSelectSeriesPagesActor->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-            return $fetchSelectSeriesPagesActor; // je retourne le resultat
+        $reqSelectSeriesPagesActor = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_actor ON sp_series_pages.id = relation_series_pages_actor.id INNER JOIN sp_actor ON sp_actor.id = relation_series_pages_actor.id_sp_actor WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1'); 
+        $reqSelectSeriesPagesActor->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqSelectSeriesPagesActor->execute()) {
+            $fetchSelectSeriesPagesActor = $reqSelectSeriesPagesActor->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchSelectSeriesPagesActor;
         }
     }
 
     // Methode qui permet de Selectionner les créateurs en fonctions de l'id de la série
 
-    public function selectSeriesPagesCreator() // Methode qui permet de Selectionner les créateurs en fonctions de l'id de la série
+    public function selectSeriesPagesCreator()
     {
-        $reqSelectSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1'); // requete SQL qui permet de selectionner les créateurs en fonction de la série grace à une jointure
-        $reqSelectSeriesPagesCreator->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqSelectSeriesPagesCreator->execute()) { // si la requete s'execute
-            $fetchSelectSeriesPagesCreator = $reqSelectSeriesPagesCreator->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-            return $fetchSelectSeriesPagesCreator; // je retourne le resultat
+        $reqSelectSeriesPagesCreator = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN relation_series_pages_creator ON sp_series_pages.id = relation_series_pages_creator.id_sp_series_pages INNER JOIN sp_creator ON sp_creator.id = relation_series_pages_creator.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSelectSeriesPagesCreator->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqSelectSeriesPagesCreator->execute()) {
+            $fetchSelectSeriesPagesCreator = $reqSelectSeriesPagesCreator->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchSelectSeriesPagesCreator;
         }
     }
 
     // Methode qui permet de Selectionner les épisodes d'une série en fonction de l'id de la série
 
-    public function selectSeriesPagesEpisodes() // Methode qui permet de Selectionner les épisodes d'une série en fonction de l'id de la série
+    public function selectSeriesPagesEpisodes()
     {
-        $reqSelectSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1'); // requete SQL qui permet de selectionner les épisodes en fonction de la série grace à une jointure
-        $reqSelectSeriesPagesEpisodes->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqSelectSeriesPagesEpisodes->execute()) { // si la requete s'execute
-            $fetchSelectSeriesPagesEpisodes = $reqSelectSeriesPagesEpisodes->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-            return $fetchSelectSeriesPagesEpisodes; // je retourne le resultat
+        $reqSelectSeriesPagesEpisodes = $this->db->prepare('SELECT * FROM sp_series_pages INNER JOIN sp_episodes_infos ON sp_episodes_infos.id_sp_series_pages = sp_series_pages.id WHERE sp_series_pages.id = :id AND sp_series_pages.sp_series_pages_verification = 1');
+        $reqSelectSeriesPagesEpisodes->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqSelectSeriesPagesEpisodes->execute()) {
+            $fetchSelectSeriesPagesEpisodes = $reqSelectSeriesPagesEpisodes->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchSelectSeriesPagesEpisodes;
         }
     }
 
     // Methode qui permet de Selectionner les séries qui n'ont pas encore été valider
 
-    public function selectSeriesPagesVerification() // Methode qui permet de Selectionner les séries qui n'ont pas encore été valider
+    public function selectSeriesPagesVerification()
     {
-        $reqSelectSeriesPagesVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0'); // requete SQL qui permet de selectionner les séries pas vérifier 
-        $fetchSelectSeriesPagesVerification = $reqSelectSeriesPagesVerification->fetchAll(PDO::FETCH_ASSOC); // je fetchAll (je récupère toutes les données du tableau)
-        return $fetchSelectSeriesPagesVerification; // je retourne le resultat
+        $reqSelectSeriesPagesVerification = $this->db->query('SELECT * FROM sp_series_pages WHERE sp_series_pages_verification = 0');
+        $fetchSelectSeriesPagesVerification = $reqSelectSeriesPagesVerification->fetchAll(PDO::FETCH_ASSOC);
+        return $fetchSelectSeriesPagesVerification;
     }
 
     // Methode qui permet de vérifier et valider une série
 
-    public function updateVerifSeriesPages() // Methode qui permet de vérifier et valider une série
+    public function updateVerifSeriesPages()
     {
-        $reqUpdateVerifSeriesPages = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id'); // requete SQL qui permet de mettre à jour les séries 
-        $reqUpdateVerifSeriesPages->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_verification
-        $reqUpdateVerifSeriesPages->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqUpdateVerifSeriesPages->execute()) { // si la requete s'execute
-            return TRUE; // je retourne un booléen (TRUE)
+        $reqUpdateVerifSeriesPages = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_verification = :sp_series_pages_verification WHERE id = :id');
+        $reqUpdateVerifSeriesPages->bindValue(':sp_series_pages_verification', $this->sp_series_pages_verification, PDO::PARAM_INT);
+        $reqUpdateVerifSeriesPages->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqUpdateVerifSeriesPages->execute()) {
+            return TRUE;
         }
     }
 
     // Methode qui permet de modifier les informations d'une série
 
-    public function updateSeries() // Methode qui permet de modifier les informations d'une série
+    public function updateSeries()
     {
-        $reqUpdateSeries = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_title = :sp_series_pages_title, sp_series_pages_description = :sp_series_pages_description, sp_series_pages_number_seasons = :sp_series_pages_number_seasons, sp_series_pages_number_episodes = :sp_series_pages_number_episodes, sp_series_pages_duration_episodes = :sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel = :sp_series_pages_diffusion_channel, sp_series_pages_trailer = :sp_series_pages_trailer, sp_series_pages_image = :sp_series_pages_image, sp_series_pages_french_title = :sp_series_pages_french_title, sp_series_pages_original_title = :sp_series_pages_original_title, sp_series_pages_origin = :sp_series_pages_origin WHERE id = :id'); // requete SQL qui permet de modifier les séries
-        $reqUpdateSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_titles
-        $reqUpdateSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_description
-        $reqUpdateSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_number_seasons
-        $reqUpdateSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_number_episodes
-        $reqUpdateSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_duration_episodes
-        $reqUpdateSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_diffusion_channel
-        $reqUpdateSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_trailer
-        $reqUpdateSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_image
-        $reqUpdateSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_french_title
-        $reqUpdateSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_original_title
-        $reqUpdateSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin, PDO::PARAM_STR); // je donne une valeur à mon marqueur nominatif :sp_series_pages_origin
-        $reqUpdateSeries->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqUpdateSeries->execute()) { // si la requete s'execute
-            return TRUE; // je retourne un booléen (TRUE)
+        $reqUpdateSeries = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_title = :sp_series_pages_title, sp_series_pages_description = :sp_series_pages_description, sp_series_pages_number_seasons = :sp_series_pages_number_seasons, sp_series_pages_number_episodes = :sp_series_pages_number_episodes, sp_series_pages_duration_episodes = :sp_series_pages_duration_episodes, sp_series_pages_diffusion_channel = :sp_series_pages_diffusion_channel, sp_series_pages_trailer = :sp_series_pages_trailer, sp_series_pages_image = :sp_series_pages_image, sp_series_pages_french_title = :sp_series_pages_french_title, sp_series_pages_original_title = :sp_series_pages_original_title, sp_series_pages_origin = :sp_series_pages_origin WHERE id = :id');
+        $reqUpdateSeries->bindValue(':sp_series_pages_title', $this->sp_series_pages_title, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_description', $this->sp_series_pages_description, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_number_seasons', $this->sp_series_pages_number_seasons, PDO::PARAM_INT);
+        $reqUpdateSeries->bindValue(':sp_series_pages_number_episodes', $this->sp_series_pages_number_episodes, PDO::PARAM_INT);
+        $reqUpdateSeries->bindValue(':sp_series_pages_duration_episodes', $this->sp_series_pages_duration_episodes, PDO::PARAM_INT);
+        $reqUpdateSeries->bindValue(':sp_series_pages_diffusion_channel', $this->sp_series_pages_diffusion_channel, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_trailer', $this->sp_series_pages_trailer, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_image', $this->sp_series_pages_image, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_french_title', $this->sp_series_pages_french_title, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_original_title', $this->sp_series_pages_original_title, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':sp_series_pages_origin', $this->sp_series_pages_origin, PDO::PARAM_STR);
+        $reqUpdateSeries->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqUpdateSeries->execute()) {
+            return TRUE;
         }
     }
 
     // Method qui permet de supprimer une série
 
-    public function deleteSeriesPages() // Method qui permet de supprimer une série
+    public function deleteSeriesPages()
     {
-        $reqdeleteSeriesPages = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id'); // requete SQL qui permet de supprimer une série
-        $reqdeleteSeriesPages->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id 
-        if ($reqdeleteSeriesPages->execute()) { // si la requete s'execute
-            return TRUE; // je retourne un booléen (TRUE)
+        $reqdeleteSeriesPages = $this->db->prepare('DELETE FROM sp_series_pages WHERE id = :id');
+        $reqdeleteSeriesPages->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqdeleteSeriesPages->execute()) {
+            return TRUE;
         }
     }
 
     // Methode qui permet de mettre à jour le nombre de vote 
 
-    public function updateNumberVote() // Methode qui permet de mettre à jour le nombre de vote  
+    public function updateNumberVote()
     {
-        $reqUpdateNumberVote = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_number_vote = :sp_series_pages_number_vote, sp_series_pages_rate = :sp_series_pages_rate WHERE id = :id'); // requete SQL qui permet de mettre à jour le nombre de vote
-        $reqUpdateNumberVote->bindValue(':sp_series_pages_number_vote', $this->sp_series_pages_number_vote, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_number_vote 
-        $reqUpdateNumberVote->bindValue(':sp_series_pages_rate', $this->sp_series_pages_rate, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :sp_series_pages_rate 
-        $reqUpdateNumberVote->bindValue(':id', $this->id, PDO::PARAM_INT); // je donne une valeur à mon marqueur nominatif :id
-        if ($reqUpdateNumberVote->execute()) { // si la requete s'execute
-            return TRUE; // je retourne un booléen (TRUE)
+        $reqUpdateNumberVote = $this->db->prepare('UPDATE sp_series_pages SET sp_series_pages_number_vote = :sp_series_pages_number_vote, sp_series_pages_rate = :sp_series_pages_rate WHERE id = :id');
+        $reqUpdateNumberVote->bindValue(':sp_series_pages_number_vote', $this->sp_series_pages_number_vote, PDO::PARAM_INT);
+        $reqUpdateNumberVote->bindValue(':sp_series_pages_rate', $this->sp_series_pages_rate, PDO::PARAM_INT);
+        $reqUpdateNumberVote->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if ($reqUpdateNumberVote->execute()) {
+            return TRUE;
         }
     }
 }
