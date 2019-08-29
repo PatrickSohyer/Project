@@ -78,6 +78,7 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
     } else {
         $errorMessage['passwordConfirmationSignUp'] = 'Merci de renseigner votre mot de passe.';  // message d'erreur si c'est vide
     }
+
     // Ma clé privée
     $secret = "6LcWVa4UAAAAAL098oGvqY7YNoo93Q9d48wDEgvK";
     // Paramètre renvoyé par le recaptcha
@@ -109,7 +110,7 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
             } else {
                 $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé'; // message erreur mail déjà utilisé
             }
-        } 
+        }
     } else {
         $errorMessage['captcha'] = 'Veuillez cocher la case et ne pas être un robot!';
     }

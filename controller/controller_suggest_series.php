@@ -9,7 +9,7 @@ require_once '../include/include_route.php'; // require de mes chemin d'accès
 
 // Création des regex pour le formulaire 
 
-$regexTitle = '/^.{2,250}$/'; // regex pour le titre
+$regexTitle = '/^.{2,100}$/'; // regex pour le titre
 
 // Instanciation de mon objet SuggestSeries
 

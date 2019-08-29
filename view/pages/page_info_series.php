@@ -180,7 +180,7 @@ require_once '../../controller/controller_info_series.php';
                             ?>
 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"> <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span></li>
+                                <li class="list-group-item"> <span class="ml-2 mt-2 commentMessage d-block"><a data-toggle="modal" data-target="#deleteCommentModal<?= $value['idComment'] ?>" class="text-dark"><i class="fas fa-trash mr-2"></i></a> Posté <?= utf8_encode(strftime('Le %d %b %Y à %H:%M', strtotime($value['sp_date_message']))); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span></li>
                             </ul>
                             <div class="modal fade" id="deleteCommentModal<?= $value['idComment'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog colorFontBlue" role="document">
