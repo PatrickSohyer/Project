@@ -2,7 +2,7 @@
 
 // Création de mon chemin d'accès à la console admin si je suis connecté en tant qu'administrateur
 
-if (isset($_SESSION['role']) == 'admin') { // si le role de ma session est strictement égal à Admin 
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { // si le role de ma session est strictement égal à Admin 
     $pageAdminDelete = '../pages/page_admin_delete.php'; // j'ai accès à cette page
     $pageAdminSuggestSeries = '../pages/page_admin_suggest_series.php'; // j'ai accès à cette page
     $pageAdminUpdate = '../pages/page_admin_update.php'; // j'ai accès à cette page

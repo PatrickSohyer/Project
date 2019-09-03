@@ -219,7 +219,7 @@ require_once '../../controller/controller_info_series.php';
                         foreach ($selectComments as $value) {
                             ?>
 
-                            <span class="ml-2 mt-2 commentMessage d-block">Posté <?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span>
+                            <span class="ml-2 mt-2 commentMessage d-block">Posté <?= utf8_encode(strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message']))); ?> par <b><?= $value['sp_users_login'] ?></b> : <?= $value['sp_message'] ?></span>
                         <?php } ?>
 
                         <form method="POST" id="formMessage" action="page_info_series.php?id=<?= $seriesInfo['id'] ?>" class="text-center mt-4">
@@ -233,7 +233,7 @@ require_once '../../controller/controller_info_series.php';
                             ?>
 
                             <span class="ml-2 mt-2 commentMessage d-block">Posté par <?= $value['sp_users_login'] ?> : <?= $value['sp_message'] ?></span>
-                            <small class="dateMessage ml-2 mb-2">(<?= strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message'])); ?>)</small>
+                            <small class="dateMessage ml-2 mb-2">(<?= utf8_encode(strftime('Le %d %B %Y à %H:%M', strtotime($value['sp_date_message']))); ?>)</small>
 
                         <?php
                         }
