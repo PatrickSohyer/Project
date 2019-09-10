@@ -44,7 +44,7 @@ require 'controller/controller_index.php';
                             <p class="h4 m-0" id="welcomeMessage">Bienvenu sur SériesPhil!</p>
                             <p class="h6 m-0"><i>Ici tu pourras retrouver et suivre tes séries préférées et tchater avec
                                     d'autres fans!</i></p>
-                            <p class="h6"><i>Si jamais tu veux participer au forum et pouvoir t'abonner aux séries que
+                            <p class="h6"><i>Si jamais tu veux participer au forum et pouvoir ajouter en favoris les séries que
                                     tu suis, inscrit toi dès maintenant en cliquant juste<a class="text-primary" href="view/pages/page_form_sign_up.php"> ici </a>.</i></p>
                         </div>
                     </div>

@@ -257,7 +257,7 @@ require_once '../../controller/controller_info_series.php';
 
             <?php foreach ($selectArticle as $value) { ?>
 
-                <div class="col-4 mx-auto backgroundTheme">
+                <div class="col-lg-8 col-xl-8 col-md-8 col-12 mx-auto backgroundTheme">
                     <div class="card cardArticle mt-2 mb-2 mx-auto">
                         <img class="card-img-top" src="../../assets/images/imgArticles/<?= $value['sp_article_image'] ?>">
                         <div class="card-body text-center">

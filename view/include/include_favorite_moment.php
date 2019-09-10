@@ -8,7 +8,7 @@
                 <img class="card-img-top" src="assets/images/imgArticles/articlesReasonsWhy.jpg">
                 <div class="card-body text-center">
                     <p class="card-title h4"><b>13 Reasons why</b></p>
-                    <p class="card-text"><i>Le coup de coeur du mois de septembre n'est autre que la saisons 2 de 13 Reasons Why!</i></p>
+                    <p class="card-text"><i>Le coup de coeur du mois de septembre n'est autre que la saisons 3 de 13 Reasons Why!</i></p>
                 </div>
 
                 <a href="view/pages/page_info_series.php?id=1" class="spStyleButton btn text-white"><b>Fiche technique</b></a>

@@ -47,7 +47,7 @@ class Article extends Database
 
     public function selectArticle()
     {
-        $reqSelectArticle = $this->db->prepare('SELECT * FROM sp_article LIMIT :nbArticlePerPages OFFSET :firstPageArticle');
+        $reqSelectArticle = $this->db->prepare('SELECT * FROM sp_article ORDER BY sp_article_date DESC LIMIT :nbArticlePerPages OFFSET :firstPageArticle');
         $reqSelectArticle->bindValue(':nbArticlePerPages', $this->nbArticlePerPages, PDO::PARAM_INT);
         $reqSelectArticle->bindValue(':firstPageArticle', $this->firstPageArticle, PDO::PARAM_INT);
         if ($reqSelectArticle->execute()) {
