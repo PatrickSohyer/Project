@@ -59,7 +59,7 @@ require_once '../../controller/controller_page_admin.php';
                     <div class="col-lg-8 col-lg-offset-2">
                         <h1>Console Administrateur SériesPhil <img src="../../assets/images/imgAccueil/imgNavbar.png"></h1>
                         <p>Bienvenue sur la console administrateur du site SériesPhil!</p>
-                        <p>D'ici tu pourras <b>ajouter</b> une série, <b>supprimer</b> une série, <b>modifier</b> une série ou <b>valider</b> les séries envoyées sur le site. Tu as aussi accès aux données des utilisateurs mais <b>attention</b>, n'y touche pas sans leurs <b>accord</b>.</p>
+                        <p>D'ici tu pourras <b>ajouter</b> une série / article, <b>supprimer</b> une série / article, <b>modifier</b> une série / article ou <b>valider</b> les séries envoyées sur le site. Tu as aussi accès aux données des utilisateurs mais <b>attention</b>, n'y touche pas sans leurs <b>accord</b>.</p>
                     </div>
                 </div>
             </div>
