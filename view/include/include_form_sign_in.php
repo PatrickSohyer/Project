@@ -12,4 +12,8 @@
 
     <button class="spStyleButton btn my-4 btn-block text-white" type="submit" id="signInButton">Se Connecter</button>
 
+    <a class="text-primary" href="#">Mot de passe oublié?</a>
+
+    <!-- Le mot de passe sera renvoyé par mail sous 8 caractères générés aléatoirement entre des lettres et des chiffres -->
+
 </form>
