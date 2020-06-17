@@ -23,7 +23,7 @@ class Database
             en 2eme : le login de ma BDD (root).
             en 3eme : le mot de passe de ma BDD (''). */
 
-            $this->db = new PDO('mysql:dbname=series_phil;host=localhost; charset=utf8', 'root', '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+            $this->db = new PDO('mysql:dbname=series_phil;host=localhost; charset=utf8', 'psohyer', 'psohyer', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
             /* J'utilise le couple TRY/CATCH pour me permettre de gérer une erreur de connexion à ma BDD.
             TRY : tente de se connecter à ma BDD et s'il y a une erreur CATCH renverra un message d'erreur
             personnalisé grâce à l'attribut des erreurs qui est défini en mode d’affichage :
