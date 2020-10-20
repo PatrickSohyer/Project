@@ -28,10 +28,6 @@
 
     <label for="passwordConfirmationSignUp" class="labelTextFormSignUp h5">Confirmation Password <i class="fas fa-lock ml-2"></i></label><span class="errorMessage d-block text-danger"><?= isset($errorMessage['passwordConfirmationSignUp']) ? $errorMessage['passwordConfirmationSignUp'] : ''; ?><?= isset($errorMessage['passwordConfirmation']) ? $errorMessage['passwordConfirmation'] : ''; ?></span><input type="password" id="passwordConfirmationSignUp" placeholder="Confirmation mot de passe" class="form-control mb-4" name="passwordConfirmationSignUp" data-toggle="popover" data-trigger="focus" title="Confirmation mot de passe" data-content="Merci de comfirmer votre mot de passe" required />
 
-    <span class="errorMessage d-block text-danger"><?= isset($errorMessage['captcha']) ? $errorMessage['captcha'] : ''; ?> </span>
-    <div class="g-recaptcha mt-4" name="g-recaptcha-response" data-sitekey="6LcWVa4UAAAAAI6Nn6vhXIqrVlg3IPyGLzrzaDkZ">
-    </div>
-
     <button class="spStyleButton btn my-4 btn-block text-white" type="submit" id="sign_up_button">S'inscrire</button>
 
     <hr>

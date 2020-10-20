@@ -6,9 +6,6 @@
 
     <label for="passwordSignIn" class="labelTextFormSignIn h5">Mot de passe <i class="fas fa-lock ml-2"></i></label><span class="errorMessage d-block text-danger"><?= isset($errorMessageSignIn['passwordSignIn']) ? $errorMessageSignIn['passwordSignIn'] : ''; ?></span><span class="errorMessage d-block text-danger"><?= isset($errorMessageSignIn['passwordConnect']) ? $errorMessageSignIn['passwordConnect'] : ''; ?></span><input type="password" id="passwordSignIn" placeholder="Mot de passe" class="form-control" name="passwordSignIn" required />
 
-    <span class="errorMessage d-block text-danger"><?= isset($errorMessageSignIn['captcha']) ? $errorMessageSignIn['captcha'] : ''; ?></span>
-    <div class="g-recaptcha mx-auto mt-4" name="g-recaptcha-response" data-sitekey="6LcWVa4UAAAAAI6Nn6vhXIqrVlg3IPyGLzrzaDkZ">
-    </div>
 
     <button class="spStyleButton btn my-4 btn-block text-white" type="submit" id="signInButton">Se Connecter</button>
 

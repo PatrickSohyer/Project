@@ -78,42 +78,6 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
     } else {
         $errorMessage['passwordConfirmationSignUp'] = 'Merci de renseigner votre mot de passe.';  // message d'erreur si c'est vide
     }
-
-    // Ma clé privée
-    $secret = "6LcWVa4UAAAAAL098oGvqY7YNoo93Q9d48wDEgvK";
-    // Paramètre renvoyé par le recaptcha
-    $response = $_POST['g-recaptcha-response'];
-    // On récupère l'IP de l'utilisateur
-    $remoteip = $_SERVER['REMOTE_ADDR'];
-
-    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-        . $secret
-        . "&response=" . $response
-        . "&remoteip=" . $remoteip;
-
-    $decode = json_decode(file_get_contents($api_url), true);
-
-    if ($decode['success'] == true) {
-        if ($_POST['passwordSignUp'] != $_POST['passwordConfirmationSignUp']) { // si le mot de passe et la confirmation du mot de passe sont différents 
-            $errorMessage['passwordConfirmation'] = 'Mot de passe différent'; // message d'erreur mot de passe différent
-        } elseif ($_POST['passwordSignUp'] == $_POST['passwordConfirmationSignUp'] && count($errorMessage) === 0) { // si le mot de passe correspond à la confirmation 
-            $resultFilterMail = $users->filterMail(); // je filtre les mails pour vérifier qu'il n'est pas déjà rentré dans la BDD
-            $resultFilterLogin = $users->filterLogin(); // je filtre le login pour vérifier qu'il n'est pas déjà rentré dans la BDD
-            if (count($resultFilterMail) === 0) { // Si le filtre du mail est strictement égal à 0 
-                if (count($resultFilterLogin) > 0) { // Si le filtre du login est supérieur à 0
-                    $errorMessage['resultFilterLogin'] = 'Ce pseudo est déjà utilisé'; // Message d'erreur pseudo déjà utilisé
-                } else {
-                    if ($users->addUsers() == TRUE) { // si la methode == true, elle s'execute
-                        $success = TRUE;
-                    }
-                }
-            } else {
-                $errorMessage['resultFilterMail'] = 'Le mail est déjà utilisé'; // message erreur mail déjà utilisé
-            }
-        }
-    } else {
-        $errorMessage['captcha'] = 'Veuillez cocher la case et ne pas être un robot!';
-    }
 }
 
 // Ma condition pour la déconnexion

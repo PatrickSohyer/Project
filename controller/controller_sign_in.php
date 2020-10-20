@@ -31,20 +31,7 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
     $usersFilter = $users->filterLogin(); // j'appel ma methode vérifier les logins
     if (count($usersFilter) > 0) { // si le nombre de login est supérieur à 0 ( donc si il existe)
         if (password_verify($passwordSignIn, $usersFilter[0]['sp_users_password'])) { // j'utilise password_verify pour dehasher le mot de passe, et je le vérifie avec usersFilter qui un tableau multidimensionnels, c'est ça qui va me permettre de me connecter
-            // Ma clé privée
-            $secret = "6LcWVa4UAAAAAL098oGvqY7YNoo93Q9d48wDEgvK";
-            // Paramètre renvoyé par le recaptcha
-            $response = $_POST['g-recaptcha-response'];
-            // On récupère l'IP de l'utilisateur
-            $remoteip = $_SERVER['REMOTE_ADDR'];
-            $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-                . $secret
-                . "&response=" . $response
-                . "&remoteip=" . $remoteip;
-
-            $decode = json_decode(file_get_contents($api_url), true);
-
-            if ($decode['success'] == true) {
+            
                 $_SESSION['login'] = $loginSignIn; // Je définis mon login de session 
                 $_SESSION['id'] = $usersFilter[0]['id']; // Je définis mon id de session
                 $_SESSION['role'] = $usersFilter[0]['sp_users_role']; // Je définis mon role de session
@@ -52,9 +39,6 @@ if (COUNT($_POST) > 0) { // si le nombre de post est supérieur à 0
                     header('Location: ../../index.php'); // alors il balance le chemin la console admin
                 }
             } else {
-                $errorMessageSignIn['captcha'] = 'Veuillez cocher la case et ne pas être un robot!';
-            }
-        } else {
             $errorMessageSignIn['passwordConnect'] = 'Mot de passe incorrect'; // si le mot de passe ne correspond pas
         }
     } else {
